@@ -8,6 +8,10 @@ class GameTest {
 
     @Test
     public void scorePointTest(){
-        fail();
+        Game game = new Game();
+        Game.Dice[] playersHand = {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.PARROT, Game.Dice.MONKEY, Game.Dice.SKULL};
+        // three of a kind
+        assertEquals(100, game.scorePoints(playersHand,Game.FortuneCard.TREASURECHEST));
+
     }
 }
