@@ -46,7 +46,9 @@ public class Game {
         }
 
         for(int j = 0; j<numOfRepeats.length; j++){
-            if(numOfRepeats[j] == 5){
+            if(numOfRepeats[j] == 6) {
+                score += 1000;
+            }else if(numOfRepeats[j] == 5){
                 score += 500;
             }else if(numOfRepeats[j] == 4 ) {
                 score += 200;
