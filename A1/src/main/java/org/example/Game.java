@@ -81,6 +81,8 @@ public class Game {
 
         //add diamonds
         score += (numOfRepeats[1]*100);
+        //add gold coins
+        score += (numOfRepeats[2]*100);
 
 
         return score;
