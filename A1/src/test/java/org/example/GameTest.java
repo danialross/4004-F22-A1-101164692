@@ -11,15 +11,15 @@ class GameTest {
         Game game = new Game();
         Game.Dice[] hand = {Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.DIAMOND, Game.Dice.MONKEY, Game.Dice.SKULL};
         // three of a kind
-        assertEquals(100, game.scorePoints(hand,Game.FortuneCard.TREASURECHEST));
+        assertEquals(200, game.scorePoints(hand,Game.FortuneCard.TREASURECHEST));
 
         hand = new Game.Dice[]{Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SWORD, Game.Dice.DIAMOND, Game.Dice.MONKEY, Game.Dice.SKULL};
         // four of a kind
-        assertEquals(200, game.scorePoints(hand,Game.FortuneCard.TREASURECHEST));
+        assertEquals(300, game.scorePoints(hand,Game.FortuneCard.TREASURECHEST));
 
         hand = new Game.Dice[]{Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.DIAMOND, Game.Dice.MONKEY, Game.Dice.SKULL};
         // five of a kind
-        assertEquals(500, game.scorePoints(hand,Game.FortuneCard.TREASURECHEST));
+        assertEquals(600, game.scorePoints(hand,Game.FortuneCard.TREASURECHEST));
 
         hand = new Game.Dice[]{Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.MONKEY, Game.Dice.SKULL};
         // six of a kind
