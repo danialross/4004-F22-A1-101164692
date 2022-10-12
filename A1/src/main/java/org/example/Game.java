@@ -45,24 +45,39 @@ public class Game {
             }
         }
 
+        int numOfDiceWithSet = 0;
         for(int j = 0; j<numOfRepeats.length; j++){
+
             if(numOfRepeats[j] == 8){
                 score += 4000;
+                numOfDiceWithSet += 8;
+
             }else if(numOfRepeats[j] == 7){
                 score += 2000;
+                numOfDiceWithSet += 7;
+
             }else if(numOfRepeats[j] == 6) {
                 score += 1000;
+                numOfDiceWithSet += 6;
+
             }else if(numOfRepeats[j] == 5){
                 score += 500;
+                numOfDiceWithSet += 5;
+
             }else if(numOfRepeats[j] == 4 ) {
                 score += 200;
+                numOfDiceWithSet += 4;
+
             }else if(numOfRepeats[j] == 3 ){
                 score += 100;
+                numOfDiceWithSet += 3;
 
             }
         }
 
-
+        if(numOfDiceWithSet == 8){
+            score += 500;
+        }
 
 
         return score;
