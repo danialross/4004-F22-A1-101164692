@@ -79,6 +79,9 @@ public class Game {
             score += 500;
         }
 
+        //add diamonds
+        score += (numOfRepeats[1]*100);
+
 
         return score;
    }
