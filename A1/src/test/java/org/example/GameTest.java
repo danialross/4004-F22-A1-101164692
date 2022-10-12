@@ -13,5 +13,9 @@ class GameTest {
         // three of a kind
         assertEquals(100, game.scorePoints(playersHand,Game.FortuneCard.TREASURECHEST));
 
+        playersHand = new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.SWORD, Game.Dice.PARROT, Game.Dice.MONKEY, Game.Dice.SKULL};
+        // three of a kind
+        assertEquals(200, game.scorePoints(playersHand,Game.FortuneCard.TREASURECHEST));
+
     }
 }
