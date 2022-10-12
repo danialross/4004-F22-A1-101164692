@@ -30,8 +30,12 @@ class GameTest {
         assertEquals(2000, game.scorePoints(hand,Game.FortuneCard.TREASURECHEST));
 
         hand = new Game.Dice[]{Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT};
-        // eight of a kind
-        assertEquals(4000, game.scorePoints(hand,Game.FortuneCard.TREASURECHEST));
+        // eight of a kind and fullChest bonus
+        assertEquals(4500, game.scorePoints(hand,Game.FortuneCard.TREASURECHEST));
+
+
+
+
 
     }
 }
