@@ -21,5 +21,9 @@ class GameTest {
         // five of a kind
         assertEquals(500, game.scorePoints(h3,Game.FortuneCard.TREASURECHEST));
 
+        Game.Dice[] h4 = {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.MONKEY, Game.Dice.SKULL};
+        // six of a kind
+        assertEquals(1000, game.scorePoints(h4,Game.FortuneCard.TREASURECHEST));
+
     }
 }
