@@ -9,13 +9,13 @@ class GameTest {
     @Test
     public void scorePointTest(){
         Game game = new Game();
-        Game.Dice[] playersHand = {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.PARROT, Game.Dice.MONKEY, Game.Dice.SKULL};
+        Game.Dice[] h1 = {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.PARROT, Game.Dice.MONKEY, Game.Dice.SKULL};
         // three of a kind
-        assertEquals(100, game.scorePoints(playersHand,Game.FortuneCard.TREASURECHEST));
+        assertEquals(100, game.scorePoints(h1,Game.FortuneCard.TREASURECHEST));
 
-        playersHand = new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.SWORD, Game.Dice.PARROT, Game.Dice.MONKEY, Game.Dice.SKULL};
-        // three of a kind
-        assertEquals(200, game.scorePoints(playersHand,Game.FortuneCard.TREASURECHEST));
+        Game.Dice[] h2 = {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.SWORD, Game.Dice.PARROT, Game.Dice.MONKEY, Game.Dice.SKULL};
+        // four of a kind
+        assertEquals(200, game.scorePoints(h2,Game.FortuneCard.TREASURECHEST));
 
     }
 }
