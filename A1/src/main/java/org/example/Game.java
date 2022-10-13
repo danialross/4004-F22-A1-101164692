@@ -29,6 +29,10 @@ public class Game {
         int[] numOfRepeats = {0,0,0,0,0,0}; //{skull,diamond,gold,sword,parrot,monkey}
         int score = 0;
 
+       if(fc == FortuneCard.GOLD){
+           numOfRepeats[2]++;
+       }
+
         for(int i = 0; i<playerHand.length; i++){
             if(playerHand[i] == Dice.SKULL){
                 numOfRepeats[0]++;
