@@ -94,6 +94,10 @@ public class Game {
            score += 500;
        }
 
+       if(fc == FortuneCard.CAPTAIN){
+           score *= 2;
+       }
+
         return score;
    }
 
