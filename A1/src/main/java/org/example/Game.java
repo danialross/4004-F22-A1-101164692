@@ -79,15 +79,18 @@ public class Game {
             }
         }
 
-        if(numOfDiceWithSet == 8){
-            score += 500;
-        }
-
         //add diamonds
         score += (numOfRepeats[1]*100);
         //add gold coins
         score += (numOfRepeats[2]*100);
 
+       if(numOfRepeats[2]==8 && fc == FortuneCard.GOLD){
+           numOfDiceWithSet--;
+       }
+
+       if(numOfDiceWithSet == 8){
+           score += 500;
+       }
 
         return score;
    }
