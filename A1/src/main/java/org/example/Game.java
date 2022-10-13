@@ -117,5 +117,9 @@ public class Game {
         return score;
    }
 
+    public Dice[] rollDice(Dice[] playerHand,Dice[] riggedHand){
+        Dice[] newHand = {};
 
+        return newHand;
+    }
 }
