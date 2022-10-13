@@ -120,7 +120,7 @@ class GameTest {
         hand = new Game.Dice[]{Game.Dice.MONKEY, Game.Dice.DIAMOND, Game.Dice.SKULL, Game.Dice.GOLD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.MONKEY, Game.Dice.MONKEY};
         assertEquals(0, game.scorePoints(hand,Game.FortuneCard.SKULLX2));
         hand = new Game.Dice[]{Game.Dice.MONKEY, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.GOLD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.MONKEY, Game.Dice.MONKEY};
-        assertEquals(300, game.scorePoints(hand,Game.FortuneCard.SKULLX2));
+        assertEquals(400, game.scorePoints(hand,Game.FortuneCard.SKULLX2));
 
 
 
