@@ -58,6 +58,11 @@ public class Game {
             }
         }
 
+        if(fc == FortuneCard.MONKEYBUSINESS){
+            numOfRepeats[4] += numOfRepeats[5];
+            numOfRepeats[5] = 0;
+        }
+
         int numOfDiceWithSet = 0;
         for(int j = 0; j<numOfRepeats.length; j++){
 
