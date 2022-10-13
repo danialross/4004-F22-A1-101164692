@@ -87,7 +87,7 @@ class GameTest {
         hand = new Game.Dice[]{Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.MONKEY, Game.Dice.MONKEY};
         assertEquals(100, game.scorePoints(hand,Game.FortuneCard.GOLD));
         hand = new Game.Dice[]{Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.MONKEY, Game.Dice.MONKEY};
-        assertEquals(300, game.scorePoints(hand,Game.FortuneCard.GOLD));
+        assertEquals(400, game.scorePoints(hand,Game.FortuneCard.GOLD));
 
 
 
