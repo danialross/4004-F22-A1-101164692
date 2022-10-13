@@ -37,6 +37,10 @@ public class Game {
            numOfRepeats[2]++;
        }else if(fc == FortuneCard.DIAMOND){
            numOfRepeats[1]++;
+       }else if(fc == FortuneCard.SKULLX1){
+           numOfRepeats[0]++;
+       }else if(fc == FortuneCard.SKULLX2){
+           numOfRepeats[0]+= 2;
        }
 
         for(int i = 0; i<playerHand.length; i++){
@@ -100,6 +104,10 @@ public class Game {
 
        if(fc == FortuneCard.CAPTAIN){
            score *= 2;
+       }
+
+       if(numOfRepeats[0] == 3){
+           score = 0;
        }
 
         return score;
