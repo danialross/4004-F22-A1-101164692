@@ -13,7 +13,11 @@ public class Game {
         GOLD,
         DIAMOND,
         MONKEYBUSINESS,
-        SKULLS
+        SKULLX1,
+        SKULLX2,
+        SWORDX2,
+        SWORDX3,
+        SWORDX4
     }
 
     enum Dice {
