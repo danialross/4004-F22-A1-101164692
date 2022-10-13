@@ -104,6 +104,16 @@ class GameTest {
         hand = new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.MONKEY};
         assertEquals(4800, game.scorePoints(hand,Game.FortuneCard.DIAMOND));
 
+        //Captain fortune card
+        hand = new Game.Dice[]{Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.MONKEY, Game.Dice.MONKEY};
+        assertEquals(0, game.scorePoints(hand,Game.FortuneCard.CAPTAIN));
+        hand = new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.MONKEY, Game.Dice.MONKEY};
+        assertEquals(400, game.scorePoints(hand,Game.FortuneCard.CAPTAIN));
+        hand = new Game.Dice[]{Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD};
+        assertEquals(10600, game.scorePoints(hand,Game.FortuneCard.CAPTAIN));
+
+
+
 
 
 
