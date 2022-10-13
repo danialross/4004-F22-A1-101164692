@@ -9,15 +9,14 @@ public class Game {
         TREASURECHEST,
         CAPTAIN,
         SORCERESS,
-        SEABATTLE,
         GOLD,
         DIAMOND,
         MONKEYBUSINESS,
         SKULLX1,
         SKULLX2,
-        SWORDX2,
-        SWORDX3,
-        SWORDX4
+        SEABATTLEX2SWORDS,
+        SEABATTLEX3SWORDS,
+        SEABATTLEX4SWORDS
     }
 
     enum Dice {
