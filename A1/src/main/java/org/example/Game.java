@@ -31,6 +31,8 @@ public class Game {
 
        if(fc == FortuneCard.GOLD){
            numOfRepeats[2]++;
+       }else if(fc == FortuneCard.DIAMOND){
+           numOfRepeats[1]++;
        }
 
         for(int i = 0; i<playerHand.length; i++){
@@ -84,7 +86,7 @@ public class Game {
         //add gold coins
         score += (numOfRepeats[2]*100);
 
-       if(numOfRepeats[2]==8 && fc == FortuneCard.GOLD){
+       if( (numOfRepeats[2]==8 && fc == FortuneCard.GOLD) || (numOfRepeats[1]==8 && fc == FortuneCard.DIAMOND)){
            numOfDiceWithSet--;
        }
 
