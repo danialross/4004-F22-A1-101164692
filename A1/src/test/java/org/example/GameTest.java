@@ -93,6 +93,17 @@ class GameTest {
         hand = new Game.Dice[]{Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.MONKEY};
         assertEquals(4800, game.scorePoints(hand,Game.FortuneCard.GOLD));
 
+        //diamond fortune card
+        //fortune card as face value
+        hand = new Game.Dice[]{Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.MONKEY, Game.Dice.MONKEY};
+        assertEquals(100, game.scorePoints(hand,Game.FortuneCard.DIAMOND));
+        //fortune card as a set and face value
+        hand = new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.MONKEY, Game.Dice.MONKEY};
+        assertEquals(400, game.scorePoints(hand,Game.FortuneCard.DIAMOND));
+        //test if it triggers full chest bonus 
+        hand = new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.MONKEY};
+        assertEquals(4800, game.scorePoints(hand,Game.FortuneCard.DIAMOND));
+
 
 
 
