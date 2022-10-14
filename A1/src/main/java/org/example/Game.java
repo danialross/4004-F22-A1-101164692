@@ -125,8 +125,7 @@ public class Game {
             for(int i = 0; i< playerHand.length; i++){
                 if(playerHand[i] != null){
 
-                    int randomInt = new Random().nextInt(Dice.values().length);
-                    playerHand[i] = Dice.values()[randomInt];
+                    playerHand[i] = getRandomDie();
 
                 }
             }
@@ -148,8 +147,7 @@ public class Game {
                     playerHand[i] = riggedDice;
 
                 }else{
-                    int randomInt = new Random().nextInt(Dice.values().length);
-                    playerHand[i] = Dice.values()[randomInt];
+                    playerHand[i] = getRandomDie();
                 }
                 return playerHand;
             }
@@ -157,6 +155,13 @@ public class Game {
         }
 
         return playerHand;
+    }
+
+    public Dice getRandomDie(){
+
+        int randomInt = new Random().nextInt(Dice.values().length);
+        return Dice.values()[randomInt];
+
     }
 
     public static FortuneCard pickCard(FortuneCard riggedCard){
