@@ -2,6 +2,7 @@ package org.example;
 
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Game {
 
@@ -118,8 +119,22 @@ public class Game {
    }
 
     public Dice[] rollDice(Dice[] playerHand,Dice[] riggedHand){
-        Dice[] newHand = {};
 
-        return newHand;
+        if(riggedHand.length == 0){
+
+            for(int i = 0; i< playerHand.length; i++){
+                if(playerHand[i] != null){
+
+                    int randomInt = new Random().nextInt(Dice.values().length);
+                    playerHand[i] = Dice.values()[randomInt];
+
+                }
+            }
+            return playerHand;
+
+        }else{
+
+            return riggedHand;
+        }
     }
 }
