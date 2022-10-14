@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class GameTest {
 
     @Test
-    public void scorePointTest(){
+    public void scorePointsTest(){
         Game game = new Game();
         Game.Dice[] hand = {Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.DIAMOND, Game.Dice.MONKEY, Game.Dice.SKULL};
         // three of a kind
@@ -128,15 +128,16 @@ class GameTest {
         hand = new Game.Dice[]{Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT};
         assertEquals(4500, game.scorePoints(hand,Game.FortuneCard.MONKEYBUSINESS));
 
-        hand = new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
+    }
+
+    @Test
+    void rollDiceTest() {
+        Game game = new Game();
+
+        Game.Dice[] hand ={Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
         assertArrayEquals(hand,game.rollDice(new Game.Dice[]{Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD},hand));
         hand = new Game.Dice[]{null, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
         Game.Dice[] emptyArr = {};
         assertEquals(null,(game.rollDice(hand,emptyArr)[0]));
-
-
-
-
-
     }
 }
