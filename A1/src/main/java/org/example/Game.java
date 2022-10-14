@@ -177,6 +177,12 @@ public class Game {
 
     public boolean isContainSkull(Dice[] playerHand){
 
-        return true;
+        for(int i = 0; i<playerHand.length; i++){
+            if(playerHand[i] == Dice.SKULL){
+                return true;
+            }
+        }
+
+        return false;
     }
 }
