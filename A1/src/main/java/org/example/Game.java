@@ -138,7 +138,7 @@ public class Game {
         }
     }
 
-    public Dice[] sorcerorRerole(Dice[] playerHand,Dice riggedDice){
+    public Dice[] sorceressRerole(Dice[] playerHand,Dice riggedDice){
 
         return playerHand;
     }
