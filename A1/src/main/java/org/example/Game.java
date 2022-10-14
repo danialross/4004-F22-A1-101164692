@@ -161,7 +161,12 @@ public class Game {
 
     public static FortuneCard pickCard(FortuneCard riggedCard){
 
-        
-        return null;
+        if(riggedCard == null){
+            int randomInt = new Random().nextInt(Dice.values().length);
+            return FortuneCard.values()[randomInt];
+        }else{
+            return riggedCard;
+        }
+
     }
 }
