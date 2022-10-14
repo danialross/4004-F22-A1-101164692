@@ -174,4 +174,9 @@ public class Game {
         }
 
     }
+
+    public boolean isContainSkull(Dice[] playerHand){
+
+        return true;
+    }
 }
