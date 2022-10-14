@@ -140,6 +140,22 @@ public class Game {
 
     public Dice[] sorceressRerole(Dice[] playerHand,Dice riggedDice){
 
+        for(int i = 0; i< playerHand.length; i++){
+
+            if(playerHand[i] == Dice.SKULL){
+
+                if(riggedDice != null){
+                    playerHand[i] = riggedDice;
+
+                }else{
+                    int randomInt = new Random().nextInt(Dice.values().length);
+                    playerHand[i] = Dice.values()[randomInt];
+                }
+                return playerHand;
+            }
+
+        }
+
         return playerHand;
     }
 }
