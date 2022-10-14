@@ -147,5 +147,6 @@ class GameTest {
         assertArrayEquals(new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.PARROT, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND},game.sorceressRerole(hand,Game.Dice.PARROT));
         hand = new Game.Dice[] {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
         assertNotEquals(Game.Dice.SKULL,game.sorceressRerole(hand,null)[2]);
+        assertEquals(Game.Dice.DIAMOND,game.sorceressRerole(hand,null)[1]);
     }
 }
