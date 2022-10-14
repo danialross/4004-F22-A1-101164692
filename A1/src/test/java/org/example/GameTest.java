@@ -148,4 +148,11 @@ class GameTest {
         hand = new Game.Dice[] {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
         assertEquals(Game.Dice.DIAMOND,game.sorceressRerole(hand,null)[1]);
     }
+
+    @Test
+    void pickCardTest() {
+        Game game = new Game();
+        assertEquals(Game.FortuneCard.CAPTAIN,Game.pickCard(Game.FortuneCard.CAPTAIN));
+
+    }
 }

@@ -158,4 +158,10 @@ public class Game {
 
         return playerHand;
     }
+
+    public static FortuneCard pickCard(FortuneCard riggedCard){
+
+        
+        return null;
+    }
 }
