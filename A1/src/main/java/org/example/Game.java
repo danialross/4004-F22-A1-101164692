@@ -189,7 +189,12 @@ public class Game {
     //treasure chest
     //function that returns a dice array of dice saved
     public Dice[] saveDiceInTC(Dice[] playerHand,int[] savedDicePos){
+        Dice[] saveDice = new Dice[savedDicePos.length];
 
-        return playerHand;
+        for(int i = 0; i<savedDicePos.length; i++){
+            saveDice[i] = playerHand[savedDicePos[i]];
+        }
+
+        return saveDice;
     }
 }
