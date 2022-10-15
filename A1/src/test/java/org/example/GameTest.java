@@ -170,7 +170,7 @@ class GameTest {
     @Test
     void saveDiceInTCTest() {
         Game game = new Game();
-        
+
         Game.Dice[] hand ={Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
         int[] positions = {0};
         Game.Dice[] expectedArr = game.saveDiceInTC(hand,positions);
