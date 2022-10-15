@@ -173,14 +173,14 @@ class GameTest {
 
         Game.Dice[] hand ={Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
         int[] positions = {0};
-        Game.Dice[] expectedArr = game.getSavedDiceForTC(hand,positions);
-        Game.Dice[] actualArr = {expectedArr[0]};
-        assertArrayEquals(actualArr,expectedArr);
+        Game.Dice[] actualArr = game.getSavedDiceForTC(hand,positions);
+        Game.Dice[] expectedArr = {actualArr[0]};
+        assertArrayEquals(expectedArr,actualArr);
 
         positions = new int[] {0,1,2,3,4,5};
-        expectedArr = game.getSavedDiceForTC(hand,positions);
-        actualArr = new Game.Dice[]{expectedArr[0], expectedArr[1], expectedArr[2], expectedArr[3], expectedArr[4], expectedArr[5]};
-        assertArrayEquals(actualArr,expectedArr);
+        actualArr = game.getSavedDiceForTC(hand,positions);
+        expectedArr = new Game.Dice[]{actualArr[0], actualArr[1], actualArr[2], actualArr[3], actualArr[4], actualArr[5]};
+        assertArrayEquals(expectedArr,actualArr);
 
     }
 
