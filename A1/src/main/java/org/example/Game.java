@@ -210,7 +210,29 @@ public class Game {
         return playerHand;
     }
     public int isDead(Dice[] playerHand,boolean inSeaBattle){
+        //-1: dead, 0: island of dead, 1: alive
+        int numSkull = 0;
+        for( int i =0; i<playerHand.length; i++){
+            if( playerHand[i] == Dice.SKULL){
+                numSkull++;
+            }
+        }
 
-        return 0;
+        if(inSeaBattle == true){
+            if(numSkull >= 3){
+                return -1;
+            }else{
+                return 1;
+            }
+        }else {
+            if(numSkull == 3){
+                return -1;
+            }else if ( numSkull > 3){
+                return 0;
+            }else{
+                return 1;
+            }
+
+        }
     }
 }
