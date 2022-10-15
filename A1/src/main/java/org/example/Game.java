@@ -209,4 +209,8 @@ public class Game {
 
         return playerHand;
     }
+    public int isDead(Dice[] playerHand,boolean inSeaBattle){
+
+        return 0;
+    }
 }

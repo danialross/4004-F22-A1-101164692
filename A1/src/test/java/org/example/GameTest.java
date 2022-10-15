@@ -201,5 +201,28 @@ class GameTest {
         expectedArr = new Game.Dice[]{null, null, null, null, null, null, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
         assertArrayEquals(expectedArr,actualArr);
     }
-    
+    @Test
+    void isDeadTest() {
+        Game game = new Game();
+
+        //-1: dead, 0: island of dead, 1: alive
+        //not in seabattle
+        Game.Dice[] hand = {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
+        assertEquals(-1,game.isDead(hand,false));
+        hand = new Game.Dice[]{Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
+        assertEquals(0,game.isDead(hand,false));
+        hand = new Game.Dice[]{Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
+        assertEquals(1,game.isDead(hand,false));
+
+
+        //in seabattle
+        hand = new Game.Dice[]{Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
+        assertEquals(1,game.isDead(hand,true));
+        hand = new Game.Dice[]{Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
+        assertEquals(-1,game.isDead(hand,true));
+        hand = new Game.Dice[]{Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
+        assertEquals(-1,game.isDead(hand,true));
+
+
+    }
 }
