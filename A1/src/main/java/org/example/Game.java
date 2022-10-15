@@ -185,4 +185,11 @@ public class Game {
 
         return false;
     }
+
+    //treasure chest
+    //function that returns a dice array of dice saved
+    public Dice[] saveDiceInTC(Dice[] playerHand,int[] savedDice){
+
+        return playerHand;
+    }
 }

@@ -165,4 +165,26 @@ class GameTest {
         assertEquals(false,game.isContainSkull(hand));
 
     }
+
+
+    @Test
+    void saveDiceInTCTest() {
+        Game game = new Game();
+        
+        Game.Dice[] hand ={Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
+        int[] positions = {0};
+        Game.Dice[] expectedArr = game.saveDiceInTC(hand,positions);
+        Game.Dice[] actualArr = {expectedArr[0]};
+        assertArrayEquals(actualArr,expectedArr);
+
+        positions = new int[] {0,1,2,3,4,5};
+        expectedArr = game.saveDiceInTC(hand,positions);
+        actualArr = new Game.Dice[]{expectedArr[0], expectedArr[1], expectedArr[2], expectedArr[3], expectedArr[4], expectedArr[5]};
+        assertArrayEquals(actualArr,expectedArr);
+
+
+
+
+
+    }
 }
