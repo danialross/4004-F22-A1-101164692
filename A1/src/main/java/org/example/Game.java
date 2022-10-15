@@ -198,12 +198,20 @@ public class Game {
         return saveDice;
     }
 
-    //if skull is rolled, dice cannot be used aka null
-    public Dice[] changeSkullToNull(Dice[] playerHand){
+    //change skull to null or change saved dice to null
+    public Dice[] changeToNull(Dice[] playerHand,int[] savedDicePos){
 
-        for(int i = 0; i< playerHand.length;i++){
-            if(playerHand[i] == Dice.SKULL){
-                playerHand[i] = null;
+        if(savedDicePos.length == 0 ){
+            for(int i = 0; i< playerHand.length;i++){
+                if(playerHand[i] == Dice.SKULL){
+                    playerHand[i] = null;
+                }
+            }
+
+        }else{
+            for(int i = 0; i<savedDicePos.length; i++){
+                playerHand[savedDicePos[i]] = null;
+
             }
         }
 
