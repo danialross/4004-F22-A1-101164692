@@ -111,10 +111,6 @@ public class Game {
            score *= 2;
        }
 
-       if(numOfRepeats[0] == 3){
-           score = 0;
-       }
-
         return score;
    }
 
