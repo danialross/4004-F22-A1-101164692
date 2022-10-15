@@ -201,6 +201,12 @@ public class Game {
     //if skull is rolled, dice cannot be used aka null
     public Dice[] changeSkullToNull(Dice[] playerHand){
 
+        for(int i = 0; i< playerHand.length;i++){
+            if(playerHand[i] == Dice.SKULL){
+                playerHand[i] = null;
+            }
+        }
+
         return playerHand;
     }
 }
