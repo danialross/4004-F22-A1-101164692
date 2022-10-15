@@ -197,4 +197,10 @@ public class Game {
 
         return saveDice;
     }
+
+    //if skull is rolled, dice cannot be used aka null
+    public Dice[] changeSkullToNull(Dice[] playerHand){
+
+        return playerHand;
+    }
 }

@@ -182,9 +182,20 @@ class GameTest {
         actualArr = new Game.Dice[]{expectedArr[0], expectedArr[1], expectedArr[2], expectedArr[3], expectedArr[4], expectedArr[5]};
         assertArrayEquals(actualArr,expectedArr);
 
+    }
 
+    @Test
+    void changeSkullToNullTest() {
+        Game game = new Game();
 
+        Game.Dice[] hand = {Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
+        Game.Dice[] actualArr = game.changeSkullToNull(hand);
+        Game.Dice[] expectedArr = {null, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
+        assertArrayEquals(expectedArr,actualArr);
 
-
+        hand = new Game.Dice[]{Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL};
+        actualArr = game.changeSkullToNull(hand);
+        expectedArr = new Game.Dice[]{null, null, null, null, null, null, null, null};
+        assertArrayEquals(expectedArr,actualArr);
     }
 }
