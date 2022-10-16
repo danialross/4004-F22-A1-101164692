@@ -351,9 +351,8 @@ public class Game {
 
     }
 
-    public int scoreSeabattle(Dice[] playerHand,Dice[] riggedHand){
-
-
+    public int scoreSeabattle(Dice[] playerHand,Dice[] riggedHand,FortuneCard fc){
+        
         return -1;
     }
 
