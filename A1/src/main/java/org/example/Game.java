@@ -246,13 +246,8 @@ public class Game {
     }
     public int didDie(Dice[] playerHand,boolean inSeaBattle){
         //-1: dead, 0: island of dead, 1: alive
-        int numSkull = 0;
 
-        for( int i =0; i<playerHand.length; i++){
-            if( playerHand[i] == Dice.SKULL){
-                numSkull++;
-            }
-        }
+        int numSkull = calcNumSkull(playerHand);
 
         if(inSeaBattle == true){
             if(numSkull >= 3){
@@ -270,5 +265,16 @@ public class Game {
             }
 
         }
+    }
+
+    public int calcNumSkull(Dice[] playerHand){
+        int numSkull = 0;
+
+        for( int i =0; i<playerHand.length; i++){
+            if( playerHand[i] == Dice.SKULL){
+                numSkull++;
+            }
+        }
+        return numSkull;
     }
 }
