@@ -327,4 +327,11 @@ public class Game {
         return playerScores;
 
     }
+
+    public boolean didWinSeaBattle(Dice[] playerHand,FortuneCard fc){
+
+
+
+        return true;
+    }
 }
