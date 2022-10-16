@@ -280,6 +280,14 @@ public class Game {
 
     public int getWinner(int[] playerScores){
 
-        return 0;
+        int currHighestIndex = 0;
+        for(int i = 1; i< playerScores.length; i++){
+            if(playerScores[i]>= playerScores[currHighestIndex]){
+                currHighestIndex = i;
+            }
+        }
+
+        return currHighestIndex;
+
     }
 }
