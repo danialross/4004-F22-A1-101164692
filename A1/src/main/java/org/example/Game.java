@@ -209,7 +209,7 @@ public class Game {
 
         return playerHand;
     }
-    public int isDead(Dice[] playerHand,boolean inSeaBattle){
+    public int didDie(Dice[] playerHand,boolean inSeaBattle){
         //-1: dead, 0: island of dead, 1: alive
         int numSkull = 0;
         for( int i =0; i<playerHand.length; i++){
