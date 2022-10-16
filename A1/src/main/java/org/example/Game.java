@@ -292,7 +292,11 @@ public class Game {
     }
 
     public boolean didReachWinThreshold(int winScore, int[] playerScores){
-
-        return true;
+        for( int i = 0;i<playerScores.length;i++ ){
+            if(playerScores[i]>=winScore){
+                return true;
+            }
+        }
+        return false;
     }
 }
