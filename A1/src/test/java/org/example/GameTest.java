@@ -260,4 +260,18 @@ class GameTest {
         assertEquals(-500,game.getScoreDeduction(5, Game.FortuneCard.DIAMOND));
         assertEquals(-1000,game.getScoreDeduction(5, Game.FortuneCard.CAPTAIN));
     }
+
+    @Test
+    void reducePlayersScoreTest() {
+        Game game = new Game();
+
+        int[] playerScores = {500,1200};
+        int[] expectedScore = {0,200};
+        assertArrayEquals(expectedScore,game.reducePlayersScore(-1000, playerScores));
+
+        playerScores = new int[]{1200, 500};
+        expectedScore = new int[]{200, 0};
+        assertArrayEquals(expectedScore,game.reducePlayersScore(-1000, playerScores));
+
+    }
 }

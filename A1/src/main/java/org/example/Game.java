@@ -310,4 +310,11 @@ public class Game {
         }
 
     }
+
+    public int[] reducePlayersScore(int reducer, int[] playerScores){
+
+
+        return playerScores;
+
+    }
 }
