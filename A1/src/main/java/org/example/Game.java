@@ -303,6 +303,11 @@ public class Game {
     // for skull island point deduction
     public int getScoreDeduction(int numSkull,FortuneCard fc){
 
-        return 0;
+        if(fc == FortuneCard.CAPTAIN){
+            return (numSkull*100)*2;
+        }else{
+            return numSkull*100;
+        }
+
     }
 }
