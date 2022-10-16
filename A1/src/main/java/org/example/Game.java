@@ -277,4 +277,9 @@ public class Game {
         }
         return numSkull;
     }
+
+    public int getWinner(int[] playerScores){
+
+        return 0;
+    }
 }
