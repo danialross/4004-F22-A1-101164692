@@ -299,4 +299,10 @@ public class Game {
         }
         return false;
     }
+
+    // for skull island point deduction
+    public int getScoreDeduction(int numSkull,FortuneCard fc){
+
+        return 0;
+    }
 }
