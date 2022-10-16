@@ -237,4 +237,15 @@ class GameTest {
         assertEquals(1,game.getWinner(new int[]{3000, 3000, 2000}));
         assertEquals(2,game.getWinner(new int[]{3000, 2000, 3000}));
     }
+
+    @Test
+    void didReachWinThreshold() {
+        Game game = new Game();
+        assertEquals(true,game.didReachWinThreshold(3000,new int[]{2000, 2300, 3000}));
+        assertEquals(true,game.didReachWinThreshold(3000,new int[]{2000, 2300, 3001}));
+        assertEquals(false,game.didReachWinThreshold(3000,new int[]{2000, 2300, 2999}));
+
+
+
+    }
 }

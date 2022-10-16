@@ -290,4 +290,9 @@ public class Game {
         return currHighestIndex;
 
     }
+
+    public boolean didReachWinThreshold(int winScore, int[] playerScores){
+
+        return true;
+    }
 }
