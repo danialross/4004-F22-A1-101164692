@@ -40,9 +40,7 @@ public class Game {
        }
 
         for(int i = 0; i<playerHand.length; i++){
-            if(playerHand[i] == Dice.SKULL){
-                numOfRepeats[0]++;
-            }else if(playerHand[i] == Dice.DIAMOND){
+            if(playerHand[i] == Dice.DIAMOND){
                 numOfRepeats[1]++;
             }else if(playerHand[i] == Dice.GOLD){
                 numOfRepeats[2]++;
@@ -50,7 +48,7 @@ public class Game {
                 numOfRepeats[3]++;
             }else if(playerHand[i] == Dice.PARROT){
                 numOfRepeats[4]++;
-            }else{ // Monkey
+            }else if(playerHand[i] == Dice.MONKEY){
                 numOfRepeats[5]++;
             }
         }
@@ -212,6 +210,7 @@ public class Game {
     public int didDie(Dice[] playerHand,boolean inSeaBattle){
         //-1: dead, 0: island of dead, 1: alive
         int numSkull = 0;
+
         for( int i =0; i<playerHand.length; i++){
             if( playerHand[i] == Dice.SKULL){
                 numSkull++;
