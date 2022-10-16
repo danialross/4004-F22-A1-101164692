@@ -330,8 +330,24 @@ public class Game {
 
     public boolean didWinSeaBattle(Dice[] playerHand,FortuneCard fc){
 
+        if(didDie(playerHand,true) == -1){
+            return false;
+        }
+
+        int numSword = 0;
+
+        for(int i = 0; i < playerHand.length; i++){
+            if( playerHand[i] == Dice.SWORD ){
+                numSword++;
+            }
+        }
 
 
-        return true;
+        if( (fc == FortuneCard.SEABATTLEX2SWORDS && numSword >= 2) || (fc == FortuneCard.SEABATTLEX3SWORDS && numSword >=3) || (fc == FortuneCard.SEABATTLEX4SWORDS && numSword >= 4)){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 }
