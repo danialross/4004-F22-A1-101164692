@@ -6,6 +6,43 @@ import java.util.Random;
 
 public class Game {
 
+    static FortuneCard[] fortuneDeck = {
+            FortuneCard.TREASURECHEST,
+            FortuneCard.TREASURECHEST,
+            FortuneCard.TREASURECHEST,
+            FortuneCard.TREASURECHEST,
+            FortuneCard.SORCERESS,
+            FortuneCard.SORCERESS,
+            FortuneCard.SORCERESS,
+            FortuneCard.SORCERESS,
+            FortuneCard.CAPTAIN,
+            FortuneCard.CAPTAIN,
+            FortuneCard.CAPTAIN,
+            FortuneCard.CAPTAIN,
+            FortuneCard.MONKEYBUSINESS,
+            FortuneCard.MONKEYBUSINESS,
+            FortuneCard.MONKEYBUSINESS,
+            FortuneCard.MONKEYBUSINESS,
+            FortuneCard.DIAMOND,
+            FortuneCard.DIAMOND,
+            FortuneCard.DIAMOND,
+            FortuneCard.DIAMOND,
+            FortuneCard.GOLD,
+            FortuneCard.GOLD,
+            FortuneCard.GOLD,
+            FortuneCard.GOLD,
+            FortuneCard.SKULLX2,
+            FortuneCard.SKULLX2,
+            FortuneCard.SKULLX1,
+            FortuneCard.SKULLX1,
+            FortuneCard.SKULLX1,
+            FortuneCard.SEABATTLEX2SWORDS,
+            FortuneCard.SEABATTLEX2SWORDS,
+            FortuneCard.SEABATTLEX3SWORDS,
+            FortuneCard.SEABATTLEX3SWORDS,
+            FortuneCard.SEABATTLEX4SWORDS,
+            FortuneCard.SEABATTLEX4SWORDS};
+
     enum FortuneCard {
         TREASURECHEST,
         CAPTAIN,
@@ -157,8 +194,8 @@ public class Game {
     public static FortuneCard pickCard(FortuneCard riggedCard){
 
         if(riggedCard == null){
-            int randomInt = new Random().nextInt(Dice.values().length);
-            return FortuneCard.values()[randomInt];
+            int randomInt = new Random().nextInt(fortuneDeck.length);
+            return fortuneDeck[randomInt];
         }else{
             return riggedCard;
         }
