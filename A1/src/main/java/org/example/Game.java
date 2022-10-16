@@ -353,7 +353,25 @@ public class Game {
 
     public int scoreSeabattle(Dice[] playerHand,FortuneCard fc){
 
-        return -1;
+        if(fc == FortuneCard.SEABATTLEX2SWORDS){
+            if(didWinSeaBattle(playerHand,fc) == true){
+                return 300 + scorePoints(playerHand,fc);
+            }else{
+                return -300;
+            }
+        }else if (fc == FortuneCard.SEABATTLEX3SWORDS){
+            if(didWinSeaBattle(playerHand,fc) == true){
+                return 500 + scorePoints(playerHand,fc);
+            }else{
+                return -500;
+            }
+        }else{
+            if(didWinSeaBattle(playerHand,fc) == true){
+                return 1000 + scorePoints(playerHand,fc);
+            }else{
+                return -1000;
+            }
+        }
     }
 
 }
