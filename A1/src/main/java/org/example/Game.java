@@ -350,4 +350,11 @@ public class Game {
         }
 
     }
+
+    public int scoreSeabattle(Dice[] playerHand,Dice[] riggedHand){
+
+
+        return -1;
+    }
+
 }

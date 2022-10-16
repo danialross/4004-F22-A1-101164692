@@ -325,4 +325,49 @@ class GameTest {
         playerHand = new Game.Dice[]{Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.DIAMOND, Game.Dice.MONKEY, Game.Dice.SKULL};
         assertTrue(game.didWinSeaBattle(playerHand, Game.FortuneCard.SEABATTLEX4SWORDS));
     }
+
+    @Test
+    void scoreSeabattleTest() {
+        Game game = new Game();
+        //300
+        //win
+        Game.Dice[] playerHand = {Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.DIAMOND, Game.Dice.GOLD, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SKULL};
+        assertEquals(600,game.didWinSeaBattle(playerHand, Game.FortuneCard.SEABATTLEX2SWORDS));
+
+        //lose(not enough sword)
+        playerHand = new Game.Dice[]{Game.Dice.SWORD, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL};
+        assertEquals(-300,game.didWinSeaBattle(playerHand, Game.FortuneCard.SEABATTLEX2SWORDS));
+        //lose(die)
+        playerHand = new Game.Dice[]{Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.GOLD, Game.Dice.DIAMOND, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SWORD};
+        assertEquals(-300,game.didWinSeaBattle(playerHand, Game.FortuneCard.SEABATTLEX2SWORDS));
+        playerHand = new Game.Dice[]{Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.GOLD};
+        assertEquals(-300,game.didWinSeaBattle(playerHand, Game.FortuneCard.SEABATTLEX2SWORDS));
+
+        //500
+        //win
+        playerHand = new Game.Dice[]{Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.GOLD, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.DIAMOND};
+        assertEquals(800,game.didWinSeaBattle(playerHand, Game.FortuneCard.SEABATTLEX3SWORDS));
+        //lose(not enough sword)
+        playerHand = new Game.Dice[]{Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
+        assertEquals(-500,game.didWinSeaBattle(playerHand, Game.FortuneCard.SEABATTLEX3SWORDS));
+        //lose(die)
+        playerHand = new Game.Dice[]{Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.GOLD, Game.Dice.DIAMOND, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SWORD};
+        assertEquals(-500,game.didWinSeaBattle(playerHand, Game.FortuneCard.SEABATTLEX3SWORDS));
+        playerHand = new Game.Dice[]{Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.GOLD};
+        assertEquals(-500,game.didWinSeaBattle(playerHand, Game.FortuneCard.SEABATTLEX3SWORDS));
+
+        //1000
+        //win
+        playerHand = new Game.Dice[]{Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.DIAMOND};
+        assertEquals(1200,game.didWinSeaBattle(playerHand, Game.FortuneCard.SEABATTLEX4SWORDS));
+        //lose(not enough sword)
+        playerHand = new Game.Dice[]{Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.DIAMOND};
+        assertEquals(-1000,game.didWinSeaBattle(playerHand, Game.FortuneCard.SEABATTLEX4SWORDS));
+        //lose(die)
+        playerHand = new Game.Dice[]{Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.GOLD, Game.Dice.DIAMOND, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SWORD};
+        assertEquals(-1000,game.didWinSeaBattle(playerHand, Game.FortuneCard.SEABATTLEX4SWORDS));
+        playerHand = new Game.Dice[]{Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.GOLD};
+        assertEquals(-1000,game.didWinSeaBattle(playerHand, Game.FortuneCard.SEABATTLEX4SWORDS));
+
+    }
 }
