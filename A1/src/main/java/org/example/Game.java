@@ -304,9 +304,9 @@ public class Game {
     public int getScoreDeduction(int numSkull,FortuneCard fc){
 
         if(fc == FortuneCard.CAPTAIN){
-            return (numSkull*100)*2;
+            return -(numSkull*100)*2;
         }else{
-            return numSkull*100;
+            return -(numSkull*100);
         }
 
     }
