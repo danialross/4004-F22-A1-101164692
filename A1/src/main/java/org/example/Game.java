@@ -311,8 +311,18 @@ public class Game {
 
     }
 
+    //reducer should be negative number and would never be positive
     public int[] reducePlayersScore(int reducer, int[] playerScores){
 
+        for(int i = 0; i<playerScores.length; i++){
+
+            if(playerScores[i]+reducer < 0) {
+                playerScores[i] = 0;
+            }else{
+                playerScores[i] += reducer;
+            }
+
+        }
 
         return playerScores;
 
