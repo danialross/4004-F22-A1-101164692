@@ -201,6 +201,24 @@ class GameTest {
         expectedArr = new Game.Dice[]{null, null, null, null, null, null, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
         assertArrayEquals(expectedArr,actualArr);
     }
+
+    @Test
+    void changeNullToDiceTest() {
+        Game game = new Game();
+
+        Game.Dice[] playerHand = {null,null,null,Game.Dice.GOLD,Game.Dice.GOLD,Game.Dice.GOLD,Game.Dice.GOLD,Game.Dice.GOLD};
+        int[] pos = {0,1,2};
+        Game.Dice[] savedDice = {Game.Dice.DIAMOND, Game.Dice.SWORD, Game.Dice.PARROT};
+        Game.Dice[] expectedArr = {Game.Dice.DIAMOND, Game.Dice.SWORD, Game.Dice.PARROT,Game.Dice.GOLD,Game.Dice.GOLD,Game.Dice.GOLD,Game.Dice.GOLD,Game.Dice.GOLD};
+        assertArrayEquals(expectedArr,game.changeNullToDice(playerHand,pos,savedDice));
+
+        playerHand = new Game.Dice[]{null, null, null, null, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD};
+        pos = new int[]{0, 1, 2};
+        savedDice = new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.SWORD, Game.Dice.PARROT};
+        expectedArr = new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.SWORD, Game.Dice.PARROT,null,Game.Dice.GOLD,Game.Dice.GOLD,Game.Dice.GOLD,Game.Dice.GOLD};
+        assertArrayEquals(expectedArr,game.changeNullToDice(playerHand,pos,savedDice));
+    }
+
     @Test
     void isDeadTest() {
         Game game = new Game();

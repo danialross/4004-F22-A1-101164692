@@ -244,6 +244,12 @@ public class Game {
 
         return playerHand;
     }
+
+    //for changeing savedDice that are null back to dice
+    public Dice[] changeNullToDice(Dice[] playerHand,int[] savedDicePos,Dice[] savedDice){
+
+        return playerHand;
+    }
     public int didDie(Dice[] playerHand,boolean inSeaBattle){
         //-1: dead, 0: island of dead, 1: alive
 
