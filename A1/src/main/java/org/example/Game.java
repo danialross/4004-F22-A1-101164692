@@ -374,4 +374,52 @@ public class Game {
         }
     }
 
+    public void printPlayerRole(Dice[] playerHand){
+        String roll = "|----["+playerHand[0]+"]----["+playerHand[1]+"]----["+playerHand[2]+"]----["+playerHand[3]+"]----["+playerHand[4]+"]----["+playerHand[5]+"]----["+playerHand[6]+"]----["+playerHand[7]+"]----|";
+        String border = "_".repeat(roll.length()) + "\n";
+        System.out.println(border);
+        System.out.println(roll);
+        System.out.println(border);
+    }
+
+    public void printPlayerScore(int[] playerScore){
+        String border = "_".repeat(31)+"\n";
+        System.out.println(border);
+        for( int i = 0;i<playerScore.length;i++){
+            System.out.printf("---- Player %d Score: %5d ----\n",i+1,playerScore[i]);
+        }
+        System.out.println(border);
+    }
+
+    public void printStatus(String status){
+        String start = " turn started";
+        String died = " has died";
+        String deduct = "'s score has been deducted by " + status;
+        String skull = " has gone to Island Of the Dead";
+        String turnEnd = " turn ended";
+        String won = " has won!";
+
+        String condition;
+        if(status.equals("start")){
+            condition = start;
+        }else if(status.equals("died")){
+            condition = died;
+        }else if(status.equals("won")){
+            condition = won;
+        }else if(status.equals("skull")){
+            condition = skull;
+        }else if(status.equals("turnEnd")){
+            condition = turnEnd;
+        }else {
+            condition = deduct;
+        }
+
+        String situation = "---- Player" + condition + " ----\n";
+        String border = "_".repeat(situation.length()-1) + "\n";
+
+        System.out.print(border);
+        System.out.print(situation);
+        System.out.print(border);
+    }
+
 }
