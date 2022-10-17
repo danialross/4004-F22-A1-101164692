@@ -176,7 +176,7 @@ class GameTest {
     }
 
     @Test
-    void changeSkullToNullTest() {
+    void changeToNullTest() {
         Game game = new Game();
         int[] empty = {};
 
