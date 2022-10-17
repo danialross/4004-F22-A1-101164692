@@ -278,7 +278,7 @@ public class Game {
         return numSkull;
     }
 
-    public int getWinner(int[] playerScores){
+    public int getWinnerIndex(int[] playerScores){
 
         int currHighestIndex = 0;
         for(int i = 1; i< playerScores.length; i++){

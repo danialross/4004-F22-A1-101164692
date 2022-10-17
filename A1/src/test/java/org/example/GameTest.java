@@ -229,13 +229,13 @@ class GameTest {
     @Test
     void getWinnerTest() {
         Game game = new Game();
-        assertEquals(2,game.getWinner(new int[]{2000, 2300, 3200}));
-        assertEquals(0,game.getWinner(new int[]{4000, 2300, 3200}));
-        assertEquals(1,game.getWinner(new int[]{2000, 4300, 3200}));
+        assertEquals(2,game.getWinnerIndex(new int[]{2000, 2300, 3200}));
+        assertEquals(0,game.getWinnerIndex(new int[]{4000, 2300, 3200}));
+        assertEquals(1,game.getWinnerIndex(new int[]{2000, 4300, 3200}));
 
-        assertEquals(2,game.getWinner(new int[]{2000, 3000, 3000}));
-        assertEquals(1,game.getWinner(new int[]{3000, 3000, 2000}));
-        assertEquals(2,game.getWinner(new int[]{3000, 2000, 3000}));
+        assertEquals(2,game.getWinnerIndex(new int[]{2000, 3000, 3000}));
+        assertEquals(1,game.getWinnerIndex(new int[]{3000, 3000, 2000}));
+        assertEquals(2,game.getWinnerIndex(new int[]{3000, 2000, 3000}));
     }
 
     @Test
