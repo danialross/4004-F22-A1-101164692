@@ -176,28 +176,28 @@ class GameTest {
     }
 
     @Test
-    void changeToNullTest() {
+    void changeDiceToNullTest() {
         Game game = new Game();
         int[] empty = {};
 
         Game.Dice[] hand = {Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
-        Game.Dice[] actualArr = game.changeToNull(hand,empty);
+        Game.Dice[] actualArr = game.changeDiceToNull(hand,empty);
         Game.Dice[] expectedArr = {null, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
         assertArrayEquals(expectedArr,actualArr);
 
         hand = new Game.Dice[]{Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL};
-        actualArr = game.changeToNull(hand,empty);
+        actualArr = game.changeDiceToNull(hand,empty);
         expectedArr = new Game.Dice[]{null, null, null, null, null, null, null, null};
         assertArrayEquals(expectedArr,actualArr);
 
         hand = new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
         int[] positions = {0};
-        actualArr = game.changeToNull(hand,positions);
+        actualArr = game.changeDiceToNull(hand,positions);
         expectedArr = new Game.Dice[]{null, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
         assertArrayEquals(expectedArr,actualArr);
 
         positions = new int[] {0,1,2,3,4,5};
-        actualArr = game.changeToNull(hand,positions);
+        actualArr = game.changeDiceToNull(hand,positions);
         expectedArr = new Game.Dice[]{null, null, null, null, null, null, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
         assertArrayEquals(expectedArr,actualArr);
     }
