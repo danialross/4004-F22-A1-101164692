@@ -70,6 +70,10 @@ public class Game {
         int[] numOfRepeats = {0,0,0,0,0,0}; //{skull,diamond,gold,sword,parrot,monkey}
         int score = 0;
 
+        if(didDie(playerHand,false) == -1){
+            return 0;
+        }
+
        if(fc == FortuneCard.GOLD){
            numOfRepeats[2]++;
        }else if(fc == FortuneCard.DIAMOND){

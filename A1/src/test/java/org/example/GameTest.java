@@ -119,6 +119,12 @@ class GameTest {
         hand = new Game.Dice[]{Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT};
         assertEquals(4500, game.scorePoints(hand,Game.FortuneCard.MONKEYBUSINESS));
 
+        //die
+        hand = new Game.Dice[]{Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.DIAMOND, Game.Dice.PARROT};
+        assertEquals(200, game.scorePoints(hand,Game.FortuneCard.MONKEYBUSINESS));
+        hand = new Game.Dice[]{Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT};
+        assertEquals(0, game.scorePoints(hand,Game.FortuneCard.MONKEYBUSINESS));
+
     }
 
     @Test
