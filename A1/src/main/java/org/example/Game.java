@@ -406,7 +406,7 @@ public class Game {
         String died = " has died";
         String deduct = "'s score has been deducted by " + status;
         String skull = " has gone to Island Of the Dead";
-        String turnEnd = " turn ended";
+        String end = " turn ended";
         String won = " has won!";
 
         String condition;
@@ -418,8 +418,8 @@ public class Game {
             condition = won;
         }else if(status.equals("skull")){
             condition = skull;
-        }else if(status.equals("turnEnd")){
-            condition = turnEnd;
+        }else if(status.equals("end")){
+            condition = end;
         }else {
             condition = deduct;
         }
