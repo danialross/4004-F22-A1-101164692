@@ -254,12 +254,17 @@ public class Game {
 
         return playerHand;
     }
-    public int didDie(Dice[] playerHand,boolean inSeaBattle){
+    public int didDie(Dice[] playerHand,FortuneCard fc){
         //-1: dead, 0: island of dead, 1: alive
 
         int numSkull = calcNumSkull(playerHand);
+        if(fc == FortuneCard.SKULLX1){
+            numSkull++;
+        }else if( fc == FortuneCard.SKULLX2){
+            numSkull += 2;
+        }
 
-        if(inSeaBattle == true){
+        if(fc == FortuneCard.SEABATTLEX3SWORDS || fc == FortuneCard.SEABATTLEX2SWORDS || fc == FortuneCard.SEABATTLEX4SWORDS){
             if(numSkull >= 3){
                 return -1;
             }else{
@@ -340,7 +345,7 @@ public class Game {
 
     public boolean didWinSeaBattle(Dice[] playerHand,FortuneCard fc){
 
-        if(didDie(playerHand,true) == -1){
+        if(didDie(playerHand,fc) == -1){
             return false;
         }
 

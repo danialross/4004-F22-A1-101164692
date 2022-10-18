@@ -231,21 +231,41 @@ class GameTest {
 
         //-1: dead, 0: island of dead, 1: alive
         //not in seabattle
+        Game.FortuneCard card = Game.FortuneCard.GOLD;
         Game.Dice[] hand = {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
-        assertEquals(-1,game.didDie(hand,false));
+        assertEquals(-1,game.didDie(hand,card));
         hand = new Game.Dice[]{Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
-        assertEquals(0,game.didDie(hand,false));
+        assertEquals(0,game.didDie(hand,card));
         hand = new Game.Dice[]{Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
-        assertEquals(1,game.didDie(hand,false));
+        assertEquals(1,game.didDie(hand,card));
 
 
         //in seabattle
+        card = Game.FortuneCard.SEABATTLEX2SWORDS;
         hand = new Game.Dice[]{Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
-        assertEquals(1,game.didDie(hand,true));
+        assertEquals(1,game.didDie(hand,card));
         hand = new Game.Dice[]{Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
-        assertEquals(-1,game.didDie(hand,true));
+        assertEquals(-1,game.didDie(hand,card));
         hand = new Game.Dice[]{Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
-        assertEquals(-1,game.didDie(hand,true));
+        assertEquals(-1,game.didDie(hand,card));
+
+        //skullx1
+        card = Game.FortuneCard.SKULLX1;
+        hand = new Game.Dice[]{Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
+        assertEquals(1,game.didDie(hand,card));
+        hand = new Game.Dice[]{Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
+        assertEquals(-1,game.didDie(hand,card));
+        hand = new Game.Dice[]{Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
+        assertEquals(0,game.didDie(hand,card));
+
+        //skullx2
+        card = Game.FortuneCard.SKULLX2;
+        hand = new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
+        assertEquals(1,game.didDie(hand,card));
+        hand = new Game.Dice[]{Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
+        assertEquals(-1,game.didDie(hand,card));
+        hand = new Game.Dice[]{Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
+        assertEquals(0,game.didDie(hand,card));
 
 
     }
