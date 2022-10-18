@@ -411,6 +411,7 @@ public class Game {
         String skull = " has gone to Island Of the Dead";
         String end = " turn ended";
         String won = " has won!";
+        String seaBattle = " is in a SeaBattle";
 
         String condition;
         if(status.equals("start")){
@@ -423,6 +424,8 @@ public class Game {
             condition = skull;
         }else if(status.equals("end")){
             condition = end;
+        }else if(status.equals("seaBattle")) {
+            condition = seaBattle;
         }else {
             condition = deduct;
         }
@@ -434,5 +437,4 @@ public class Game {
         System.out.print(situation);
         System.out.print(border);
     }
-
 }
