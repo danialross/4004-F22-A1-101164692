@@ -83,10 +83,69 @@ public class Player {
                 stop = true;
 
             }else if(action == 4){
+                if(fc == Game.FortuneCard.SORCERESS && game.isContainSkull(playerRoll)){
+                    playerRoll = game.sorceressReroll(playerRoll,null);
+
+                } else if (fc == Game.FortuneCard.TREASURECHEST){
+
+                    System.out.println("Select indexes of die to store in treasure chest (save score) i.e: 0,1,2.. ");
+                    String[] DicePosInString = (scanner.next()).replaceAll("\\s", "").split(",");
+
+                    int[] userInputPos = new int[DicePosInString.length];
+                    for(int i = 0; i<DicePosInString.length;i++){
+                        userInputPos[i] = Integer.parseInt(DicePosInString[i]);
+                    }
+
+                    savedDicePos = userInputPos;
+                    savedDice = new Game.Dice[savedDicePos.length];
+                    savedDice = game.getSavedDiceForTC(playerRoll,userInputPos);
+                    playerRoll = game.changeDiceToNull(playerRoll,savedDicePos);
+
+                } else if (fc == Game.FortuneCard.SORCERESS && !game.isContainSkull(playerRoll)){
+                    System.out.println("No skull dice in players hand");
+                }
 
             }else if(action == 5){
+                if(fc == Game.FortuneCard.TREASURECHEST){
 
-                
+                    String showTC = "---- Treasure Chest : [";
+
+                    for(int i = 0 ; i < savedDice.length; i++){
+                        if(i == savedDice.length-1){
+                            showTC += savedDice[i] + "] ----";
+                        }else{
+                            showTC += savedDice[i] + ",";
+                        }
+                    }
+
+                    System.out.println(showTC);
+
+                    System.out.println("Select the index of the dice in the treasure chest to take out i.e: 0,1,2...");
+                    String[] DicePosInString = (scanner.next()).replaceAll("\\s", "").split(",");
+
+                    int[] userInputPos = new int[DicePosInString.length];
+                    for(int i = 0; i<DicePosInString.length;i++){
+                        userInputPos[i] = Integer.parseInt(DicePosInString[i]);
+                    }
+
+                    for(int i = 0;i<userInputPos.length;i++){
+                        savedDice[userInputPos[i]] = null;
+                        savedDicePos[userInputPos[i]] = -1;
+                    }
+
+                    Game.Dice[] newSavedDice = new Game.Dice[savedDice.length-userInputPos.length];
+                    int[] newSavedDicePos = new int[savedDice.length-userInputPos.length];
+                    for( int i = 0; i< newSavedDice.length;i++){
+                        if(this.savedDice[i]!=null){
+                            newSavedDicePos[i] = this.savedDicePos[i];
+                            newSavedDice[i] = this.savedDice[i];
+                        }
+                    }
+                    this.savedDice = newSavedDice;
+                    this.savedDicePos = newSavedDicePos;
+                    game.changeNullToDice(playerRoll,userInputPos,savedDice);
+
+                }
             }
 
         }
