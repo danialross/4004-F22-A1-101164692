@@ -1,31 +1,35 @@
 package org.example;
 
+import java.util.Scanner;
+
 public class Player {
 
-    Game game = new Game();
-    String name;
-    Game.Dice[] playerRoll;
-    Game.FortuneCard fc;
-    int score;
+    public Game game = new Game();
+    private String name;
+    private Game.Dice[] playerRoll;
+    private Game.FortuneCard fc;
+    private int score;
 
 
     //if Treasure Chest is fc
-    Game.Dice[] savedDice;
-    int[] savedDicePos;
+    private Game.Dice[] savedDice;
+    private int[] savedDicePos;
 
     // constructor initializes all variables needed to start the game
     public Player(String name){
         this.name = name;
-        Game.Dice[] newHand = {Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND};
-        Game.Dice[] emptyHand = {};
-        playerRoll = game.rollDice(newHand,emptyHand);
-        fc = Game.pickCard(null);
         score = 0;
-
-        if(fc == Game.FortuneCard.TREASURECHEST){
-            savedDice = newHand;
-            savedDicePos = new int[8];
-        }
     }
+    public void roundStarting(){
+        Game.Dice[] emptyArr = {};
+        Game.Dice[] newHand = {Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND};
+        playerRoll = game.rollDice(newHand,emptyArr);
+        fc = Game.pickCard(null);
+
+        game.printPlayerRole(playerRoll);
+        System.out.println("---- Fortune Card : " + fc + " ----");
+    }
+
+
 
 }
