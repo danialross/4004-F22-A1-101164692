@@ -58,16 +58,34 @@ public class Player {
 
             if(action == 1){
 
+                System.out.println("Select indexes of die to hold (not rolled) i.e: 0,1,2.. ");
+                String[] DicePosInString = (scanner.next()).replaceAll("\\s", "").split(",");
+
+                int[] savedDicePos = new int[DicePosInString.length];
+                for(int i = 0; i<DicePosInString.length;i++){
+                    savedDicePos[i] = Integer.parseInt(DicePosInString[i]);
+                }
+
+                playerRoll = game.changeDiceToNull(playerRoll,savedDicePos);
+                playerRoll = game.rollDice(playerRoll,emptyArr);
+                stop = true;
+
             }else if(action == 2){
 
 
+                playerRoll = game.rollDice(playerRoll,emptyArr);
+                game.printPlayerRole(playerRoll);
+                stop = true;
+
             }else if(action == 3){
 
+                score = game.scorePoints(playerRoll,fc);
+                stop = true;
 
             }else if(action == 4){
 
-
             }else if(action == 5){
+
                 
             }
 
