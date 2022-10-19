@@ -26,8 +26,8 @@ public class Player {
         playerRoll = game.rollDice(newHand,emptyArr);
         fc = Game.pickCard(null);
 
-        game.printPlayerRole(playerRoll);
         System.out.println("---- Fortune Card : " + fc + " ----");
+        game.printPlayerRole(playerRoll);
     }
 
     public int playBaseRound(){
