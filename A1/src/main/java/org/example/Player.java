@@ -139,7 +139,7 @@ public class Player {
 
                     savedDicePos = userInputPos;
                     savedDice = new Game.Dice[savedDicePos.length];
-                    savedDice = game.getSavedDiceForTC(playerRoll,userInputPos);
+                    savedDice = game.getSavedDice(playerRoll,userInputPos);
                     playerRoll = game.changeDiceToNull(playerRoll,savedDicePos);
 
                 } else if (fc == Game.FortuneCard.SORCERESS && !game.isContainSkull(playerRoll)){
