@@ -159,17 +159,17 @@ class GameTest {
 
 
     @Test
-    void getSavedDiceForTCTest() {
+    void getSavedDiceTest() {
         Game game = new Game();
 
         Game.Dice[] hand ={Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
         int[] positions = {0};
-        Game.Dice[] actualArr = game.getSavedDiceForTC(hand,positions);
+        Game.Dice[] actualArr = game.getSavedDice(hand,positions);
         Game.Dice[] expectedArr = {actualArr[0]};
         assertArrayEquals(expectedArr,actualArr);
 
         positions = new int[] {0,1,2,3,4,5};
-        actualArr = game.getSavedDiceForTC(hand,positions);
+        actualArr = game.getSavedDice(hand,positions);
         expectedArr = new Game.Dice[]{actualArr[0], actualArr[1], actualArr[2], actualArr[3], actualArr[4], actualArr[5]};
         assertArrayEquals(expectedArr,actualArr);
 
