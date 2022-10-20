@@ -185,4 +185,40 @@ class AcceptanceTest {
         assertEquals(800, p1.getScore());
 
     }
+
+    @Test
+    void row53() {
+        //roll 2 (monkeys/skulls/swords/parrots), reroll parrots and get 1 sword & 1 monkey (SC 300 since FC is coin)
+        Player p1 = new Player("p1");
+        Game game = p1.game;
+
+        Game.Dice[] playerHand = {};
+        Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.PARROT, Game.Dice.PARROT};
+
+        p1.setPlayerRoll(game.rollDice(playerHand, riggedhand));
+        p1.setFc(game.pickCard(Game.FortuneCard.GOLD));
+
+        p1.setPlayerRoll(game.rollDice(p1.getPlayerRoll(), riggedhand));
+
+        p1.checkDead();
+
+        //reroll parrots and get 1 sword & 1 monkey (SC 300 since FC is coin)
+
+        int[] userInput = new int[]{0, 1, 2, 3, 4, 5};
+        p1.setSavedDicePos(userInput);
+        p1.setSavedDice(game.getSavedDice(p1.getPlayerRoll(), userInput));
+
+        p1.setPlayerRoll(game.changeDiceToNull(p1.getPlayerRoll(), p1.getSavedDicePos()));
+        riggedhand = new Game.Dice[]{null, null, null, null, null, null, null, Game.Dice.SWORD, Game.Dice.MONKEY};
+
+        p1.setPlayerRoll(game.rollDice(p1.getPlayerRoll(), riggedhand));
+        p1.setPlayerRoll(game.changeNullToDice(p1.getPlayerRoll(), p1.getSavedDicePos(), p1.getSavedDice()));
+
+        p1.checkDead();
+        p1.setScore(game.scorePoints(p1.getPlayerRoll(), p1.getFc()));
+        
+        assertEquals(300, p1.getScore());
+
+    }
+
 }
