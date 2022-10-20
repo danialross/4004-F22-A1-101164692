@@ -216,9 +216,29 @@ class AcceptanceTest {
 
         p1.checkDead();
         p1.setScore(game.scorePoints(p1.getPlayerRoll(), p1.getFc()));
-        
+
         assertEquals(300, p1.getScore());
 
     }
 
+    @Test
+    void row54(){
+        //roll 3 (monkey, swords) + 2 skulls and score   (SC 300)
+        Player p1 = new Player("p1");
+        Game game = p1.game;
+
+        Game.Dice[] playerHand = {};
+        Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SKULL, Game.Dice.SKULL};
+
+        p1.setPlayerRoll(game.rollDice(playerHand, riggedhand));
+        p1.setFc(game.pickCard(Game.FortuneCard.GOLD));
+
+        p1.setPlayerRoll(game.rollDice(p1.getPlayerRoll(), riggedhand));
+
+        p1.checkDead();
+        p1.setScore(game.scorePoints(p1.getPlayerRoll(), p1.getFc()));
+
+        assertEquals(300, p1.getScore());
+
+    }
 }
