@@ -15,6 +15,30 @@ public class Player {
     private Game.Dice[] savedDice;
     private int[] savedDicePos;
 
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public Game.Dice[] getPlayerRoll() {
+        return playerRoll;
+    }
+
+    public void setPlayerRoll(Game.Dice[] playerRoll) {
+        this.playerRoll = playerRoll;
+    }
+
+    public Game.FortuneCard getFc() {
+        return fc;
+    }
+
+    public void setFc(Game.FortuneCard fc) {
+        this.fc = fc;
+    }
+
     // constructor initializes all variables needed to start the game
     public Player(String name){
         this.name = name;
