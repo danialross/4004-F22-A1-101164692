@@ -245,8 +245,10 @@ public class Game {
     //for changing savedDice that are null back to dice
     public Dice[] changeNullToDice(Dice[] playerHand,int[] savedDicePos,Dice[] savedDice){
 
-        for(int i = 0; i<savedDicePos.length; i++){
-            playerHand[savedDicePos[i]] = savedDice[i];
+        if(savedDicePos != null) {
+            for (int i = 0; i < savedDicePos.length; i++) {
+                playerHand[savedDicePos[i]] = savedDice[i];
+            }
         }
 
         for(int i = 0; i<playerHand.length; i++){
