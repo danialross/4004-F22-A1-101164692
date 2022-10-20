@@ -106,9 +106,11 @@ public class Player {
                     savedDicePos[i] = Integer.parseInt(DicePosInString[i]);
                 }
 
-
+                this.savedDicePos = savedDicePos;
+                this.savedDice = game.getSavedDice(playerRoll,this.savedDicePos);
                 playerRoll = game.changeDiceToNull(playerRoll,savedDicePos);
                 playerRoll = game.rollDice(playerRoll,emptyArr);
+                playerRoll = game.changeNullToDice(playerRoll,this.savedDicePos,this.savedDice);
                 stop = true;
 
             }else if(action == 2){
@@ -120,6 +122,9 @@ public class Player {
 
             }else if(action == 3){
 
+                if(fc == Game.FortuneCard.TREASURECHEST && this.savedDice.length != 0){
+                    playerRoll = game.changeNullToDice(playerRoll,this.savedDicePos,this.savedDice);
+                }
                 score = game.scorePoints(playerRoll,fc);
                 stop = true;
 
@@ -137,9 +142,9 @@ public class Player {
                         userInputPos[i] = Integer.parseInt(DicePosInString[i]);
                     }
 
-                    savedDicePos = userInputPos;
-                    savedDice = new Game.Dice[savedDicePos.length];
-                    savedDice = game.getSavedDice(playerRoll,userInputPos);
+                    this.savedDicePos = userInputPos;
+                    this.savedDice = new Game.Dice[savedDicePos.length];
+                    this.savedDice = game.getSavedDice(playerRoll,userInputPos);
                     playerRoll = game.changeDiceToNull(playerRoll,savedDicePos);
 
                 } else if (fc == Game.FortuneCard.SORCERESS && !game.isContainSkull(playerRoll)){
@@ -193,6 +198,5 @@ public class Player {
         game.printStatus("end");
         return score;
     }
-
 
 }

@@ -437,5 +437,4 @@ public class Game {
         System.out.print(situation);
         System.out.print(border);
     }
-
 }
