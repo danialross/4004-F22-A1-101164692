@@ -39,6 +39,22 @@ public class Player {
         this.fc = fc;
     }
 
+    public Game.Dice[] getSavedDice() {
+        return savedDice;
+    }
+
+    public void setSavedDice(Game.Dice[] savedDice) {
+        this.savedDice = savedDice;
+    }
+
+    public int[] getSavedDicePos() {
+        return savedDicePos;
+    }
+
+    public void setSavedDicePos(int[] savedDicePos) {
+        this.savedDicePos = savedDicePos;
+    }
+
     // constructor initializes all variables needed to start the game
     public Player(String name){
         this.name = name;
@@ -89,6 +105,7 @@ public class Player {
                 for(int i = 0; i<DicePosInString.length;i++){
                     savedDicePos[i] = Integer.parseInt(DicePosInString[i]);
                 }
+
 
                 playerRoll = game.changeDiceToNull(playerRoll,savedDicePos);
                 playerRoll = game.rollDice(playerRoll,emptyArr);
