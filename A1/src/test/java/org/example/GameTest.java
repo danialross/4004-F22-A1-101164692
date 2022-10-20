@@ -215,7 +215,7 @@ class GameTest {
         playerHand = new Game.Dice[]{null, null, null, null, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD};
         pos = new int[]{0, 1, 2};
         savedDice = new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.SWORD, Game.Dice.PARROT};
-        expectedArr = new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.SWORD, Game.Dice.PARROT,null,Game.Dice.GOLD,Game.Dice.GOLD,Game.Dice.GOLD,Game.Dice.GOLD};
+        expectedArr = new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.SWORD, Game.Dice.PARROT, Game.Dice.SKULL,Game.Dice.GOLD,Game.Dice.GOLD,Game.Dice.GOLD,Game.Dice.GOLD};
         assertArrayEquals(expectedArr,game.changeNullToDice(playerHand,pos,savedDice));
     }
 

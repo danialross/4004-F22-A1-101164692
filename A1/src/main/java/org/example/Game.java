@@ -226,17 +226,16 @@ public class Game {
     //change skull to null or change saved dice to null
     public Dice[] changeDiceToNull(Dice[] playerHand,int[] savedDicePos){
 
-        if(savedDicePos.length == 0 ){
-            for(int i = 0; i< playerHand.length;i++){
-                if(playerHand[i] == Dice.SKULL){
-                    playerHand[i] = null;
-                }
-            }
-
-        }else{
+        if(savedDicePos.length != 0 ){
             for(int i = 0; i<savedDicePos.length; i++){
                 playerHand[savedDicePos[i]] = null;
 
+            }
+        }
+
+        for(int i = 0; i< playerHand.length;i++){
+            if(playerHand[i] == Dice.SKULL){
+                playerHand[i] = null;
             }
         }
 
@@ -248,6 +247,12 @@ public class Game {
 
         for(int i = 0; i<savedDicePos.length; i++){
             playerHand[savedDicePos[i]] = savedDice[i];
+        }
+
+        for(int i = 0; i<playerHand.length; i++){
+            if(playerHand[i] == null){
+                playerHand[i] = Dice.SKULL;
+            }
         }
 
         return playerHand;
