@@ -166,7 +166,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row51() {
+    void row52() {
         //score first roll with 2 (monkeys/parrot/diamonds/coins) and FC is captain (SC 800)
         Player p1 = new Player("p1");
         Game game = p1.game;
