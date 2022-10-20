@@ -152,7 +152,7 @@ class AcceptanceTest {
         p1.setSavedDice(game.getSavedDice(p1.getPlayerRoll(),userInput));
 
         p1.setPlayerRoll(game.changeDiceToNull(p1.getPlayerRoll(),p1.getSavedDicePos()));
-        riggedhand = new Game.Dice[]{null,null,Game.Dice.GOLD,Game.Dice.GOLD,Game.Dice.GOLD,null,null,null};
+        riggedhand = new Game.Dice[]{null,null,null,Game.Dice.GOLD,Game.Dice.GOLD,Game.Dice.GOLD,null,null,null};
 
         p1.setPlayerRoll(game.rollDice(p1.getPlayerRoll(),riggedhand));
         p1.setPlayerRoll(game.changeNullToDice(p1.getPlayerRoll(),p1.getSavedDicePos(),p1.getSavedDice()));
