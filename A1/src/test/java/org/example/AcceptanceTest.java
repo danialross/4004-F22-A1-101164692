@@ -18,9 +18,7 @@ class AcceptanceTest {
         p1.setPlayerRoll(game.rollDice(playerHand,riggedhand));
         p1.setFc(game.pickCard(Game.FortuneCard.GOLD));
 
-        if(game.didDie(p1.getPlayerRoll(),p1.getFc()) == -1 ){
-            p1.setScore(0);
-        }
+        p1.checkDead();
 
         assertEquals(0,p1.getScore());
     }
@@ -37,9 +35,7 @@ class AcceptanceTest {
         p1.setPlayerRoll(game.rollDice(playerHand,riggedhand));
         p1.setFc(game.pickCard(Game.FortuneCard.GOLD));
 
-        if(game.didDie(p1.getPlayerRoll(),p1.getFc()) == -1 ){
-            p1.setScore(0);
-        }
+        p1.checkDead();
 
         int[] userInput = {0,1,2,3,4};
         p1.setSavedDicePos(userInput);
@@ -51,11 +47,8 @@ class AcceptanceTest {
 
         p1.setPlayerRoll(game.rollDice(p1.getPlayerRoll(),riggedhand));
         p1.setPlayerRoll(game.changeNullToDice(p1.getPlayerRoll(),p1.getSavedDicePos(),p1.getSavedDice()));
-
-
-        if(game.didDie(p1.getPlayerRoll(),p1.getFc()) == -1 ){
-            p1.setScore(0);
-        }
+        
+        p1.checkDead();
 
         assertEquals(0,p1.getScore());
     }

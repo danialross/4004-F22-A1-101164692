@@ -199,4 +199,9 @@ public class Player {
         return score;
     }
 
+    public void checkDead(){
+        if(game.didDie(this.playerRoll,this.fc) == -1 ){
+            this.score = 0;
+        }
+    }
 }
