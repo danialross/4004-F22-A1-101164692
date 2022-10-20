@@ -159,7 +159,7 @@ class GameTest {
 
 
     @Test
-    void getSavedDiceTest() {
+    void getSavedDiceForTCTest() {
         Game game = new Game();
 
         Game.Dice[] hand ={Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
