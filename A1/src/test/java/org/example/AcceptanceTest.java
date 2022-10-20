@@ -115,6 +115,8 @@ class AcceptanceTest {
         p1.setPlayerRoll(game.rollDice(p1.getPlayerRoll(),riggedhand));
         p1.setPlayerRoll(game.changeNullToDice(p1.getPlayerRoll(),p1.getSavedDicePos(),p1.getSavedDice()));
 
+        p1.checkDead();
+
         assertEquals(0,p1.getScore());
     }
 }
