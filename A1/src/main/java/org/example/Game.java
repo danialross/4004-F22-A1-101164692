@@ -226,7 +226,7 @@ public class Game {
     //change skull to null or change saved dice to null
     public Dice[] changeDiceToNull(Dice[] playerHand,int[] savedDicePos){
 
-        if(savedDicePos.length != 0 ){
+        if(savedDicePos != null ){
             for(int i = 0; i<savedDicePos.length; i++){
                 playerHand[savedDicePos[i]] = null;
 
