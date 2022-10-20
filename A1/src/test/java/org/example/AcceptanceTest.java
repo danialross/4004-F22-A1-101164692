@@ -284,4 +284,23 @@ class AcceptanceTest {
 
     }
 
+
+    @Test
+    void row57(){
+        //roll 3 swords, 4 parrots, 1 skull and score (SC 100+200+100= 400)
+        Player p1 = new Player("p1");
+        Game game = p1.game;
+
+        Game.Dice[] playerHand = {};
+        Game.Dice[] riggedhand = {Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL};
+
+        p1.setPlayerRoll(game.rollDice(playerHand, riggedhand));
+        p1.setFc(game.pickCard(Game.FortuneCard.GOLD));
+
+        p1.checkDead();
+        p1.setScore(game.scorePoints(p1.getPlayerRoll(), p1.getFc()));
+
+        assertEquals(400, p1.getScore());
+
+    }
 }
