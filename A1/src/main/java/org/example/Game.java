@@ -95,7 +95,6 @@ public class Game {
 
         int numOfDiceWithSet = 0;
         for(int j = 0; j<numOfRepeats.length; j++){
-
             if(numOfRepeats[j] == 8){
                 score += 4000;
                 numOfDiceWithSet += 8;
@@ -128,7 +127,7 @@ public class Game {
         //add gold coins
         score += (numOfRepeats[2]*100);
 
-       if( (numOfRepeats[2]==8 && fc == FortuneCard.GOLD) || (numOfRepeats[1]==8 && fc == FortuneCard.DIAMOND)){
+       if( (numOfRepeats[2]>=3 && fc == FortuneCard.GOLD) || (numOfRepeats[1]>=3 && fc == FortuneCard.DIAMOND)){
            numOfDiceWithSet--;
        }
 
@@ -139,7 +138,6 @@ public class Game {
        if(fc == FortuneCard.CAPTAIN){
            score *= 2;
        }
-
         return score;
    }
 
