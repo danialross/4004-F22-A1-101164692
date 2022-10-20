@@ -43,7 +43,7 @@ class AcceptanceTest {
 
 
         p1.setPlayerRoll(game.changeDiceToNull(p1.getPlayerRoll(),p1.getSavedDicePos()));
-        riggedhand = new Game.Dice[]{Game.Dice.SKULL,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.SKULL,Game.Dice.SKULL,Game.Dice.SWORD};
+        riggedhand = new Game.Dice[]{null,null,null,null,null,Game.Dice.SKULL,Game.Dice.SKULL,Game.Dice.SWORD};
 
         p1.setPlayerRoll(game.rollDice(p1.getPlayerRoll(),riggedhand));
         p1.setPlayerRoll(game.changeNullToDice(p1.getPlayerRoll(),p1.getSavedDicePos(),p1.getSavedDice()));
@@ -69,7 +69,7 @@ class AcceptanceTest {
         p1.setSavedDice(game.getSavedDice(p1.getPlayerRoll(),userInput));
 
         p1.setPlayerRoll(game.changeDiceToNull(p1.getPlayerRoll(),p1.getSavedDicePos()));
-        riggedhand = new Game.Dice[]{Game.Dice.SKULL,Game.Dice.SKULL,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.SKULL,Game.Dice.SWORD};
+        riggedhand = new Game.Dice[]{null,null,null,null,null,null,Game.Dice.SKULL,Game.Dice.SWORD};
 
         p1.setPlayerRoll(game.rollDice(p1.getPlayerRoll(),riggedhand));
         p1.setPlayerRoll(game.changeNullToDice(p1.getPlayerRoll(),p1.getSavedDicePos(),p1.getSavedDice()));
