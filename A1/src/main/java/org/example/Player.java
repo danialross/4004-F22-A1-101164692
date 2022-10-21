@@ -206,7 +206,9 @@ public class Player {
     }
 
     public void lockInPoints(Game.Dice[] riggedDice, Game.FortuneCard riggedFc){
-
+        if(this.savedDice != null){
+            playerRoll = game.changeNullToDice(playerRoll,this.savedDicePos,this.savedDice);
+        }
 
         if(riggedDice.length != 0){
             playerRoll = riggedDice;
