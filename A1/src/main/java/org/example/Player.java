@@ -216,6 +216,7 @@ public class Player {
             fc = riggedFc;
         }
         score = game.scorePoints(playerRoll,fc);
+        checkDead();
 
     }
 
