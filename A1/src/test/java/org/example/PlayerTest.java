@@ -21,6 +21,12 @@ class PlayerTest {
         p1.lockInPoints(hand, Game.FortuneCard.DIAMOND);
         assertEquals(100, p1.getScore());
 
+        //test pulling from saveDice
+        p1.setSavedDice(new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND});
+        p1.setSavedDicePos(new int[]{0, 1, 2});
+        p1.setPlayerRoll(new Game.Dice[]{null, null, null, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND,Game.Dice.DIAMOND});
+        p1.lockInPoints(p1.getPlayerRoll(), Game.FortuneCard.TREASURECHEST);
+        assertEquals(5300, p1.getScore());
 
 
     }
