@@ -28,6 +28,11 @@ class PlayerTest {
         p1.lockInPoints(p1.getPlayerRoll(), Game.FortuneCard.TREASURECHEST);
         assertEquals(5300, p1.getScore());
 
+        //test to check if player died
+        p1.setPlayerRoll(new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND});
+        p1.lockInPoints(p1.getPlayerRoll(), Game.FortuneCard.TREASURECHEST);
+        assertEquals(0, p1.getScore());
+
 
     }
 }
