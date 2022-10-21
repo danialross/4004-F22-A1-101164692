@@ -204,4 +204,9 @@ public class Player {
             this.score = 0;
         }
     }
+
+    public void lockInPoints(Game.Dice[] riggedDice, Game.FortuneCard riggedFc){
+
+    }
+
 }
