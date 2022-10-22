@@ -59,6 +59,10 @@ class PlayerTest {
         assertTrue(p1.getPlayerRoll() != null);
         //initialize fortune card
         assertTrue(p1.getFc() != null);
+        //initialize players
+        assertTrue(p1.getPlayers()[0] != null);
+        assertTrue(p1.getPlayers()[1] != null);
+        assertTrue(p1.getPlayers()[2] != null);
 
 
     }
