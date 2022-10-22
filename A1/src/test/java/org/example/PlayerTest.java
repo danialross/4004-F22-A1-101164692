@@ -187,5 +187,14 @@ class PlayerTest {
         p1.setPlayerRoll(new Game.Dice[]{Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT});
         result = p1.validateRerollInput("0,3");
         assertArrayEquals(null, result);
+
+        //rolling less then 2 dice without treasure chest
+        p1.setPlayerRoll(new Game.Dice[]{Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT});
+        result = p1.validateRerollInput("0,1,2,3,4,5,6");
+        assertArrayEquals(null, result);
+
+        result = p1.validateRerollInput("0,1,2,3,4,5");
+        assertArrayEquals(new int[]{0, 1, 2,3,4,5}, result);
+
     }
 }
