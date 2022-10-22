@@ -108,6 +108,10 @@ public class Player {
 
     }
 
+    public void addDiceToTC(int[] diceIndexToAdd){
+
+    }
+
 
 
 }

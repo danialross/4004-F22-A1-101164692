@@ -72,6 +72,19 @@ class PlayerTest {
         //reroll to rig dice
         p1.rerollSkull(Game.Dice.MONKEY);
         assertEquals(p1.getPlayerRoll()[3],Game.Dice.MONKEY);
-        
+
+    }
+
+    @Test
+    void addDiceToTC() {
+        Player p1 = new Player("p1");
+        p1.setFc(Game.FortuneCard.SORCERESS);
+        p1.setPlayerRoll(new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT});
+
+        p1.addDiceToTC(new int[]{0,1,2});
+        //save dice index
+        assertArrayEquals(new int[]{0,1,2},p1.getSavedDicePos());
+        //save dice
+        assertArrayEquals(new Game.Dice[]{Game.Dice.DIAMOND,Game.Dice.PARROT,Game.Dice.PARROT},p1.getSavedDice());
     }
 }
