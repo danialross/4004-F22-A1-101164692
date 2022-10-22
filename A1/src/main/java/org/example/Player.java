@@ -261,40 +261,49 @@ public class Player {
                 return null;
             }
             System.out.println("Select indexes of die to hold (not rolled) i.e: 0,1,2.. ");
-
+            boolean isNumbers = true;
             String[] DicePosInString = (scanner.next()).replaceAll("\\s", "").split(",");
             input = new int[DicePosInString.length];
             for(int i = 0; i<DicePosInString.length;i++){
-                input[i] = Integer.parseInt(DicePosInString[i]);
+                try{
+                    input[i] = Integer.parseInt(DicePosInString[i]);
+                }catch (Exception e){
+                    isNumbers = false;
+                }
+
             }
+            if(isNumbers) {
 
-            for(int i = 0; i<input.length;i++){
-                if(input[i] >= playerRoll.length || input[i] < 0){
+                for (int i = 0; i < input.length; i++) {
+                    if (input[i] >= playerRoll.length || input[i] < 0) {
 
-                    askAgain = true;
-                    System.out.println("Index Selected Out of Bound, try again between 0 and " + (playerRoll.length-1));
-                    break;
-                }else{
-                    if(playerRoll[input[i]] == Game.Dice.SKULL || playerRoll[input[i]] == null){
                         askAgain = true;
-                        System.out.println("Skull dice cannot be rerolled");
+                        System.out.println("Index Selected Out of Bound, try again between 0 and " + (playerRoll.length - 1));
                         break;
+                    } else {
+                        if (playerRoll[input[i]] == Game.Dice.SKULL || playerRoll[input[i]] == null) {
+                            askAgain = true;
+                            System.out.println("Skull dice cannot be rerolled");
+                            break;
+                        }
                     }
                 }
-            }
-            if(savedDicePos != null){
-                if(savedDicePos.length + input.length > 6){
-                    System.out.println("A minimum of 2 dice must be available to roll");
-                    askAgain = true;
-                }
-            }else {
-                if (input.length > 6) {
-                    System.out.println("A minimum of 2 dice must be available to roll");
-                    askAgain = true;
-                }
+                if (savedDicePos != null) {
+                    if (savedDicePos.length + input.length > 6) {
+                        System.out.println("A minimum of 2 dice must be available to roll");
+                        askAgain = true;
+                    }
+                } else {
+                    if (input.length > 6) {
+                        System.out.println("A minimum of 2 dice must be available to roll");
+                        askAgain = true;
+                    }
 
+                }
+            }else{
+                System.out.println("Invalid input");
+                askAgain = true;
             }
-
         }
 
         return input;
