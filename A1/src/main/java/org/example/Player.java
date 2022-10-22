@@ -10,6 +10,15 @@ public class Player {
     private Game.FortuneCard fc;
     private int score;
 
+    private Player[] players = new Player[3];
+
+    public Player[] getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(Player[] players) {
+        this.players = players;
+    }
 
     //if Treasure Chest is fc
     private Game.Dice[] savedDice;
@@ -118,6 +127,12 @@ public class Player {
         playerRoll = game.changeNullToDice(playerRoll,savedDicePos,savedDice);
         savedDicePos = null;
         savedDice = null;
+
+    }
+
+    public void skullIslandRoll(Game.Dice[] riggedHand){
+
+        
 
     }
 
