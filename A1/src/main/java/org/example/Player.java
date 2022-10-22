@@ -162,7 +162,7 @@ public class Player {
 
         int action;
         int upperOption = 3 ;
-        System.out.println("Player turn has started");
+        System.out.println(status(1));
         Scanner scanner;
 
         if(rig != null){
@@ -238,7 +238,7 @@ public class Player {
 
 
         }
-        System.out.println("Player turn has ended\n");
+        System.out.println(status(5));
         return action;
     }
 
