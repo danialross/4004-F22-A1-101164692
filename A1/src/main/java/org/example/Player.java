@@ -161,11 +161,12 @@ public class Player {
     public int promptUI(String rig){
 
         int action;
+        int upperOption = 3 ;
         System.out.println("Player turn has started");
         Scanner scanner;
 
         if(rig != null){
-            scanner = new Scanner(String.valueOf(rig));
+            scanner = new Scanner(rig);
         }else{
             scanner = new Scanner(System.in);
         }
@@ -174,6 +175,11 @@ public class Player {
         System.out.println("1. Choose dice to roll again");
         System.out.println("2. Reroll all dice");
         System.out.println("3. Score with current hand");
+
+        if(fc == Game.FortuneCard.SORCERESS && game.isContainSkull(playerRoll)){
+            System.out.println("4. Reroll a skull");
+            upperOption = 4;
+        }
 
         if(scanner.hasNextInt()){
             action = scanner.nextInt();
@@ -184,18 +190,27 @@ public class Player {
 
         System.out.println("userInput: " + action);
 
-        while(action <=0 || action >3){
+        while(action <=0 || action > upperOption){
 
             if(rig !=null){
                 if(action == -555)  {
-                    return -555;
+                    System.out.println("infinite loop\n");
+
+                }else if(action == 4 && upperOption == 3){
+                    System.out.println("trying to sorcerer reroll without skull\n");
+
                 }
+
+                return -555;
             }
 
             System.out.println("Select an action:");
             System.out.println("1. Choose dice to roll again");
             System.out.println("2. Reroll all dice");
             System.out.println("3. Score with current hand");
+            if(fc == Game.FortuneCard.SORCERESS && game.isContainSkull(playerRoll)){
+                System.out.println("4. Reroll a skull");
+            }
 
             if(scanner.hasNextInt()){
                 action = scanner.nextInt();
@@ -206,7 +221,7 @@ public class Player {
 
             System.out.println("userInput: " + action);
 
-            if( action == 1 || action == 2 ||action == 3){
+            if( action == 1 || action == 2 || action == 3 || (fc == Game.FortuneCard.SORCERESS && game.isContainSkull(playerRoll)) && action == 4) {
                 return action;
             }
 
