@@ -184,6 +184,7 @@ class PlayerTest {
         assertArrayEquals(null, result);
 
         // if skull selected
+        p1.setPlayerRoll(new Game.Dice[]{Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT});
         result = p1.validateRerollInput("0,3");
         assertArrayEquals(null, result);
     }
