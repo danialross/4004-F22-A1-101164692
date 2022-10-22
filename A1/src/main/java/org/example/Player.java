@@ -160,21 +160,52 @@ public class Player {
 
     public int promptUI(String rig){
 
+        int action;
         System.out.println("Player turn has started");
-        Scanner scanner = new Scanner(String.valueOf(rig));
-        boolean stop = false;
-        int action = -1;
+        Scanner scanner;
 
-        while(!stop){
+        if(rig != null){
+            scanner = new Scanner(String.valueOf(rig));
+        }else{
+            scanner = new Scanner(System.in);
+        }
+
+        System.out.println("Select an action:");
+        System.out.println("1. Choose dice to roll again");
+        System.out.println("2. Reroll all dice");
+        System.out.println("3. Score with current hand");
+
+        if(scanner.hasNextInt()){
+            action = scanner.nextInt();
+        }else{
+            action = -555;
+            System.out.println("Invalid Option");
+        }
+
+        System.out.println("userInput: " + action);
+
+        while(action <=0 || action >3){
+
+
             System.out.println("Select an action:");
             System.out.println("1. Choose dice to roll again");
             System.out.println("2. Reroll all dice");
             System.out.println("3. Score with current hand");
-            action = scanner.nextInt();
-            System.out.println("userInput: " + action);
-            if( action == 1 || action == 2 ||action == 3){
-                stop = true;
+
+            if(scanner.hasNextInt()){
+                action = scanner.nextInt();
+            }else{
+                action = -555;
+                System.out.println("Invalid Option");
             }
+
+            System.out.println("userInput: " + action);
+
+            if( action == 1 || action == 2 ||action == 3){
+                return action;
+            }
+
+
         }
         System.out.println("Player turn has ended\n");
         return action;

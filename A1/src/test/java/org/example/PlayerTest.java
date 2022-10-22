@@ -144,6 +144,6 @@ class PlayerTest {
         assertEquals(2,result);
         result = p1.promptUI(String.valueOf(3));
         assertEquals(3,result);
-
+        
     }
 }
