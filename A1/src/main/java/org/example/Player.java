@@ -321,5 +321,34 @@ public class Player {
         return input;
     }
 
+    public String status(int code) {
 
+        String condition = "Player";
+
+        String start = " turn started\n";
+        String died = " has died\n";
+        String deduct = "'s score has been deducted";
+        String skull = " has gone to Island Of the Dead\n";
+        String end = " turn ended\n";
+        String won = " has won!\n";
+        String seaBattle = " is in a SeaBattle\n";
+
+        if(code == 1){
+            condition += start;
+        }else if(code == 2){
+            condition += died;
+        }else if(code == 3){
+            condition += deduct;
+        }else if(code == 4){
+            condition += skull;
+        }else if(code == 5){
+            condition += end;
+        }else if(code == 6) {
+            condition += won;
+        }else {
+            condition += seaBattle;
+        }
+
+        return condition;
+    }
 }
