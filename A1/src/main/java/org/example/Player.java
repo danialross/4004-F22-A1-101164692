@@ -271,7 +271,12 @@ public class Player {
             for(int i = 0; i<input.length;i++){
                 if(input[i] >= playerRoll.length || input[i] < 0){
                     askAgain = true;
+                }else{
+                    if(playerRoll[input[i]] == Game.Dice.SKULL){
+                        askAgain = true;
+                    }
                 }
+
             }
         }
 
