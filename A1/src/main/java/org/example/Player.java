@@ -275,7 +275,7 @@ public class Player {
                     System.out.println("Index Selected Out of Bound, try again between 0 and " + (playerRoll.length-1));
                     break;
                 }else{
-                    if(playerRoll[input[i]] == Game.Dice.SKULL){
+                    if(playerRoll[input[i]] == Game.Dice.SKULL || playerRoll[input[i]] == null){
                         askAgain = true;
                         System.out.println("Skull dice cannot be rerolled");
                         break;

@@ -200,7 +200,7 @@ class PlayerTest {
         p1.setPlayerRoll(new Game.Dice[]{null, null, null, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT});
         result = p1.validateRerollInput("0,1,2");
         assertArrayEquals(null, result);
-        
+
 
     }
 }
