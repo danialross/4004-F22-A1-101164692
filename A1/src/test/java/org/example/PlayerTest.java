@@ -96,7 +96,7 @@ class PlayerTest {
         p1.setPlayerRoll(playerRoll);
         p1.setSavedDicePos(new int[]{0,1,2});
         p1.setSavedDice(new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.PARROT, Game.Dice.PARROT});
-        
+
         //save dice index
         p1.removeFromChest();
         assertTrue(p1.getSavedDicePos() == null);

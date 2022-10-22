@@ -115,6 +115,9 @@ public class Player {
     }
 
     public void removeFromChest(){
+        playerRoll = game.changeNullToDice(playerRoll,savedDicePos,savedDice);
+        savedDicePos = null;
+        savedDice = null;
 
     }
 
