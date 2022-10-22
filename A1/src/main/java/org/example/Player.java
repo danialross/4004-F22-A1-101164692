@@ -61,14 +61,13 @@ public class Player {
         score = 0;
     }
     public void roundStarting(){
-        Game.Dice[] emptyArr = {};
-        Game.Dice[] newHand = {Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND};
-        playerRoll = game.rollDice(newHand,emptyArr);
-        fc = Game.pickCard(null);
 
-        System.out.println("---- Fortune Card : " + fc + " ----");
-        game.printPlayerRole(playerRoll);
-    }
+        Game.Dice[] init = {Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND};
+        Game.Dice[] empty = {};
+
+        playerRoll = game.rollDice(init,empty);
+        fc = Game.pickCard(null);
+        }
 
 
     public void checkDead(){
