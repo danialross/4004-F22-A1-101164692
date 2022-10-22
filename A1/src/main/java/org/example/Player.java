@@ -102,4 +102,8 @@ public class Player {
 
     }
 
+    public void rerollSkull(Game.Dice riggedDice){
+
+    }
+
 }

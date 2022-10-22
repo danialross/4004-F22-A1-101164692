@@ -62,4 +62,18 @@ class PlayerTest {
 
 
     }
+
+    @Test
+    void rerollSkull() {
+        Player p1 = new Player("p1");
+        p1.setFc(Game.FortuneCard.SORCERESS);
+        p1.setPlayerRoll(new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT});
+
+        //reroll to rig dice
+        p1.rerollSkull(Game.Dice.MONKEY);
+        assertEquals(p1.getPlayerRoll()[3],Game.Dice.MONKEY);
+
+
+        //if no sorceress = no reroll
+    }
 }
