@@ -97,7 +97,7 @@ public class Player {
             playerRoll = game.changeNullToDice(playerRoll,this.savedDicePos,this.savedDice);
         }
 
-        if(riggedDice.length != 0){
+        if(riggedDice != null){
             playerRoll = riggedDice;
         }if(riggedFc != null){
             fc = riggedFc;
@@ -382,9 +382,17 @@ public class Player {
         return condition;
     }
 
-    public void doOption(int option,Game.Dice[] rig){
+    public void doOption(int option, Game.Dice[] rigHand, Game.FortuneCard rigCard){
+
+        if(rigHand != null){
+            playerRoll = rigHand;
+        }
+        if(rigCard != null){
+            fc = rigCard;
+        }
+
         if(option == 3){
-            lockInPoints(rig,null);
+            lockInPoints(null,null);
             checkDead();
         }
     }
