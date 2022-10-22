@@ -177,7 +177,7 @@ public class Player {
 
             }
 
-        }else if(fc == Game.FortuneCard.SEABATTLEX2SWORDS || fc == Game.FortuneCard.SEABATTLEX2SWORDS || fc == Game.FortuneCard.SEABATTLEX2SWORDS){
+        }else if(fc == Game.FortuneCard.SEABATTLEX2SWORDS || fc == Game.FortuneCard.SEABATTLEX3SWORDS || fc == Game.FortuneCard.SEABATTLEX4SWORDS){
             status(7);
             if(fc == Game.FortuneCard.SEABATTLEX2SWORDS){
                 System.out.println("|----Target : 2 Swords----|");
