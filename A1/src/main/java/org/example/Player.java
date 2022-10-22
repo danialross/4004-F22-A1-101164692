@@ -76,6 +76,12 @@ public class Player {
 
         playerRoll = game.rollDice(init,empty);
         fc = Game.pickCard(null);
+
+        for( int i = 0; i<players.length; i++){
+
+            players[i] = new Player(String.valueOf(i));
+
+        }
     }
 
 
