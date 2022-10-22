@@ -160,7 +160,24 @@ public class Player {
 
     public int promptUI(int rig){
 
-        return -1;
+        System.out.println("Player turn has started");
+        Scanner scanner = new Scanner(String.valueOf(rig));
+        boolean stop = false;
+        int action = -1;
+
+        while(!stop){
+            System.out.println("Select an action:");
+            System.out.println("1. Choose dice to roll again");
+            System.out.println("2. Reroll all dice");
+            System.out.println("3. Score with current hand");
+            action = scanner.nextInt();
+            System.out.println("userInput: " + action);
+            if( action == 1 || action == 2 ||action == 3){
+                stop = true;
+            }
+        }
+        System.out.println("Player turn has ended\n");
+        return action;
     }
 
 
