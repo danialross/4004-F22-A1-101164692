@@ -130,7 +130,7 @@ public class Player {
 
     }
 
-    public void skullIslandRoll(Game.Dice[] riggedHand){
+    public void skullIslandRoll(){
 
         int reducer = game.getScoreDeduction(game.calcNumSkull(playerRoll),fc);
 
