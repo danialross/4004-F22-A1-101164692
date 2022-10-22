@@ -229,4 +229,16 @@ class PlayerTest {
 
 
     }
+
+    @Test
+    void doOption() {
+        Player p1 = new Player("p1");
+        p1.roundStarting();
+        p1.doOption(3,new Game.Dice[] {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};);
+        assertEquals(5300,p1.getScore());
+
+        p1.doOption(3,new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};);
+        assertEquals(0,p1.getScore());
+        //score
+    }
 }

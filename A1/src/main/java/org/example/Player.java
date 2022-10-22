@@ -381,4 +381,8 @@ public class Player {
 
         return condition;
     }
+
+    public void doOption(int option,Game.Dice[] rig){
+
+    }
 }
