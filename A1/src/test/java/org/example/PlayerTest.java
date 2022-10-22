@@ -49,4 +49,16 @@ class PlayerTest {
         Game.Dice[] expectedArr = {Game.Dice.DIAMOND, Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT};
         assertArrayEquals(expectedArr,p1.getPlayerRoll());
     }
+
+    @Test
+    void roundStarting() {
+        Player p1 = new Player("p1");
+        p1.roundStarting();
+
+        //initialize player roll
+        assertTrue(p1.getPlayerRoll() != null);
+        //initialize fortune card
+        assertTrue(p1.getPlayerRoll() != null);
+
+    }
 }
