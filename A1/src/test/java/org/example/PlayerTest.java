@@ -241,7 +241,7 @@ class PlayerTest {
         assertEquals(0,p1.getScore());
 
         p1.doOption(3,new Game.Dice[] {Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND}, Game.FortuneCard.SEABATTLEX2SWORDS);
-        assertEquals(2000,p1.getScore());
+        assertEquals(1900,p1.getScore());
 
         p1.doOption(3,new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND}, Game.FortuneCard.SEABATTLEX2SWORDS);
         assertEquals(0,p1.getScore());
