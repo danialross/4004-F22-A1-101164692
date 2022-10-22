@@ -270,10 +270,15 @@ public class Player {
 
             for(int i = 0; i<input.length;i++){
                 if(input[i] >= playerRoll.length || input[i] < 0){
+
                     askAgain = true;
+                    System.out.println("Index Selected Out of Bound, try again between 0 and " + (playerRoll.length-1));
+                    break;
                 }else{
                     if(playerRoll[input[i]] == Game.Dice.SKULL){
                         askAgain = true;
+                        System.out.println("Skull dice cannot be rerolled");
+                        break;
                     }
                 }
 
