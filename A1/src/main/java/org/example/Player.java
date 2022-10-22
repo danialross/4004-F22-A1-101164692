@@ -262,7 +262,19 @@ public class Player {
             }
             System.out.println("Select indexes of die to hold (not rolled) i.e: 0,1,2.. ");
             boolean isNumbers = true;
-            String[] DicePosInString = (scanner.next()).replaceAll("\\s", "").split(",");
+            String[] DicePosInString;
+
+            try{
+                DicePosInString = (scanner.next()).replaceAll("\\s", "").split(",");
+                if(DicePosInString.length == 0 ){
+                    isNumbers = false;
+                    DicePosInString = new String[]{"null"};
+                }
+            }catch (Exception e){
+                isNumbers = false;
+                DicePosInString = new String[]{"null"};
+            }
+
             input = new int[DicePosInString.length];
             for(int i = 0; i<DicePosInString.length;i++){
                 try{
