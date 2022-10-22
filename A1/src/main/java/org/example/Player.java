@@ -158,7 +158,7 @@ public class Player {
         return flag;
     }
 
-    public int promptUI(int rig){
+    public int promptUI(String rig){
 
         System.out.println("Player turn has started");
         Scanner scanner = new Scanner(String.valueOf(rig));
