@@ -395,8 +395,14 @@ public class Player {
             playerReroll(new int[]{},playerRoll);
 
         }else if(option == 3){
-            if(game.didWinSeaBattle(playerRoll,fc) == true){
-                score += game.scoreSeabattle(playerRoll,fc);
+            if(fc == Game.FortuneCard.SEABATTLEX2SWORDS || fc == Game.FortuneCard.SEABATTLEX3SWORDS || fc == Game.FortuneCard.SEABATTLEX4SWORDS ){
+                if(game.didWinSeaBattle(playerRoll,fc) == true) {
+                    score += game.scoreSeabattle(playerRoll, fc);
+
+                }else{
+                    score = game.reducePlayerScore(game.scoreSeabattle(playerRoll,fc),score);
+                }
+
             }else{
                 lockInPoints(null,null);
                 checkDead();
