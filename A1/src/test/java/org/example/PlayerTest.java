@@ -196,5 +196,11 @@ class PlayerTest {
         result = p1.validateRerollInput("0,1,2,3,4,5");
         assertArrayEquals(new int[]{0, 1, 2,3,4,5}, result);
 
+        // testing null(savedDice for tc)
+        p1.setPlayerRoll(new Game.Dice[]{null, null, null, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT});
+        result = p1.validateRerollInput("0,1,2");
+        assertArrayEquals(null, result);
+        
+
     }
 }
