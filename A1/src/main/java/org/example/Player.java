@@ -111,6 +111,7 @@ public class Player {
 
         savedDicePos = diceIndexToAdd;
         savedDice = game.getSavedDice(playerRoll,diceIndexToAdd);
+        playerRoll = game.changeDiceToNull(playerRoll,savedDicePos);
 
     }
 
