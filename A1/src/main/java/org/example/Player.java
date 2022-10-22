@@ -222,6 +222,13 @@ public class Player {
 
     public void playerReroll(int[] savedDiceIndex, Game.Dice[] riggedDice){
 
+        savedDicePos = savedDiceIndex;
+        savedDice = game.getSavedDice(playerRoll,savedDiceIndex);
+        playerRoll = game.changeDiceToNull(playerRoll,savedDicePos);
+        playerRoll = game.rollDice(playerRoll,riggedDice);
+        playerRoll = game.changeNullToDice(playerRoll,savedDicePos,savedDice);
+
+
     }
 
 }
