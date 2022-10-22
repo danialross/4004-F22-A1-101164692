@@ -1,7 +1,7 @@
 # 4004-F22-A1-101164692
 Assignment 1 COMP 4004
 
-<code> should have been a <refactor> commit and group together with the commit before it, not separately
+code tag should have been a refactor tag commit and group together with the commit before it, not separately
 https://github.com/danialross/4004-F22-A1-101164692/commit/06ea710c868eb8df3ca08a0bd30da29daa5f6bda
 
 First Unit test for player class should have included the code prototype for player class and member variable with the U-Test tag 
