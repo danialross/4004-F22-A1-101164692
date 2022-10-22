@@ -67,7 +67,7 @@ public class Player {
 
         playerRoll = game.rollDice(init,empty);
         fc = Game.pickCard(null);
-        }
+    }
 
 
     public void checkDead(){
