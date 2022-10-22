@@ -171,4 +171,12 @@ class PlayerTest {
 
 
     }
+
+    @Test
+    void askUserRerollInput() {
+        Player p1 = new Player("p1");
+        p1.setPlayerRoll(new Game.Dice[]{Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT});
+        int[] result = p1.validateRerollInput("0,1,2");
+        assertArrayEquals(new int[]{0, 1, 2}, result);
+    }
 }

@@ -242,5 +242,10 @@ public class Player {
         return action;
     }
 
+    public int[] validateRerollInput(String rigging){
+
+        return new int[]{};
+    }
+
 
 }
