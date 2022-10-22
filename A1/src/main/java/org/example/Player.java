@@ -220,4 +220,8 @@ public class Player {
 
     }
 
+    public void playerReroll(int[] rerollIndex, Game.Dice[] riggedDice){
+
+    }
+
 }
