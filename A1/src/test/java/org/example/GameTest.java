@@ -303,13 +303,13 @@ class GameTest {
     void reducePlayersScoreTest() {
         Game game = new Game();
 
-        int[] playerScores = {500,1200};
-        int[] expectedScore = {0,200};
-        assertArrayEquals(expectedScore,game.reducePlayersScore(-1000, playerScores));
+        int playerScore = 1200;
+        int expectedScore = 200;
+        assertEquals(expectedScore,game.reducePlayerScore(-1000, playerScore));
 
-        playerScores = new int[]{1200, 500};
-        expectedScore = new int[]{200, 0};
-        assertArrayEquals(expectedScore,game.reducePlayersScore(-1000, playerScores));
+        playerScore =  500;
+        expectedScore =  0;
+        assertEquals(expectedScore,game.reducePlayerScore(-1000, playerScore));
 
     }
 

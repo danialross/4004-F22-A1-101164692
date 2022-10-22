@@ -133,14 +133,10 @@ public class Player {
     public void skullIslandRoll(Game.Dice[] riggedHand){
 
         int reducer = game.getScoreDeduction(game.calcNumSkull(playerRoll),fc);
-        int[] player2= new int[] {players[1].score};
-        int[] player3= new int[] {players[2].score};
-
-        int[] playerScores = new int[2];
 
         for(int i = 0; i<players.length;i++){
             if(players[i].name != this.name){
-                players[i].setScore(game.reducePlayersScore(reducer,new int[]{players[i].score})[0]);
+                players[i].setScore(game.reducePlayerScore(reducer,players[i].score));
             }
         }
 
