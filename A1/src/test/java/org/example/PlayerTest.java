@@ -122,10 +122,11 @@ class PlayerTest {
         p1.getPlayers()[2].setScore(100);
 
         Game.Dice[] hand = new Game.Dice[] {Game.Dice.SKULL, Game.Dice.MONKEY, Game.Dice.PARROT, Game.Dice.PARROT};
-        p1.skullIslandRoll(hand);
+        boolean result = p1.skullIslandRoll(hand);
         assertEquals(100,p1.getPlayers()[0].getScore());
         assertEquals(0,p1.getPlayers()[1].getScore());
         assertEquals(0,p1.getPlayers()[2].getScore());
+        assertTrue(result);
 
     }
 
