@@ -114,6 +114,10 @@ public class Player {
 
     }
 
+    public void removeFromChest(){
+
+    }
+
 
 
 }

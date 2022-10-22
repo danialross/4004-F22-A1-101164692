@@ -87,4 +87,20 @@ class PlayerTest {
         //save dice
         assertArrayEquals(new Game.Dice[]{Game.Dice.DIAMOND,Game.Dice.PARROT,Game.Dice.PARROT},p1.getSavedDice());
     }
+
+    @Test
+    void removeFromChest() {
+        Player p1 = new Player("p1");
+        p1.setFc(Game.FortuneCard.SORCERESS);
+        Game.Dice[] playerRoll = new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT};
+        p1.setPlayerRoll(playerRoll);
+        p1.setSavedDicePos(new int[]{0,1,2});
+        p1.setSavedDice(new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.PARROT, Game.Dice.PARROT});
+        
+        //save dice index
+        p1.removeFromChest();
+        assertTrue(p1.getSavedDicePos() == null);
+        assertTrue(p1.getSavedDice() == null);
+        assertArrayEquals(playerRoll,p1.getPlayerRoll());
+    }
 }
