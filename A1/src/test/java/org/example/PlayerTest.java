@@ -72,8 +72,6 @@ class PlayerTest {
         //reroll to rig dice
         p1.rerollSkull(Game.Dice.MONKEY);
         assertEquals(p1.getPlayerRoll()[3],Game.Dice.MONKEY);
-
-
-        //if no sorceress = no reroll
+        
     }
 }

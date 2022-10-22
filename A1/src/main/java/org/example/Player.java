@@ -104,6 +104,10 @@ public class Player {
 
     public void rerollSkull(Game.Dice riggedDice){
 
+        playerRoll = game.sorceressReroll(playerRoll,riggedDice);
+
     }
+
+
 
 }
