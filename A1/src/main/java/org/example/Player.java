@@ -208,6 +208,8 @@ public class Player {
                 }else if(action == 4 && upperOption == 3){
                     System.out.println("trying to sorcerer reroll without skull\n");
 
+                }else if(action == 5 && savedDicePos == null){
+                    System.out.println("trying take dice out from treasure chest when its empty\n");
                 }
 
                 return -555;
