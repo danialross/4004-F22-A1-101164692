@@ -281,8 +281,20 @@ public class Player {
                         break;
                     }
                 }
+            }
+            if(savedDicePos != null){
+                if(savedDicePos.length + input.length > 6){
+                    System.out.println("A minimum of 2 dice must be available to roll");
+                    askAgain = true;
+                }
+            }else {
+                if (input.length > 6) {
+                    System.out.println("A minimum of 2 dice must be available to roll");
+                    askAgain = true;
+                }
 
             }
+
         }
 
         return input;
