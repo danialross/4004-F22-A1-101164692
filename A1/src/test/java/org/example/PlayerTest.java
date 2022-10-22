@@ -145,6 +145,15 @@ class PlayerTest {
         result = p1.promptUI(String.valueOf(3));
         assertEquals(3,result);
 
+        p1.setFc(Game.FortuneCard.SORCERESS);
+        p1.setPlayerRoll(new Game.Dice[]{Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT});
+        result = p1.promptUI(String.valueOf(4));
+        assertEquals(4,result);
+
+        p1.setPlayerRoll(new Game.Dice[]{Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT});
+        result = p1.promptUI(String.valueOf(4));
+        assertEquals(4,result);
+
         //infinitly ask user until input is correct
         result = p1.promptUI("r");
         assertEquals(-555,result);
