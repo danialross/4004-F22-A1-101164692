@@ -41,10 +41,8 @@ class PlayerTest {
     @Test
     void playerReroll() {
         Player p1 = new Player("p1");
-//        p1.setSavedDicePos(new int[]{1,2,3,4,5,6,7});
-//        p1.setPlayerRoll(new Game.Dice[] {Game.Dice.PARROT, Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT});
-//        p1.setSavedDice(new Game.Dice[]{Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT});
-
+        p1.roundStarting();
+        p1.setPlayerRoll(new Game.Dice[] {Game.Dice.PARROT, Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT});
 
         Game.Dice[] hand = {Game.Dice.DIAMOND, null,null,null,null,null,null,null,};
         p1.playerReroll(new int[]{1,2,3,4,5,6,7},hand);
