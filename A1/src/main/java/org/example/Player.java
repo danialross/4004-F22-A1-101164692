@@ -193,6 +193,7 @@ public class Player {
         while(action <=0 || action > upperOption){
 
             if(rig !=null){
+                System.out.println("Invalid Option");
                 if(action == -555)  {
                     System.out.println("infinite loop\n");
 
