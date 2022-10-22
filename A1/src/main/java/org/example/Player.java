@@ -383,6 +383,9 @@ public class Player {
     }
 
     public void doOption(int option,Game.Dice[] rig){
-
+        if(option == 3){
+            lockInPoints(rig,null);
+            checkDead();
+        }
     }
 }
