@@ -12,7 +12,7 @@ Should be grouped together in the U-Test commit
 
 commit made in that day from https://github.com/danialross/4004-F22-A1-101164692/commit/7420ee4019cc6f517654fb5c1fe361deb38f9655 to
 https://github.com/danialross/4004-F22-A1-101164692/commit/ae7e027f6a40f1f84fe075a6b079d17a80844171 that had
-commits with labels that were not <A-Test>, <Code> or <U-Test> would later be deleted in a addressed commit as
+commits with labels that were not "<A-Test>", "<Code>" or "<U-Test>" would later be deleted in a addressed commit as
 they did not follow TDD method (started with code first then test ) and be done in the correct way later on in their code commits of their respective U-Test commits.
 
 List of Commits that should have been included in the first code commit after the U-Test commit of Player class( https://github.com/danialross/4004-F22-A1-101164692/commit/d2e93d3c0d7c4cfa2552d88aa9e0563297629c5d) : 
