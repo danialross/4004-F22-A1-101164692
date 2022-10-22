@@ -179,6 +179,10 @@ public class Player {
         if(fc == Game.FortuneCard.SORCERESS && game.isContainSkull(playerRoll)){
             System.out.println("4. Reroll a skull");
             upperOption = 4;
+        }else if(fc == Game.FortuneCard.TREASURECHEST){
+            System.out.println("4. Save dice in treasure chest");
+            upperOption = 4;
+
         }
 
         if(scanner.hasNextInt()){
