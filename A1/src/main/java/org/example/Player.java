@@ -93,8 +93,7 @@ public class Player {
 
     public void playerReroll(int[] savedDiceIndex, Game.Dice[] riggedDice){
 
-        savedDicePos = savedDiceIndex;
-        savedDice = game.getSavedDice(playerRoll,savedDiceIndex);
+        saveDice(savedDiceIndex);
         playerRoll = game.changeDiceToNull(playerRoll,savedDicePos);
         playerRoll = game.rollDice(playerRoll,riggedDice);
         playerRoll = game.changeNullToDice(playerRoll,savedDicePos,savedDice);
@@ -108,7 +107,7 @@ public class Player {
 
     }
 
-    public void addDiceToTC(int[] diceIndexToAdd){
+    public void saveDice(int[] diceIndexToAdd){
 
         savedDicePos = diceIndexToAdd;
         savedDice = game.getSavedDice(playerRoll,diceIndexToAdd);

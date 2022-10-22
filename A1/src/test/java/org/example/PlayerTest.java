@@ -81,7 +81,7 @@ class PlayerTest {
         p1.setFc(Game.FortuneCard.SORCERESS);
         p1.setPlayerRoll(new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT});
 
-        p1.addDiceToTC(new int[]{0,1,2});
+        p1.saveDice(new int[]{0,1,2});
         //save dice index
         assertArrayEquals(new int[]{0,1,2},p1.getSavedDicePos());
         //save dice
