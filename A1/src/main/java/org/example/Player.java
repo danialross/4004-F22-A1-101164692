@@ -186,6 +186,11 @@ public class Player {
 
         while(action <=0 || action >3){
 
+            if(rig !=null){
+                if(action == -555)  {
+                    return -555;
+                }
+            }
 
             System.out.println("Select an action:");
             System.out.println("1. Choose dice to roll again");
