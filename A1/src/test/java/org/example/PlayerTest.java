@@ -76,7 +76,7 @@ class PlayerTest {
     }
 
     @Test
-    void addDiceToTC() {
+    void saveDice() {
         Player p1 = new Player("p1");
         p1.setFc(Game.FortuneCard.SORCERESS);
         p1.setPlayerRoll(new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT});
