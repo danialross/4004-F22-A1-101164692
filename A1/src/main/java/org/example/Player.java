@@ -88,6 +88,7 @@ public class Player {
     public void checkDead(){
         if(game.didDie(this.playerRoll,this.fc) == -1 ){
             this.score = 0;
+            status(2);
         }
     }
 
@@ -162,6 +163,31 @@ public class Player {
 
         System.out.println("|----Player Roll:----["+playerRoll[0]+"]----["+playerRoll[1]+"]----["+playerRoll[2]+"]----["+playerRoll[3]+"]----["+playerRoll[4]+"]----["+playerRoll[5]+"]----["+playerRoll[6]+"]----["+playerRoll[7]+"]----|");
         System.out.println("|----Fortune Card:----"+ fc + "----|");
+        checkDead();
+
+        if(fc == Game.FortuneCard.TREASURECHEST){
+            if(savedDice != null){
+                String savedString = "|----Treasure Chest:----";
+                for ( int i = 0; i < savedDice.length; i++){
+                    savedString += "[" + savedDice[i] + "]----";
+                }
+                savedString += "|";
+                System.out.println(savedString);
+
+            }
+
+        }else if(fc == Game.FortuneCard.SEABATTLEX2SWORDS || fc == Game.FortuneCard.SEABATTLEX2SWORDS || fc == Game.FortuneCard.SEABATTLEX2SWORDS){
+            status(7);
+            if(fc == Game.FortuneCard.SEABATTLEX2SWORDS){
+                System.out.println("|----Target : 2 Swords----|");
+            }else if(fc == Game.FortuneCard.SEABATTLEX3SWORDS){
+                System.out.println("|----Target : 3 Swords----|");
+            }else{
+                System.out.println("|----Target : 4 Swords----|");
+            }
+
+
+        }
 
         int action;
         int upperOption = 3 ;
