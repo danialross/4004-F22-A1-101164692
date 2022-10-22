@@ -243,7 +243,7 @@ public class Player {
     }
 
     public int[] validateRerollInput(String rigging){
-        int[] input;
+        int[] input = new int[0];
         Scanner scanner;
         if(rigging != null){
             scanner = new Scanner(rigging);
@@ -251,12 +251,29 @@ public class Player {
             scanner = new Scanner(System.in);
         }
 
-        String[] DicePosInString = (scanner.next()).replaceAll("\\s", "").split(",");
-        input = new int[DicePosInString.length];
-        for(int i = 0; i<DicePosInString.length;i++){
-            input[i] = Integer.parseInt(DicePosInString[i]);
-        }
 
+        boolean askAgain = true;
+
+        while(askAgain){
+            askAgain = false;
+
+            if(rigging != null && input.length != 0){
+                return null;
+            }
+            System.out.println("Select indexes of die to hold (not rolled) i.e: 0,1,2.. ");
+
+            String[] DicePosInString = (scanner.next()).replaceAll("\\s", "").split(",");
+            input = new int[DicePosInString.length];
+            for(int i = 0; i<DicePosInString.length;i++){
+                input[i] = Integer.parseInt(DicePosInString[i]);
+            }
+
+            for(int i = 0; i<input.length;i++){
+                if(input[i] >= playerRoll.length || input[i] < 0){
+                    askAgain = true;
+                }
+            }
+        }
 
         return input;
     }
