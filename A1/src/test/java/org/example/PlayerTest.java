@@ -86,6 +86,11 @@ class PlayerTest {
         assertArrayEquals(new int[]{0,1,2},p1.getSavedDicePos());
         //save dice
         assertArrayEquals(new Game.Dice[]{Game.Dice.DIAMOND,Game.Dice.PARROT,Game.Dice.PARROT},p1.getSavedDice());
+
+        //check if dice moved from hand to chest
+        Game.Dice[] expectedArr = new Game.Dice[]{null, null, null, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT};
+        assertArrayEquals(expectedArr,p1.getPlayerRoll());
+
     }
 
     @Test
