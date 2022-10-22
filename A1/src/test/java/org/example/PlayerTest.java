@@ -144,6 +144,13 @@ class PlayerTest {
         assertEquals(2,result);
         result = p1.promptUI(String.valueOf(3));
         assertEquals(3,result);
-        
+
+        //infinitly ask user until input is correct
+        result = p1.promptUI("r");
+        assertEquals(-555,result);
+
+
+
+
     }
 }
