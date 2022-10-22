@@ -130,19 +130,24 @@ public class Player {
 
     }
 
-    public void skullIslandRoll(){
+    public void skullIslandRoll(Game.Dice[] riggedDice){
+        Game.Dice[] hand;
 
-        int reducer = game.getScoreDeduction(game.calcNumSkull(playerRoll),fc);
+        if(riggedDice != null){
+            hand = riggedDice;
+        }else{
+            hand = playerRoll;
+        }
+
+        int reducer = game.getScoreDeduction(game.calcNumSkull(hand),fc);
 
         for(int i = 0; i<players.length;i++){
             if(players[i].name != this.name){
                 players[i].setScore(game.reducePlayerScore(reducer,players[i].score));
             }
         }
-
-
-
     }
+
 
 
 
