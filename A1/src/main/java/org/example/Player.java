@@ -243,8 +243,22 @@ public class Player {
     }
 
     public int[] validateRerollInput(String rigging){
+        int[] input;
+        Scanner scanner;
+        if(rigging != null){
+            scanner = new Scanner(rigging);
+        }else{
+            scanner = new Scanner(System.in);
+        }
 
-        return new int[]{};
+        String[] DicePosInString = (scanner.next()).replaceAll("\\s", "").split(",");
+        input = new int[DicePosInString.length];
+        for(int i = 0; i<DicePosInString.length;i++){
+            input[i] = Integer.parseInt(DicePosInString[i]);
+        }
+
+
+        return input;
     }
 
 
