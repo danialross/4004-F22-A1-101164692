@@ -183,5 +183,8 @@ class PlayerTest {
         result = p1.validateRerollInput("9,12,22");
         assertArrayEquals(null, result);
 
+        // if skull selected
+        result = p1.validateRerollInput("0,3");
+        assertArrayEquals(null, result);
     }
 }
