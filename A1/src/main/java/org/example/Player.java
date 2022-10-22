@@ -94,9 +94,8 @@ public class Player {
     public void playerReroll(int[] savedDiceIndex, Game.Dice[] riggedDice){
 
         saveDice(savedDiceIndex);
-        playerRoll = game.changeDiceToNull(playerRoll,savedDicePos);
         playerRoll = game.rollDice(playerRoll,riggedDice);
-        playerRoll = game.changeNullToDice(playerRoll,savedDicePos,savedDice);
+        removeFromChest();
 
 
     }
