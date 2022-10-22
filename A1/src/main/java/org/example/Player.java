@@ -158,9 +158,9 @@ public class Player {
         return flag;
     }
 
-    public int promptUI(){
+    public int promptUI(int rig){
 
-        return 0;
+        return -1;
     }
 
 

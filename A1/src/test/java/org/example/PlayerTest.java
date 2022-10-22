@@ -138,9 +138,11 @@ class PlayerTest {
     @Test
     void promptUI() {
         Player p1 = new Player("p1");
-        int result = p1.promptUI();
+        int result = p1.promptUI(1);
         assertEquals(1,result);
+        result = p1.promptUI(2);
         assertEquals(2,result);
+        result = p1.promptUI(3);
         assertEquals(3,result);
 
     }
