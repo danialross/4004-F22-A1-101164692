@@ -391,7 +391,10 @@ public class Player {
             fc = rigCard;
         }
 
-        if(option == 3){
+        if (option == 2){
+            playerReroll(new int[]{},playerRoll);
+
+        }else if(option == 3){
             lockInPoints(null,null);
             checkDead();
         }
