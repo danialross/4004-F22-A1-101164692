@@ -138,6 +138,7 @@ class PlayerTest {
     @Test
     void promptUI() {
         Player p1 = new Player("p1");
+        p1.roundStarting();
         int result = p1.promptUI(String.valueOf(1));
         assertEquals(1,result);
         result = p1.promptUI(String.valueOf(2));

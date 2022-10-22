@@ -160,6 +160,9 @@ public class Player {
 
     public int promptUI(String rig){
 
+        System.out.println("|----Player Roll:----["+playerRoll[0]+"]----["+playerRoll[1]+"]----["+playerRoll[2]+"]----["+playerRoll[3]+"]----["+playerRoll[4]+"]----["+playerRoll[5]+"]----["+playerRoll[6]+"]----["+playerRoll[7]+"]----|");
+        System.out.println("|----Fortune Card:----"+ fc + "----|");
+
         int action;
         int upperOption = 3 ;
         System.out.println(status(1));
