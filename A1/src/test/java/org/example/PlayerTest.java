@@ -183,6 +183,11 @@ class PlayerTest {
         p1.setPlayerRoll(new Game.Dice[]{Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT});
         result = p1.validateRerollInput("12.3");
         assertArrayEquals(null, result);
+
+        // only space and comma
+        p1.setPlayerRoll(new Game.Dice[]{Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT});
+        result = p1.validateRerollInput(" ");
+        assertArrayEquals(null, result);
         
 
         // out of range
