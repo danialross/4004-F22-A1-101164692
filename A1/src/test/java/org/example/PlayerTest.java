@@ -115,12 +115,12 @@ class PlayerTest {
         Player p1 = new Player("p1");
         Game.Dice[] hand = new Game.Dice[] {Game.Dice.SKULL, Game.Dice.MONKEY, Game.Dice.PARROT, Game.Dice.PARROT};
         p1.setPlayerRoll(hand);
-        p1.skullIslandRoll(new Game.Dice[]{Game.Dice.SKULL, Game.Dice.MONKEY, Game.Dice.PARROT, Game.Dice.PARROT});
-
         p1.setPlayers(new Player[]{new Player("p1"), new Player("p2"), new Player("p3")});
         p1.getPlayers()[0].setScore(100);
         p1.getPlayers()[1].setScore(100);
         p1.getPlayers()[2].setScore(100);
+
+        p1.skullIslandRoll(new Game.Dice[]{Game.Dice.SKULL, Game.Dice.MONKEY, Game.Dice.PARROT, Game.Dice.PARROT});
         assertEquals(100,p1.getPlayers()[0].getScore());
         assertEquals(0,p1.getPlayers()[1].getScore());
         assertEquals(0,p1.getPlayers()[2].getScore());
