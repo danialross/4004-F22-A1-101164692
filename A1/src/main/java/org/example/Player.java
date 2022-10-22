@@ -182,6 +182,10 @@ public class Player {
         }else if(fc == Game.FortuneCard.TREASURECHEST){
             System.out.println("4. Save dice in treasure chest");
             upperOption = 4;
+            if(savedDicePos != null){
+                System.out.println("5. Take dice out from treasure chest");
+                upperOption = 5;
+            }
 
         }
 
