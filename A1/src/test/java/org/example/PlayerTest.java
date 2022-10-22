@@ -135,5 +135,13 @@ class PlayerTest {
     }
 
 
+    @Test
+    void promptUI() {
+        Player p1 = new Player("p1");
+        int result = p1.promptUI();
+        assertEquals(1,result);
+        assertEquals(2,result);
+        assertEquals(3,result);
 
+    }
 }

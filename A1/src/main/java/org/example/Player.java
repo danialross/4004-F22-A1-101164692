@@ -158,7 +158,10 @@ public class Player {
         return flag;
     }
 
+    public int promptUI(){
 
+        return 0;
+    }
 
 
 }
