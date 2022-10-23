@@ -391,7 +391,10 @@ public class Player {
             fc = rigCard;
         }
 
-        if (option == 2){
+        if(option == 1){
+            playerReroll(savedIndex,new Game.Dice[]{});
+
+        } else if (option == 2){
             playerReroll(new int[]{},playerRoll);
 
         }else if(option == 3){
