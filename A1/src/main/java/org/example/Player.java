@@ -410,6 +410,17 @@ public class Player {
                 lockInPoints(playerRoll,fc);
                 checkDead();
             }
+        }else if(option == 4){
+            if(fc == Game.FortuneCard.SORCERESS && game.isContainSkull(playerRoll)){
+                rerollSkull(null);
+
+            }else{
+                if(savedIndex != null){
+                    saveDice(savedIndex);
+                }else{
+                    saveDice(validateRerollInput(null));
+                }
+            }
         }
     }
 }
