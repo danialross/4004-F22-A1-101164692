@@ -269,4 +269,19 @@ class AcceptanceTest {
 
         assertEquals(600,p1.getScore());
     }
+    @Test
+    void row62(){
+        //score set of 6 monkeys and 2 skulls on first roll (SC 1100)
+        Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SKULL, Game.Dice.SKULL};
+        Game.FortuneCard riggCard =  Game.FortuneCard.GOLD;
+
+        Player p1 = new Player("p1");
+
+        p1.setPlayerRoll(riggedhand);
+        p1.setFc(riggCard);
+
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null,null);
+        assertEquals(1100,p1.getScore());
+
+    }
 }
