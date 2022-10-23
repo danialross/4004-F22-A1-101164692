@@ -68,39 +68,28 @@ class AcceptanceTest {
 
     @Test
     void row48() {
-        //roll 1 skull, 4 parrots, 3 swords, reroll swords, get 1 skull 2 monkeys
-        Player p1 = new Player("p1");
-        Game game = p1.game;
-
-        Game.Dice[] playerHand = {};
         Game.Dice[] riggedhand = {Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD};
+        Game.Dice[] firstReroll = {Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.MONKEY, Game.Dice.MONKEY};
+        Game.Dice[] secondReroll = {Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.MONKEY};
+        Game.FortuneCard riggedCard = Game.FortuneCard.GOLD;
+        //roll 1 skull, 4 parrots, 3 swords, reroll swords, get 1 skull 2 monkeys
+        //      reroll 2 monkeys, get 1 skull 1 monkey and die
 
-        p1.setPlayerRoll(game.rollDice(playerHand, riggedhand));
 
-        int[] userInput = {0, 1, 2, 3, 4};
-        p1.setSavedDicePos(userInput);
-        p1.setSavedDice(game.getSavedDice(p1.getPlayerRoll(), userInput));
+        Player p1 = new Player("p1");
+        p1.roundStarting();
 
-        p1.setPlayerRoll(game.changeDiceToNull(p1.getPlayerRoll(), p1.getSavedDicePos()));
-        riggedhand = new Game.Dice[]{null, null, null, null, null, Game.Dice.SKULL, Game.Dice.MONKEY, Game.Dice.MONKEY};
+        p1.setPlayerRoll(riggedhand);
+        p1.setFc(riggedCard);
 
-        p1.setPlayerRoll(game.rollDice(p1.getPlayerRoll(), riggedhand));
-        p1.setPlayerRoll(game.changeNullToDice(p1.getPlayerRoll(), p1.getSavedDicePos(), p1.getSavedDice()));
+        p1.promptUI("1");
+        p1.doOption(1,new Game.Dice[]{},null, p1.validateRerollInput("1,2,3,4"));
 
-        p1.checkDead();
-        //reroll 2 monkeys, get 1 skull 1 monkey and die
+        p1.promptUI("1");
+        p1.doOption(3,firstReroll,null, p1.validateRerollInput("1,2,3,4"));
 
-        userInput = new int[]{0, 1, 2, 3, 4, 5};
-        p1.setSavedDicePos(userInput);
-        p1.setSavedDice(game.getSavedDice(p1.getPlayerRoll(), userInput));
-
-        p1.setPlayerRoll(game.changeDiceToNull(p1.getPlayerRoll(), p1.getSavedDicePos()));
-        riggedhand = new Game.Dice[]{null, null, null, null, null, null, Game.Dice.SKULL, Game.Dice.MONKEY};
-
-        p1.setPlayerRoll(game.rollDice(p1.getPlayerRoll(), riggedhand));
-        p1.setPlayerRoll(game.changeNullToDice(p1.getPlayerRoll(), p1.getSavedDicePos(), p1.getSavedDice()));
-
-        p1.checkDead();
+        p1.promptUI("3");
+        p1.doOption(3,secondReroll,null,null);
 
         assertEquals(0, p1.getScore());
     }
