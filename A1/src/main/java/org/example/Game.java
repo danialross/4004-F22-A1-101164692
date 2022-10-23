@@ -95,9 +95,9 @@ public class Game {
 
         int numOfDiceWithSet = 0;
         for(int j = 0; j<numOfRepeats.length; j++){
-            if(numOfRepeats[j] == 8){
+            if(numOfRepeats[j] >= 8){
                 score += 4000;
-                numOfDiceWithSet += 8;
+                numOfDiceWithSet += numOfRepeats[j];
 
             }else if(numOfRepeats[j] == 7){
                 score += 2000;
