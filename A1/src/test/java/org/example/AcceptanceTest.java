@@ -117,23 +117,19 @@ class AcceptanceTest {
 
     @Test
     void row52() {
+        Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.GOLD, Game.Dice.GOLD};
+        Game.FortuneCard riggCard =  Game.FortuneCard.CAPTAIN;
         //score first roll with 2 (monkeys/parrot/diamonds/coins) and FC is captain (SC 800)
         Player p1 = new Player("p1");
-        Game game = p1.game;
+        p1.roundStarting();
 
-        Game.Dice[] playerHand = {};
-        Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.GOLD, Game.Dice.GOLD};
+        p1.setPlayerRoll(riggedhand);
+        p1.setFc(riggCard);
 
-        p1.setPlayerRoll(game.rollDice(playerHand, riggedhand));
-        p1.setFc(game.pickCard(Game.FortuneCard.CAPTAIN));
-
-        p1.setPlayerRoll(game.rollDice(p1.getPlayerRoll(), riggedhand));
-
-        p1.checkDead();
-        p1.setScore(game.scorePoints(p1.getPlayerRoll(), p1.getFc()));
+        p1.promptUI("3");
+        p1.doOption(3,new Game.Dice[]{},null, null);
 
         assertEquals(800, p1.getScore());
-
     }
 
     @Test
