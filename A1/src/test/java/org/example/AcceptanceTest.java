@@ -370,4 +370,25 @@ class AcceptanceTest {
         assertEquals(4600,p1.getScore());
 
     }
+
+    @Test
+    void row68() {
+        //roll 2 (monkeys/skulls/swords/parrots), reroll parrots, get 2 diamonds, score with FC is diamond (SC 400)
+        Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.PARROT, Game.Dice.PARROT};
+        Game.Dice[] firstReroll = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
+        Game.FortuneCard riggCard =  Game.FortuneCard.DIAMOND;
+
+        Player p1 = new Player("p1");
+
+        p1.setPlayerRoll(riggedhand);
+        p1.setFc(riggCard);
+
+        p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("0,1,4,5"));
+
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null, null);
+
+        assertEquals(400,p1.getScore());
+
+
+    }
 }
