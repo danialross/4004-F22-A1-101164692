@@ -266,5 +266,20 @@ class PlayerTest {
         p1.setPlayerRoll(new Game.Dice[] {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND});
         p1.doOption(1,new Game.Dice[] {},null,new int[]{0,1,2});
         assertFalse(Arrays.equals(new Game.Dice[] {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND},p1.getPlayerRoll()));
+
+        p1.setFc(Game.FortuneCard.SORCERESS);
+        p1.setPlayerRoll(new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND});
+        p1.doOption(4,new Game.Dice[] {},null,null);
+        assertTrue(3 == p1.game.calcNumSkull(p1.getPlayerRoll()));
+        assertTrue(p1.getFc() == null);
+
+        p1.setFc(Game.FortuneCard.TREASURECHEST);
+        p1.setPlayerRoll(new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND});
+        p1.doOption(4,new Game.Dice[] {},null,new int[]{4,5});
+        assertArrayEquals(new int[]{4,5},p1.getSavedDicePos());
+        
+
+
+
     }
 }
