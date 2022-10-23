@@ -167,6 +167,9 @@ public class Player {
         if(game.didDie(playerRoll,fc) == -1){
             checkDead();
             return -1;
+        }else if (game.didDie(playerRoll,fc) == 0){
+            return -2;
+
         }
 
         if(fc == Game.FortuneCard.TREASURECHEST){
