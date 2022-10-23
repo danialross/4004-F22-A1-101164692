@@ -334,4 +334,21 @@ class AcceptanceTest {
         p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null,null);
         assertEquals(5400,p1.getScore());
     }
+
+    @Test
+    void row66() {
+        //score set of 8 swords on first roll and FC is captain (SC 4500x2 = 9000) since full chest
+
+        Game.Dice[] riggedhand = {Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD};
+        Game.FortuneCard riggCard =  Game.FortuneCard.CAPTAIN;
+
+        Player p1 = new Player("p1");
+
+        p1.setPlayerRoll(riggedhand);
+        p1.setFc(riggCard);
+
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null,null);
+        assertEquals(9000,p1.getScore());
+    }
+
 }
