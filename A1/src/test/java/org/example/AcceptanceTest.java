@@ -13,10 +13,11 @@ class AcceptanceTest {
 
         Player p1 = new Player("p1");
         p1.roundStarting();
-        p1.promptUI("3");
-        p1.doOption(3,riggedhand,riggedCard,null);
 
-        assertEquals(0, p1.getScore());
+        p1.setPlayerRoll(riggedhand);
+        p1.setFc(riggedCard);
+
+        assertEquals(-1, p1.promptUI(""));
     }
 
     @Test
@@ -86,7 +87,7 @@ class AcceptanceTest {
         p1.doOption(1,new Game.Dice[]{},null, p1.validateRerollInput("1,2,3,4"));
 
         p1.promptUI("1");
-        p1.doOption(3,firstReroll,null, p1.validateRerollInput("1,2,3,4"));
+        p1.doOption(1,firstReroll,null, p1.validateRerollInput("1,2,3,4"));
 
         p1.promptUI("3");
         p1.doOption(3,secondReroll,null,null);
