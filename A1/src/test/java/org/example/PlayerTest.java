@@ -177,6 +177,10 @@ class PlayerTest {
         result = p1.promptUI(null);
         assertEquals(-1,result);
 
+        p1.setPlayerRoll(new Game.Dice[]{Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT});
+        result = p1.promptUI(null);
+        assertEquals(-2,result);
+
 
     }
 
