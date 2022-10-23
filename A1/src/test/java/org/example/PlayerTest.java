@@ -264,13 +264,7 @@ class PlayerTest {
         assertFalse(Arrays.equals(new Game.Dice[] {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND},p1.getPlayerRoll()));
 
         p1.setPlayerRoll(new Game.Dice[] {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND});
-        p1.promptUI("1");
         p1.doOption(1,new Game.Dice[] {},null,new int[]{0,1,2});
-
         assertFalse(Arrays.equals(new Game.Dice[] {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND},p1.getPlayerRoll()));
-
-
-
-
     }
 }
