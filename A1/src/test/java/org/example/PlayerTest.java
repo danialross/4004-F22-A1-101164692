@@ -17,11 +17,13 @@ class PlayerTest {
         assertEquals(5300, p1.getScore());
 
         // test rigging card
+        p1.setScore(0);
         hand = new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.PARROT, Game.Dice.PARROT};
         p1.lockInPoints(hand, Game.FortuneCard.DIAMOND);
         assertEquals(100, p1.getScore());
 
         //test pulling from saveDice
+        p1.setScore(0);
         p1.setSavedDice(new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND});
         p1.setSavedDicePos(new int[]{0, 1, 2});
         p1.setPlayerRoll(new Game.Dice[]{null, null, null, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND,Game.Dice.DIAMOND});
@@ -29,6 +31,7 @@ class PlayerTest {
         assertEquals(5300, p1.getScore());
 
         //test to check if player died
+        p1.setScore(0);
         p1.setSavedDicePos(null);
         p1.setSavedDice(new Game.Dice[]{});
         p1.setPlayerRoll(new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND});

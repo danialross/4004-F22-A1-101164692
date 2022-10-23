@@ -102,7 +102,7 @@ public class Player {
         }if(riggedFc != null){
             fc = riggedFc;
         }
-        score = game.scorePoints(playerRoll,fc);
+        score += game.scorePoints(playerRoll,fc);
         checkDead();
 
     }
