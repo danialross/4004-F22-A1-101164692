@@ -382,7 +382,7 @@ public class Player {
         return condition;
     }
 
-    public void doOption(int option, Game.Dice[] rigHand, Game.FortuneCard rigCard){
+    public void doOption(int option, Game.Dice[] rigHand, Game.FortuneCard rigCard,int[] savedIndex){
 
         if(rigHand != null){
             playerRoll = rigHand;
