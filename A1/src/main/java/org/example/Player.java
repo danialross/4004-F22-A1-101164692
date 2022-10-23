@@ -384,7 +384,7 @@ public class Player {
 
     public void doOption(int option, Game.Dice[] rigHand, Game.FortuneCard rigCard,int[] savedIndex){
 
-        if(rigHand != null){
+        if(rigHand.length != 0){
             playerRoll = rigHand;
         }
         if(rigCard != null){
@@ -404,7 +404,7 @@ public class Player {
                 }
 
             }else{
-                lockInPoints(null,null);
+                lockInPoints(playerRoll,fc);
                 checkDead();
             }
         }
