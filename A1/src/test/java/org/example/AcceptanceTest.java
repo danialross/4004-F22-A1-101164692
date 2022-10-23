@@ -301,4 +301,21 @@ class AcceptanceTest {
         assertEquals(2100,p1.getScore());
 
     }
+
+    @Test
+    void row64() {
+        //score set of 8 coins on first roll (SC 5400)  seq of 8 + 9 coins(FC is coin) +  full chest  (no extra points for 9 coins)
+
+        Game.Dice[] riggedhand = {Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD};
+        Game.FortuneCard riggCard =  Game.FortuneCard.GOLD;
+
+        Player p1 = new Player("p1");
+
+        p1.setPlayerRoll(riggedhand);
+        p1.setFc(riggCard);
+
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null,null);
+        assertEquals(5400,p1.getScore());
+
+    }
 }
