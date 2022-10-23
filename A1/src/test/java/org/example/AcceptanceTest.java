@@ -235,7 +235,7 @@ class AcceptanceTest {
         p1.setFc(riggCard);
 
         p1.promptUI("1");
-        p1.doOption(1,firstReroll,null, new int[]{1,2,5,6,7});
+        p1.doOption(1,firstReroll,null, p1.validateRerollInput("1,2,5,6,7"));
 
         p1.promptUI("3");
         p1.doOption(3,new Game.Dice[]{},null, null);
