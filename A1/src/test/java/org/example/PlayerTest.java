@@ -270,7 +270,6 @@ class PlayerTest {
         p1.setFc(Game.FortuneCard.SORCERESS);
         p1.setPlayerRoll(new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND});
         p1.doOption(4,new Game.Dice[] {},null,null);
-        assertTrue(3 == p1.game.calcNumSkull(p1.getPlayerRoll()));
         assertTrue(p1.getFc() == null);
 
         p1.setFc(Game.FortuneCard.TREASURECHEST);
