@@ -88,7 +88,7 @@ public class Player {
     public void checkDead(){
         if(game.didDie(this.playerRoll,this.fc) == -1 ){
             this.score = 0;
-            status(2);
+            System.out.println(status(2));
         }
     }
 
