@@ -21,30 +21,23 @@ class AcceptanceTest {
 
     @Test
     void row46() {
+        Game.Dice[] riggedhand = {Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD};
+        Game.Dice[] riggedReroll = {Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD};
+        Game.FortuneCard riggedCard = Game.FortuneCard.GOLD;
         //roll 1 skull, 4 parrots, 3 swords, reroll 3 swords, get 2 skulls 1 sword  die
         Player p1 = new Player("p1");
-        Game game = p1.game;
+        p1.roundStarting();
 
-        Game.Dice[] playerHand = {};
-        Game.Dice[] riggedhand = {Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD};
+        p1.setPlayerRoll(riggedhand);
+        p1.setFc(riggedCard);
 
-        p1.setPlayerRoll(game.rollDice(playerHand, riggedhand));
-        p1.setFc(game.pickCard(Game.FortuneCard.GOLD));
+        p1.promptUI("1");
+        p1.doOption(1,new Game.Dice[]{},null, p1.validateRerollInput("1,2,3,4"));
 
-        p1.checkDead();
+        p1.promptUI("3");
+        p1.doOption(3,riggedReroll,null,null);
 
-        int[] userInput = {0, 1, 2, 3, 4};
-        p1.setSavedDicePos(userInput);
-        p1.setSavedDice(game.getSavedDice(p1.getPlayerRoll(), userInput));
-
-
-        p1.setPlayerRoll(game.changeDiceToNull(p1.getPlayerRoll(), p1.getSavedDicePos()));
-        riggedhand = new Game.Dice[]{null, null, null, null, null, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD};
-
-        p1.setPlayerRoll(game.rollDice(p1.getPlayerRoll(), riggedhand));
-        p1.setPlayerRoll(game.changeNullToDice(p1.getPlayerRoll(), p1.getSavedDicePos(), p1.getSavedDice()));
-
-        p1.checkDead();
+        assertEquals(0, p1.getScore());
 
         assertEquals(0, p1.getScore());
     }
