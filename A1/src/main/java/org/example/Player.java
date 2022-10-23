@@ -164,7 +164,10 @@ public class Player {
 
         System.out.println("|----Player Roll:----["+playerRoll[0]+"]----["+playerRoll[1]+"]----["+playerRoll[2]+"]----["+playerRoll[3]+"]----["+playerRoll[4]+"]----["+playerRoll[5]+"]----["+playerRoll[6]+"]----["+playerRoll[7]+"]----|");
         System.out.println("|----Fortune Card:----"+ fc + "----|");
-        checkDead();
+        if(game.didDie(playerRoll,fc) == -1){
+            checkDead();
+            return -1;
+        }
 
         if(fc == Game.FortuneCard.TREASURECHEST){
             if(savedDice != null){
