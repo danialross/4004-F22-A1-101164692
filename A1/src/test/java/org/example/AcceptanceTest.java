@@ -39,7 +39,6 @@ class AcceptanceTest {
 
         assertEquals(0, p1.getScore());
 
-        assertEquals(0, p1.getScore());
     }
 
     @Test
