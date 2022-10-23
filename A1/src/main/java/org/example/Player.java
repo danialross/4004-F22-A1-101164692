@@ -192,7 +192,6 @@ public class Player {
 
         int action;
         int upperOption = 3 ;
-        System.out.println(status(1));
         Scanner scanner;
 
         if(rig != null){
@@ -226,7 +225,6 @@ public class Player {
             System.out.println("Invalid Option");
         }
 
-        System.out.println("userInput: " + action);
 
         while(action <=0 || action > upperOption){
 
@@ -268,7 +266,6 @@ public class Player {
 
 
         }
-        System.out.println(status(5));
         return action;
     }
 
@@ -401,7 +398,6 @@ public class Player {
             if(fc == Game.FortuneCard.SEABATTLEX2SWORDS || fc == Game.FortuneCard.SEABATTLEX3SWORDS || fc == Game.FortuneCard.SEABATTLEX4SWORDS ){
                 if(game.didWinSeaBattle(playerRoll,fc) == true) {
                     score += game.scoreSeabattle(playerRoll, fc);
-
                 }else{
                     score = game.reducePlayerScore(game.scoreSeabattle(playerRoll,fc),score);
                 }
@@ -427,4 +423,5 @@ public class Player {
             savedDice = null;
         }
     }
+
 }
