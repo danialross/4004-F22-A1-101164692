@@ -351,4 +351,23 @@ class AcceptanceTest {
         assertEquals(9000,p1.getScore());
     }
 
+    @Test
+    void row67() {
+        //roll 6 monkeys and 2 swords, reroll swords, get 2 monkeys, score (SC 4600 because of FC is coin and full chest)
+        Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SWORD, Game.Dice.SWORD};
+        Game.Dice[] firstReroll = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY};
+        Game.FortuneCard riggCard =  Game.FortuneCard.GOLD;
+
+        Player p1 = new Player("p1");
+
+        p1.setPlayerRoll(riggedhand);
+        p1.setFc(riggCard);
+
+        p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("0,1,2,3,4,5"));
+
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null, null);
+
+        assertEquals(4600,p1.getScore());
+
+    }
 }
