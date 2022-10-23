@@ -395,10 +395,10 @@ public class Player {
         }
 
         if(option == 1){
-            playerReroll(savedIndex,new Game.Dice[]{});
+            playerReroll(savedIndex,playerRoll);
 
         } else if (option == 2){
-            playerReroll(new int[]{},new Game.Dice[]{});
+            playerReroll(new int[]{},playerRoll);
 
         }else if(option == 3){
             if(fc == Game.FortuneCard.SEABATTLEX2SWORDS || fc == Game.FortuneCard.SEABATTLEX3SWORDS || fc == Game.FortuneCard.SEABATTLEX4SWORDS ){

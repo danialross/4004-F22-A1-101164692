@@ -33,7 +33,7 @@ class AcceptanceTest {
         p1.setFc(riggedCard);
 
         p1.promptUI("1");
-        p1.doOption(1,new Game.Dice[]{},null, p1.validateRerollInput("1,2,3,4"));
+        p1.doOption(1,riggedReroll,null, p1.validateRerollInput("1,2,3,4"));
 
         assertEquals(-1, p1.promptUI(null));
 
@@ -54,12 +54,9 @@ class AcceptanceTest {
         p1.setFc(riggedCard);
 
         p1.promptUI("1");
-        p1.doOption(1,new Game.Dice[]{},null, p1.validateRerollInput("2,3,4,5"));
+        p1.doOption(1,riggedReroll,null, p1.validateRerollInput("2,3,4,5"));
 
-        p1.promptUI("3");
-        p1.doOption(3,riggedReroll,null,null);
-
-        assertEquals(0, p1.getScore());
+        assertEquals(-1, p1.promptUI(null));
 
 
     }
