@@ -421,6 +421,10 @@ public class Player {
                     saveDice(validateRerollInput(null));
                 }
             }
+        }else{
+            playerRoll = game.changeNullToDice(playerRoll,savedIndex,savedDice);
+            savedDicePos = null;
+            savedDice = null;
         }
     }
 }
