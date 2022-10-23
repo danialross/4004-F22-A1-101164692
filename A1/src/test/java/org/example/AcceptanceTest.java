@@ -318,4 +318,20 @@ class AcceptanceTest {
         assertEquals(5400,p1.getScore());
 
     }
+
+    @Test
+    void row65() {
+        //score set of 8 coins on first roll and FC is diamond (SC 5400)
+
+        Game.Dice[] riggedhand = {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
+        Game.FortuneCard riggCard =  Game.FortuneCard.DIAMOND;
+
+        Player p1 = new Player("p1");
+
+        p1.setPlayerRoll(riggedhand);
+        p1.setFc(riggCard);
+
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null,null);
+        assertEquals(5400,p1.getScore());
+    }
 }
