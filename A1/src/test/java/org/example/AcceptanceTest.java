@@ -8,17 +8,13 @@ class AcceptanceTest {
 
     @Test
     void row45() {
+        Game.Dice[] riggedhand = {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD};
+        Game.FortuneCard riggedCard = Game.FortuneCard.GOLD;
 
         Player p1 = new Player("p1");
-        Game game = p1.game;
-
-        Game.Dice[] playerHand = {};
-        Game.Dice[] riggedhand = {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD};
-
-        p1.setPlayerRoll(game.rollDice(playerHand, riggedhand));
-        p1.setFc(game.pickCard(Game.FortuneCard.GOLD));
-
-        p1.checkDead();
+        p1.roundStarting();
+        p1.promptUI("3");
+        p1.doOption(3,riggedhand,riggedCard,null);
 
         assertEquals(0, p1.getScore());
     }
