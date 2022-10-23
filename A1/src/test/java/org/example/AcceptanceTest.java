@@ -32,8 +32,7 @@ class AcceptanceTest {
         p1.setPlayerRoll(riggedhand);
         p1.setFc(riggedCard);
 
-        p1.promptUI("1");
-        p1.doOption(1,riggedReroll,null, p1.validateRerollInput("1,2,3,4"));
+        p1.doOption(p1.promptUI("1"),riggedReroll,null, p1.validateRerollInput("1,2,3,4"));
 
         assertEquals(-1, p1.promptUI(null));
 
@@ -53,8 +52,7 @@ class AcceptanceTest {
         p1.setPlayerRoll(riggedhand);
         p1.setFc(riggedCard);
 
-        p1.promptUI("1");
-        p1.doOption(1,riggedReroll,null, p1.validateRerollInput("2,3,4,5"));
+        p1.doOption(p1.promptUI("1"),riggedReroll,null, p1.validateRerollInput("2,3,4,5"));
 
         assertEquals(-1, p1.promptUI(null));
 
@@ -77,11 +75,9 @@ class AcceptanceTest {
         p1.setPlayerRoll(riggedhand);
         p1.setFc(riggedCard);
 
-        p1.promptUI("1");
-        p1.doOption(1,firstReroll,null, p1.validateRerollInput("1,2,3,4"));
+        p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("1,2,3,4"));
 
-        p1.promptUI("1");
-        p1.doOption(1,secondReroll,null, p1.validateRerollInput("1,2,3,4"));
+        p1.doOption(p1.promptUI("1"),secondReroll,null, p1.validateRerollInput("1,2,3,4"));
 
         assertEquals(-1, p1.promptUI(null));
 
@@ -102,14 +98,11 @@ class AcceptanceTest {
         p1.setPlayerRoll(riggedhand);
         p1.setFc(riggCard);
 
-        p1.promptUI("1");
-        p1.doOption(1,firstReroll,null, p1.validateRerollInput("3,4,5,6,7"));
+        p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("3,4,5,6,7"));
 
-        p1.promptUI("1");
-        p1.doOption(1,secondReroll,null, p1.validateRerollInput("1,2,6,7"));
+        p1.doOption(p1.promptUI("1"),secondReroll,null, p1.validateRerollInput("1,2,6,7"));
 
-        p1.promptUI("3");
-        p1.doOption(3,new Game.Dice[]{},null, null);
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null, null);
 
         assertEquals(4800, p1.getScore());
 
@@ -126,8 +119,7 @@ class AcceptanceTest {
         p1.setPlayerRoll(riggedhand);
         p1.setFc(riggCard);
 
-        p1.promptUI("3");
-        p1.doOption(3,new Game.Dice[]{},null, null);
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null, null);
 
         assertEquals(800, p1.getScore());
     }
@@ -144,11 +136,9 @@ class AcceptanceTest {
         p1.setPlayerRoll(riggedhand);
         p1.setFc(riggCard);
 
-        p1.promptUI("1");
-        p1.doOption(1,firstReroll,null, p1.validateRerollInput("0,1,4,5"));
+        p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("0,1,4,5"));
 
-        p1.promptUI("3");
-        p1.doOption(3,new Game.Dice[]{},null, new int[]{});
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null, new int[]{});
 
 
         assertEquals(300, p1.getScore());
@@ -166,8 +156,8 @@ class AcceptanceTest {
         p1.setPlayerRoll(riggedhand);
         p1.setFc(riggCard);
 
-        p1.promptUI("3");
-        p1.doOption(3,new Game.Dice[]{},null, null);
+
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null, null);
 
         assertEquals(300, p1.getScore());
     }
@@ -199,8 +189,7 @@ class AcceptanceTest {
         p1.setPlayerRoll(riggedhand);
         p1.setFc(riggCard);
 
-        p1.promptUI("3");
-        p1.doOption(3,new Game.Dice[]{},null, null);
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null, null);
 
         assertEquals(700, p1.getScore());
 
@@ -217,8 +206,7 @@ class AcceptanceTest {
         p1.setPlayerRoll(riggedhand);
         p1.setFc(riggCard);
 
-        p1.promptUI("3");
-        p1.doOption(3,new Game.Dice[]{},null, null);
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null, null);
 
         assertEquals(400, p1.getScore());
 
@@ -234,11 +222,9 @@ class AcceptanceTest {
         p1.setPlayerRoll(riggedhand);
         p1.setFc(riggCard);
 
-        p1.promptUI("1");
-        p1.doOption(1,firstReroll,null, p1.validateRerollInput("1,2,5,6,7"));
+        p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("1,2,5,6,7"));
 
-        p1.promptUI("3");
-        p1.doOption(3,new Game.Dice[]{},null, null);
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null, null);
 
         assertEquals(800, p1.getScore());
 
@@ -255,11 +241,9 @@ class AcceptanceTest {
         p1.setPlayerRoll(riggedhand);
         p1.setFc(riggCard);
 
-        p1.promptUI("1");
-        p1.doOption(1,firstReroll,null, p1.validateRerollInput("1,2,5,6,7"));
+        p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("1,2,5,6,7"));
 
-        p1.promptUI("3");
-        p1.doOption(3,new Game.Dice[]{},null, null);
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null, null);
 
         assertEquals(1200, p1.getScore());
 
@@ -276,7 +260,7 @@ class AcceptanceTest {
 
         p1.setPlayerRoll(riggedhand);
         p1.setFc(riggCard);
-        
+
         p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("3,4,5,6,7"));
 
         p1.doOption(p1.promptUI("1"),secondReroll,null, p1.validateRerollInput("3,6,7"));
