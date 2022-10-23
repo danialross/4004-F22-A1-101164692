@@ -17,7 +17,7 @@ class AcceptanceTest {
         p1.setPlayerRoll(riggedhand);
         p1.setFc(riggedCard);
 
-        assertEquals(-1, p1.promptUI(""));
+        assertEquals(-1, p1.promptUI(null));
     }
 
     @Test
@@ -35,10 +35,7 @@ class AcceptanceTest {
         p1.promptUI("1");
         p1.doOption(1,new Game.Dice[]{},null, p1.validateRerollInput("1,2,3,4"));
 
-        p1.promptUI("3");
-        p1.doOption(3,riggedReroll,null,null);
-
-        assertEquals(0, p1.getScore());
+        assertEquals(-1, p1.promptUI(null));
 
     }
 
