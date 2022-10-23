@@ -285,9 +285,11 @@ class PlayerTest {
 
         p1.setFc(Game.FortuneCard.TREASURECHEST);
         p1.setSavedDicePos(new int[] {4,5});
+        p1.setSavedDice(new Game.Dice[]{Game.Dice.GOLD,Game.Dice.PARROT});
         p1.setPlayerRoll(new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, null, null, Game.Dice.DIAMOND, Game.Dice.DIAMOND});
         p1.doOption(5,new Game.Dice[] {},null,null);
         assertEquals(null,p1.getSavedDicePos());
+        assertArrayEquals(new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.GOLD, Game.Dice.PARROT, Game.Dice.DIAMOND, Game.Dice.DIAMOND}, p1.getPlayerRoll());
 
     }
 }

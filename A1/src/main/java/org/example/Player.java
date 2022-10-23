@@ -422,7 +422,7 @@ public class Player {
                 }
             }
         }else{
-            playerRoll = game.changeNullToDice(playerRoll,savedIndex,savedDice);
+            playerRoll = game.changeNullToDice(playerRoll,savedDicePos,savedDice);
             savedDicePos = null;
             savedDice = null;
         }
