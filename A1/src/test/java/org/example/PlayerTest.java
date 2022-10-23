@@ -144,6 +144,10 @@ class PlayerTest {
     void promptUI() {
         Player p1 = new Player("p1");
         p1.roundStarting();
+
+        p1.setPlayerRoll(new Game.Dice[]{Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SWORD});
+        p1.setFc(Game.FortuneCard.GOLD);
+
         int result = p1.promptUI(String.valueOf(1));
         assertEquals(1,result);
         result = p1.promptUI(String.valueOf(2));
