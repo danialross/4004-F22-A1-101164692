@@ -1,13 +1,15 @@
 package org.example;
 
-import org.junit.jupiter.api.Test;
+
 
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Test;
 
-class AcceptanceTest {
+
+public class AcceptanceTest {
 
     @Test
-    void row45() {
+    public void row45() {
         Game.Dice[] riggedhand = {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD};
         Game.FortuneCard riggedCard = Game.FortuneCard.GOLD;
 
@@ -18,7 +20,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row46() {
+    public void row46() {
         Game.Dice[] riggedhand = {Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD};
         Game.Dice[] riggedReroll = {Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD};
         Game.FortuneCard riggedCard = Game.FortuneCard.GOLD;
@@ -33,7 +35,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row47() {
+    public void row47() {
 
         Game.Dice[] riggedhand = {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SWORD, Game.Dice.SWORD};
         Game.Dice[] riggedReroll = {Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD};
@@ -51,7 +53,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row48() {
+    public void row48() {
         Game.Dice[] riggedhand = {Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD};
         Game.Dice[] firstReroll = {Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.MONKEY, Game.Dice.MONKEY};
         Game.Dice[] secondReroll = {Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.MONKEY};
@@ -73,7 +75,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row50() {
+    public void row50() {
         Game.Dice[] riggedhand = {Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.GOLD, Game.Dice.GOLD};
         Game.Dice[] firstReroll = {Game.Dice.SKULL, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.GOLD, Game.Dice.GOLD};
         Game.Dice[] secondReroll = {Game.Dice.SKULL, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD};
@@ -94,7 +96,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row52() {
+    public void row52() {
         Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.GOLD, Game.Dice.GOLD};
         Game.FortuneCard riggedCard =  Game.FortuneCard.CAPTAIN;
         //score first roll with 2 (monkeys/parrot/diamonds/coins) and FC is captain (SC 800)
@@ -107,7 +109,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row53() {
+    public void row53() {
         Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.PARROT, Game.Dice.PARROT};
         Game.Dice[] firstReroll = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.MONKEY};
         Game.FortuneCard riggedCard =  Game.FortuneCard.GOLD;
@@ -125,7 +127,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row54(){
+    public void row54(){
         Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SKULL, Game.Dice.SKULL};
         Game.FortuneCard riggedCard =  Game.FortuneCard.GOLD;
         //roll 3 (monkey, swords) + 2 skulls and score   (SC 300)
@@ -139,7 +141,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row55(){
+    public void row55(){
         Game.Dice[] riggedhand = {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.MONKEY, Game.Dice.SWORD, Game.Dice.PARROT};
         Game.FortuneCard riggCard =  Game.FortuneCard.GOLD;
         //roll 3 diamonds, 2 skulls, 1 monkey, 1 sword, 1 parrot, score (diamonds = 100 + 300 points)   (SC 500)
@@ -155,7 +157,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row56(){
+    public void row56(){
         Game.Dice[] riggedhand = {Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD};
         Game.FortuneCard riggCard =  Game.FortuneCard.DIAMOND;
         //roll 4 coins, 2 skulls, 2 swords and score (coins: 200 + 400 points) with FC is a diamond (SC 700)
@@ -171,7 +173,7 @@ class AcceptanceTest {
 
 
     @Test
-    void row57(){
+    public void row57(){
         Game.Dice[] riggedhand = {Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL};
         Game.FortuneCard riggCard =  Game.FortuneCard.GOLD;
         //roll 3 swords, 4 parrots, 1 skull and score (SC 100+200+100= 400)
@@ -185,7 +187,7 @@ class AcceptanceTest {
 
     }
     @Test
-    void row58() {
+    public void row58() {
         Game.Dice[] riggedhand = {Game.Dice.SKULL, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD};
         Game.Dice[] firstReroll = {Game.Dice.SKULL, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD};
         Game.FortuneCard riggCard =  Game.FortuneCard.GOLD;
@@ -203,7 +205,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row59(){
+    public void row59(){
         Game.Dice[] riggedhand = {Game.Dice.SKULL, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD};
         Game.Dice[] firstReroll = {Game.Dice.SKULL, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD};
         Game.FortuneCard riggCard =  Game.FortuneCard.CAPTAIN;
@@ -221,7 +223,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row60(){
+    public void row60(){
         Game.Dice[] riggedhand = {Game.Dice.SKULL, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD};
         Game.Dice[] firstReroll = {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD};
         Game.Dice[] secondReroll = {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.MONKEY, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD};
@@ -240,7 +242,7 @@ class AcceptanceTest {
         assertEquals(600,p1.getScore());
     }
     @Test
-    void row62(){
+    public void row62(){
         //score set of 6 monkeys and 2 skulls on first roll (SC 1100)
         Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SKULL, Game.Dice.SKULL};
         Game.FortuneCard riggCard =  Game.FortuneCard.GOLD;
@@ -255,7 +257,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row63(){
+    public void row63(){
         //score set of 7 parrots and 1 skull on first roll (SC 2100)
 
         Game.Dice[] riggedhand = {Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL};
@@ -271,7 +273,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row64() {
+    public void row64() {
         //score set of 8 coins on first roll (SC 5400)  seq of 8 + 9 coins(FC is coin) +  full chest  (no extra points for 9 coins)
 
         Game.Dice[] riggedhand = {Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD};
@@ -287,7 +289,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row65() {
+    public void row65() {
         //score set of 8 coins on first roll and FC is diamond (SC 5400)
 
         Game.Dice[] riggedhand = {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
@@ -302,7 +304,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row66() {
+    public void row66() {
         //score set of 8 swords on first roll and FC is captain (SC 4500x2 = 9000) since full chest
 
         Game.Dice[] riggedhand = {Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD};
@@ -317,7 +319,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row67() {
+    public void row67() {
         //roll 6 monkeys and 2 swords, reroll swords, get 2 monkeys, score (SC 4600 because of FC is coin and full chest)
         Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SWORD, Game.Dice.SWORD};
         Game.Dice[] firstReroll = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY};
@@ -336,7 +338,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row68() {
+    public void row68() {
         //roll 2 (monkeys/skulls/swords/parrots), reroll parrots, get 2 diamonds, score with FC is diamond (SC 400)
         Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.PARROT, Game.Dice.PARROT};
         Game.Dice[] firstReroll = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
@@ -356,7 +358,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row69() {
+    public void row69() {
         //roll 2 (monkeys, skulls, swords), 1 diamond, 1 parrot, reroll 2 monkeys, get 2 diamonds, score 500
         Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.DIAMOND, Game.Dice.PARROT};
         Game.Dice[] firstReroll = {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.DIAMOND, Game.Dice.PARROT};
@@ -375,7 +377,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row70() {
+    public void row70() {
         //roll 1 skull, 2 coins, 1 (monkey/parrot), 3 swords, reroll 3 swords, get 1 (coin/monkey/parrot)  (SC 600)
         Game.Dice[] riggedhand = {Game.Dice.SKULL, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.MONKEY, Game.Dice.PARROT, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD};
         Game.Dice[] firstReroll = {Game.Dice.SKULL, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.MONKEY, Game.Dice.PARROT, Game.Dice.GOLD, Game.Dice.MONKEY, Game.Dice.PARROT};
@@ -394,7 +396,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row71() {
+    public void row71() {
         //roll 1 skull, 2 coins, 1 (monkey/parrot), 3 swords, reroll swords, get 1 (coin/monkey/parrot) with FC is diamond (SC 500)
         Game.Dice[] riggedhand = {Game.Dice.SKULL, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.MONKEY, Game.Dice.PARROT, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD};
         Game.Dice[] firstReroll = {Game.Dice.SKULL, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.MONKEY, Game.Dice.PARROT, Game.Dice.GOLD, Game.Dice.MONKEY, Game.Dice.PARROT};
@@ -412,7 +414,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row72() {
+    public void row72() {
         //get 4 monkeys, 2 coins and 2 skulls with FC coin. Score 600
 
         Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.SKULL, Game.Dice.SKULL};
@@ -427,7 +429,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row77(){
+    public void row77(){
         //roll 2 diamonds, 1 (sword/monkey/coin), 3 parrots, reroll 3 parrots, get 1 skull, 2 monkeys, reroll skull, get monkey (SC 500)
         Game.Dice[] riggedhand = {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.SWORD, Game.Dice.MONKEY, Game.Dice.GOLD, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT};
         Game.Dice[] firstReroll = {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.SWORD, Game.Dice.MONKEY, Game.Dice.GOLD, Game.Dice.SKULL, Game.Dice.MONKEY, Game.Dice.MONKEY};
@@ -448,7 +450,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row78(){
+    public void row78(){
         //roll 3 skulls, 3 parrots, 2 swords, reroll skull, get parrot, reroll 2 swords, get parrots, score (SC 1000)
         Game.Dice[] riggedhand = {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SWORD, Game.Dice.SWORD};
         Game.Dice[] firstReroll = {Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT};
@@ -469,7 +471,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row79(){
+    public void row79(){
         //roll 1 skull, 4 parrots, 3 monkeys, reroll 3 monkeys, get 1 skull, 2 parrots, reroll skull, get parrot, score (SC 2000)
         Game.Dice[] riggedhand = {Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY};
         Game.Dice[] firstReroll = {Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT};
@@ -490,7 +492,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row82(){
+    public void row82(){
         //roll 3 monkeys 3 parrots  1 skull 1 coin  SC = 1100  (i.e., sequence of of 6 + coin)
         Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.GOLD};
         Game.FortuneCard riggCard =  Game.FortuneCard.MONKEYBUSINESS;
@@ -504,7 +506,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row83(){
+    public void row83(){
         //roll 2 (monkeys/swords/parrots/coins), reroll 2 swords, get 1 monkey, 1 parrot, score 1700
         Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.GOLD, Game.Dice.GOLD};
         Game.Dice[] firstReroll = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.GOLD, Game.Dice.GOLD};
@@ -522,7 +524,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row84(){
+    public void row84(){
         //roll 3 skulls, 3 monkeys, 2 parrots => die scoring 0
         Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT};
         Game.FortuneCard riggCard =  Game.FortuneCard.MONKEYBUSINESS;
@@ -537,7 +539,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row97(){
+    public void row97(){
         //3 monkeys, 3 swords, 1 diamond, 1 parrot FC: coin   => SC 400  (ie no bonus)
         Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.DIAMOND, Game.Dice.PARROT};
         Game.FortuneCard riggCard =  Game.FortuneCard.GOLD;
@@ -551,7 +553,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row98(){
+    public void row98(){
         //3 monkeys, 3 swords, 2 coins FC: captain   => SC (100+100+200+500)*2 =  1800
         Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.GOLD, Game.Dice.GOLD};
         Game.FortuneCard riggCard =  Game.FortuneCard.CAPTAIN;
@@ -567,7 +569,7 @@ class AcceptanceTest {
 
 
     @Test
-    void row99(){
+    public void row99(){
         //3 monkeys, 4 swords, 1 diamond, FC: coin   => SC 1000  (ie 100++200+100+100+bonus)
 
         Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.DIAMOND};
@@ -582,7 +584,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row100(){
+    public void row100(){
         //FC: 2 sword sea battle, first  roll:  4 monkeys, 1 sword, 2 parrots and a coin
         //     then reroll 2 parrots and get 2nd coin and 2nd sword
         //     score is: 200 (coins) + 200 (monkeys) + 300 (swords of battle) + 500 (full chest) = 1200
@@ -603,7 +605,7 @@ class AcceptanceTest {
     }
 
     @Test
-    void row103(){
+    public void row103(){
         //FC: monkey business and roll 2 monkeys, 1 parrot, 2 coins, 3 diamonds   SC 1200
         Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.PARROT, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
         Game.FortuneCard riggCard =  Game.FortuneCard.MONKEYBUSINESS;

@@ -1,10 +1,10 @@
 package org.example;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class GameTest {
+public class GameTest {
 
     @Test
     public void scorePointsTest(){
@@ -122,7 +122,7 @@ class GameTest {
     }
 
     @Test
-    void rollDiceTest() {
+    public void rollDiceTest() {
         Game game = new Game();
         Game.Dice[] hand ={Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
         assertArrayEquals(hand,game.rollDice(new Game.Dice[]{Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD},hand));
@@ -132,7 +132,7 @@ class GameTest {
     }
 
     @Test
-    void sorceressReroleTest() {
+    public void sorceressReroleTest() {
         Game game = new Game();
         Game.Dice[] hand ={Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
         assertArrayEquals(new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.PARROT, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND},game.sorceressReroll(hand,Game.Dice.PARROT));
@@ -141,14 +141,14 @@ class GameTest {
     }
 
     @Test
-    void pickCardTest() {
+    public void pickCardTest() {
         Game game = new Game();
         assertEquals(Game.FortuneCard.CAPTAIN,Game.pickCard(Game.FortuneCard.CAPTAIN));
 
     }
 
     @Test
-    void isContainSkullTest() {
+    public void isContainSkullTest() {
         Game game = new Game();
         Game.Dice[] hand ={Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
         assertEquals(true,game.isContainSkull(hand));
@@ -159,7 +159,7 @@ class GameTest {
 
 
     @Test
-    void getSavedDiceForTCTest() {
+    public void getSavedDiceForTCTest() {
         Game game = new Game();
 
         Game.Dice[] hand ={Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
@@ -176,7 +176,7 @@ class GameTest {
     }
 
     @Test
-    void changeDiceToNullTest() {
+    public void changeDiceToNullTest() {
         Game game = new Game();
         int[] empty = {};
 
@@ -203,7 +203,7 @@ class GameTest {
     }
 
     @Test
-    void changeNullToDiceTest() {
+    public void changeNullToDiceTest() {
         Game game = new Game();
 
         Game.Dice[] playerHand = {null,null,null,Game.Dice.GOLD,Game.Dice.GOLD,Game.Dice.GOLD,Game.Dice.GOLD,Game.Dice.GOLD};
@@ -220,7 +220,7 @@ class GameTest {
     }
 
     @Test
-    void isDeadTest() {
+    public void isDeadTest() {
         Game game = new Game();
 
         //-1: dead, 0: island of dead, 1: alive
@@ -265,7 +265,7 @@ class GameTest {
     }
 
     @Test
-    void getWinnerTest() {
+    public void getWinnerTest() {
         Game game = new Game();
         assertEquals(2,game.getWinnerIndex(new int[]{2000, 2300, 3200}));
         assertEquals(0,game.getWinnerIndex(new int[]{4000, 2300, 3200}));
@@ -277,7 +277,7 @@ class GameTest {
     }
 
     @Test
-    void didReachWinThreshold() {
+    public void didReachWinThreshold() {
         Game game = new Game();
         assertEquals(true,game.didReachWinThreshold(3000,new int[]{2000, 2300, 3000}));
         assertEquals(true,game.didReachWinThreshold(3000,new int[]{2000, 2300, 3001}));
@@ -288,7 +288,7 @@ class GameTest {
     }
 
     @Test
-    void getScoreDeductionTest() {
+    public void getScoreDeductionTest() {
         Game game = new Game();
         // no deduction
         assertEquals(0,game.getScoreDeduction(0, Game.FortuneCard.DIAMOND));
@@ -300,7 +300,7 @@ class GameTest {
     }
 
     @Test
-    void reducePlayersScoreTest() {
+    public void reducePlayersScoreTest() {
         Game game = new Game();
 
         int playerScore = 1200;
@@ -314,7 +314,7 @@ class GameTest {
     }
 
     @Test
-    void didWinSeaBattleTest() {
+    public void didWinSeaBattleTest() {
         Game game = new Game();
 
         //2sword
@@ -365,7 +365,7 @@ class GameTest {
     }
 
     @Test
-    void scoreSeabattleTest() {
+    public void scoreSeabattleTest() {
         Game game = new Game();
         //300
         //win

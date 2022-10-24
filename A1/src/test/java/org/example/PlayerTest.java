@@ -1,15 +1,15 @@
 package org.example;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PlayerTest {
+public class PlayerTest {
 
     @Test
-    void lockInPoints() {
+    public void lockInPoints() {
         Player p1 = new Player("p1");
         p1.roundStarting(new Game.Dice[]{},null);
 
@@ -44,7 +44,7 @@ class PlayerTest {
     }
 
     @Test
-    void playerReroll() {
+    public void playerReroll() {
         Player p1 = new Player("p1");
         p1.roundStarting(new Game.Dice[]{},null);
         p1.setPlayerRoll(new Game.Dice[] {Game.Dice.PARROT, Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT});
@@ -56,7 +56,7 @@ class PlayerTest {
     }
 
     @Test
-    void roundStarting() {
+    public void roundStarting() {
         Player p1 = new Player("p1");
         p1.roundStarting(new Game.Dice[]{},null);
 
@@ -79,7 +79,7 @@ class PlayerTest {
     }
 
     @Test
-    void rerollSkull() {
+    public void rerollSkull() {
         Player p1 = new Player("p1");
         p1.setFc(Game.FortuneCard.SORCERESS);
         p1.setPlayerRoll(new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT});
@@ -91,7 +91,7 @@ class PlayerTest {
     }
 
     @Test
-    void saveDice() {
+    public void saveDice() {
         Player p1 = new Player("p1");
         p1.setFc(Game.FortuneCard.SORCERESS);
         p1.setPlayerRoll(new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT});
@@ -110,7 +110,7 @@ class PlayerTest {
     }
 
     @Test
-    void removeFromChest() {
+    public void removeFromChest() {
         Player p1 = new Player("p1");
         p1.setFc(Game.FortuneCard.SORCERESS);
         Game.Dice[] playerRoll = new Game.Dice[]{Game.Dice.DIAMOND, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT};
@@ -126,7 +126,7 @@ class PlayerTest {
     }
 
     @Test
-    void skullIslandRoll() {
+    public void skullIslandRoll() {
         Player p1 = new Player("p1");
         Game.Dice[] roll = new Game.Dice[] {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.PARROT, Game.Dice.PARROT};
 
@@ -147,7 +147,7 @@ class PlayerTest {
 
 
     @Test
-    void promptUI() {
+    public void promptUI() {
         Player p1 = new Player("p1");
         p1.roundStarting(new Game.Dice[]{},null);
 
@@ -195,7 +195,7 @@ class PlayerTest {
     }
 
     @Test
-    void validateRerollInput() {
+    public void validateRerollInput() {
         Player p1 = new Player("p1");
         p1.setPlayerRoll(new Game.Dice[]{Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT});
         int[] result = p1.validateRerollInput("0,1,2");
@@ -238,7 +238,7 @@ class PlayerTest {
     }
 
     @Test
-    void status() {
+    public void status() {
         Player p1 = new Player("p1");
         assertEquals("Player turn started\n",p1.status(1));
         assertEquals("Player has died\n",p1.status(2));
@@ -252,7 +252,7 @@ class PlayerTest {
     }
 
     @Test
-    void doOption() {
+    public void doOption() {
         Player p1 = new Player("p1");
         p1.roundStarting(new Game.Dice[]{}, null);
         p1.doOption(3,new Game.Dice[] {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND}, Game.FortuneCard.MONKEYBUSINESS,null,null);
