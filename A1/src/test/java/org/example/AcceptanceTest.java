@@ -564,4 +564,20 @@ class AcceptanceTest {
         assertEquals(1800,p1.getScore());
 
     }
+
+
+    @Test
+    void row99(){
+        //3 monkeys, 4 swords, 1 diamond, FC: coin   => SC 1000  (ie 100++200+100+100+bonus)
+
+        Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.DIAMOND};
+        Game.FortuneCard riggCard =  Game.FortuneCard.GOLD;
+
+        Player p1 = new Player("p1");
+
+        p1.roundStarting(riggedhand,riggCard);
+
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null,null,null);
+        assertEquals(1000,p1.getScore());
+    }
 }
