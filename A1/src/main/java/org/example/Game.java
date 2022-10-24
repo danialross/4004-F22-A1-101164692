@@ -70,6 +70,7 @@ public class Game {
 
        if(fc == FortuneCard.GOLD){
            numOfRepeats[2]++;
+
        }else if(fc == FortuneCard.DIAMOND){
            numOfRepeats[1]++;
        }
@@ -115,20 +116,28 @@ public class Game {
                 score += 200;
                 numOfDiceWithSet += 4;
 
-            }else if(numOfRepeats[j] == 3 ){
+            }else if(numOfRepeats[j] == 3 ) {
                 score += 100;
                 numOfDiceWithSet += 3;
-
             }
         }
+
+
+
 
         //add diamonds
         score += (numOfRepeats[1]*100);
         //add gold coins
         score += (numOfRepeats[2]*100);
 
-       if( (numOfRepeats[2]>=3 && fc == FortuneCard.GOLD) || (numOfRepeats[1]>=3 && fc == FortuneCard.DIAMOND)){
+       if( (numOfRepeats[2]>=1 && fc == FortuneCard.GOLD) || (numOfRepeats[1]>=1 && fc == FortuneCard.DIAMOND)){
            numOfDiceWithSet--;
+       }
+       if(numOfRepeats[1] < 3){
+           numOfDiceWithSet += numOfRepeats[1];
+
+       } if(numOfRepeats[2] < 3){
+           numOfDiceWithSet += numOfRepeats[2];
        }
 
        if(numOfDiceWithSet == 8){
