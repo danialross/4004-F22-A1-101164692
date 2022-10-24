@@ -385,7 +385,7 @@ public class Player {
         return condition;
     }
 
-    public void doOption(int option, Game.Dice[] rigHand, Game.FortuneCard rigCard,int[] savedIndex){
+    public void doOption(int option, Game.Dice[] rigHand, Game.FortuneCard rigCard,int[] savedIndex,Game.Dice rigSorceressDice){
 
         if(rigHand.length != 0){
             playerRoll = rigHand;
@@ -414,7 +414,12 @@ public class Player {
             }
         }else if(option == 4){
             if(fc == Game.FortuneCard.SORCERESS && game.isContainSkull(playerRoll)){
-                rerollSkull(null);
+                if(rigSorceressDice != null){
+                    rerollSkull(rigSorceressDice);
+                }else{
+                    rerollSkull(null);
+                }
+
 
             }else{
                 if(savedIndex != null){
