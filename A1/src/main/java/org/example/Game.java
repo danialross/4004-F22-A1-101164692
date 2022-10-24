@@ -265,6 +265,8 @@ public class Game {
             numSkull++;
         }else if( fc == FortuneCard.SKULLX2){
             numSkull += 2;
+        }else if( fc == FortuneCard.SORCERESS) {
+            numSkull--;
         }
 
         if(fc == FortuneCard.SEABATTLEX3SWORDS || fc == FortuneCard.SEABATTLEX2SWORDS || fc == FortuneCard.SEABATTLEX4SWORDS){

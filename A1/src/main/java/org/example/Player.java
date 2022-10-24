@@ -222,9 +222,14 @@ public class Player {
         }
 
         System.out.println("Select an action:");
-        System.out.println("1. Choose dice to roll again");
-        System.out.println("2. Reroll all dice");
-        System.out.println("3. Score with current hand");
+        if(fc == Game.FortuneCard.SORCERESS && game.calcNumSkull(playerRoll)>=3){
+            //dont show ui, force skull reroll
+        }else{
+            System.out.println("1. Choose dice to roll again");
+            System.out.println("2. Reroll all dice");
+            System.out.println("3. Score with current hand");
+        }
+
 
         if(fc == Game.FortuneCard.SORCERESS && game.isContainSkull(playerRoll)){
             System.out.println("4. Reroll a skull");
@@ -264,10 +269,11 @@ public class Player {
                 return -555;
             }
 
-            System.out.println("Select an action:");
-            System.out.println("1. Choose dice to roll again");
-            System.out.println("2. Reroll all dice");
-            System.out.println("3. Score with current hand");
+            if(fc != Game.FortuneCard.SORCERESS && game.calcNumSkull(playerRoll)<3){
+                System.out.println("1. Choose dice to roll again");
+                System.out.println("2. Reroll all dice");
+                System.out.println("3. Score with current hand");
+            }
             if(fc == Game.FortuneCard.SORCERESS && game.isContainSkull(playerRoll)){
                 System.out.println("4. Reroll a skull");
             }
