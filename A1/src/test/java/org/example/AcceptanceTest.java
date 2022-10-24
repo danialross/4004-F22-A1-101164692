@@ -520,4 +520,20 @@ class AcceptanceTest {
 
         assertEquals(1700,p1.getScore());
     }
+
+    @Test
+    void row84(){
+        //roll 3 skulls, 3 monkeys, 2 parrots => die scoring 0
+        Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT};
+        Game.FortuneCard riggCard =  Game.FortuneCard.MONKEYBUSINESS;
+
+        Player p1 = new Player("p1");
+
+        p1.roundStarting(riggedhand,riggCard);
+
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null,null,null);
+        assertEquals(0,p1.getScore());
+
+    }
+
 }
