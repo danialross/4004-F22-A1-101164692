@@ -488,4 +488,36 @@ class AcceptanceTest {
 
         assertEquals(2000,p1.getScore());
     }
+
+    @Test
+    void row82(){
+        //roll 3 monkeys 3 parrots  1 skull 1 coin  SC = 1100  (i.e., sequence of of 6 + coin)
+        Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.GOLD};
+        Game.FortuneCard riggCard =  Game.FortuneCard.MONKEYBUSINESS;
+
+        Player p1 = new Player("p1");
+
+        p1.roundStarting(riggedhand,riggCard);
+
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null,null,null);
+        assertEquals(1100,p1.getScore());
+    }
+
+    @Test
+    void row83(){
+        //roll 2 (monkeys/swords/parrots/coins), reroll 2 swords, get 1 monkey, 1 parrot, score 1700
+        Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.GOLD, Game.Dice.GOLD};
+        Game.Dice[] firstReroll = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.GOLD, Game.Dice.GOLD};
+        Game.FortuneCard riggCard =  Game.FortuneCard.MONKEYBUSINESS;
+
+        Player p1 = new Player("p1");
+
+        p1.roundStarting(riggedhand,riggCard);
+
+        p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("0,1,4,5,6,7"),null);
+
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null, null,null);
+
+        assertEquals(1700,p1.getScore());
+    }
 }
