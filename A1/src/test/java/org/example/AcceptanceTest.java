@@ -580,4 +580,18 @@ class AcceptanceTest {
         p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null,null,null);
         assertEquals(1000,p1.getScore());
     }
+
+    @Test
+    void row103(){
+        //FC: monkey business and roll 2 monkeys, 1 parrot, 2 coins, 3 diamonds   SC 1200
+        Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.PARROT, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
+        Game.FortuneCard riggCard =  Game.FortuneCard.MONKEYBUSINESS;
+
+        Player p1 = new Player("p1");
+
+        p1.roundStarting(riggedhand,riggCard);
+
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null,null,null);
+        assertEquals(1200,p1.getScore());
+    }
 }
