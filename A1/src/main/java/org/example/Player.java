@@ -69,13 +69,28 @@ public class Player {
         this.name = name;
         score = 0;
     }
-    public void roundStarting(){
+    public void roundStarting(Game.Dice[] riggedhand, Game.FortuneCard riggedCard){
 
         Game.Dice[] init = {Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND};
         Game.Dice[] empty = {};
 
-        playerRoll = game.rollDice(init,empty);
-        fc = Game.pickCard(null);
+        if(riggedhand.length != 0) {
+            playerRoll = game.rollDice(empty, riggedhand);
+
+        }else{
+            playerRoll = game.rollDice(init, empty);
+        }
+
+
+        if (riggedCard != null) {
+            fc = Game.pickCard(riggedCard);
+        }else{
+            fc = Game.pickCard(null);
+        }
+
+
+
+
 
         for( int i = 0; i<players.length; i++){
 

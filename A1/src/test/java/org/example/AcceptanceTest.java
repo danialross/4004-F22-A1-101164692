@@ -12,11 +12,8 @@ class AcceptanceTest {
         Game.FortuneCard riggedCard = Game.FortuneCard.GOLD;
 
         Player p1 = new Player("p1");
-        p1.roundStarting();
-
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggedCard);
-
+        p1.roundStarting(new Game.Dice[]{},null);
+        p1.roundStarting(riggedhand,riggedCard);
         assertEquals(-1, p1.promptUI(null));
     }
 
@@ -26,12 +23,9 @@ class AcceptanceTest {
         Game.Dice[] riggedReroll = {Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD};
         Game.FortuneCard riggedCard = Game.FortuneCard.GOLD;
         //roll 1 skull, 4 parrots, 3 swords, reroll 3 swords, get 2 skulls 1 sword  die
+
         Player p1 = new Player("p1");
-        p1.roundStarting();
-
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggedCard);
-
+        p1.roundStarting(riggedhand,riggedCard);
         p1.doOption(p1.promptUI("1"),riggedReroll,null, p1.validateRerollInput("1,2,3,4"),null);
 
         assertEquals(-1, p1.promptUI(null));
@@ -47,10 +41,7 @@ class AcceptanceTest {
         //roll 2 skulls, 4 parrots, 2 swords, reroll swords, get 1 skull 1 sword  die
 
         Player p1 = new Player("p1");
-        p1.roundStarting();
-
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggedCard);
+        p1.roundStarting(riggedhand,riggedCard);
 
         p1.doOption(p1.promptUI("1"),riggedReroll,null, p1.validateRerollInput("2,3,4,5"),null);
 
@@ -70,10 +61,7 @@ class AcceptanceTest {
 
 
         Player p1 = new Player("p1");
-        p1.roundStarting();
-
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggedCard);
+        p1.roundStarting(riggedhand,riggedCard);
 
         p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("1,2,3,4"),null);
 
@@ -89,14 +77,11 @@ class AcceptanceTest {
         Game.Dice[] riggedhand = {Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.GOLD, Game.Dice.GOLD};
         Game.Dice[] firstReroll = {Game.Dice.SKULL, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.GOLD, Game.Dice.GOLD};
         Game.Dice[] secondReroll = {Game.Dice.SKULL, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD};
-        Game.FortuneCard riggCard =  Game.FortuneCard.GOLD;
+        Game.FortuneCard riggedCard =  Game.FortuneCard.GOLD;
         //roll 1 skull, 2 parrots, 3 swords, 2 coins, reroll parrots get 2 coins
         Player p1 = new Player("p1");
         Game game = p1.game;
-        p1.roundStarting();
-
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggCard);
+        p1.roundStarting(riggedhand,riggedCard);
 
         p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("3,4,5,6,7"),null);
 
@@ -111,13 +96,10 @@ class AcceptanceTest {
     @Test
     void row52() {
         Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.GOLD, Game.Dice.GOLD};
-        Game.FortuneCard riggCard =  Game.FortuneCard.CAPTAIN;
+        Game.FortuneCard riggedCard =  Game.FortuneCard.CAPTAIN;
         //score first roll with 2 (monkeys/parrot/diamonds/coins) and FC is captain (SC 800)
         Player p1 = new Player("p1");
-        p1.roundStarting();
-
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggCard);
+        p1.roundStarting(riggedhand,riggedCard);
 
         p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null, null,null);
 
@@ -128,13 +110,10 @@ class AcceptanceTest {
     void row53() {
         Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.PARROT, Game.Dice.PARROT};
         Game.Dice[] firstReroll = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.MONKEY};
-        Game.FortuneCard riggCard =  Game.FortuneCard.GOLD;
+        Game.FortuneCard riggedCard =  Game.FortuneCard.GOLD;
         //roll 2 (monkeys/skulls/swords/parrots), reroll parrots and get 1 sword & 1 monkey (SC 300 since FC is coin)
         Player p1 = new Player("p1");
-        p1.roundStarting();
-
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggCard);
+        p1.roundStarting(riggedhand,riggedCard);
 
         p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("0,1,4,5"),null);
 
@@ -148,13 +127,10 @@ class AcceptanceTest {
     @Test
     void row54(){
         Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SKULL, Game.Dice.SKULL};
-        Game.FortuneCard riggCard =  Game.FortuneCard.GOLD;
+        Game.FortuneCard riggedCard =  Game.FortuneCard.GOLD;
         //roll 3 (monkey, swords) + 2 skulls and score   (SC 300)
         Player p1 = new Player("p1");
-        p1.roundStarting();
-
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggCard);
+        p1.roundStarting(riggedhand,riggedCard);
 
 
         p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null, null,null);
@@ -169,8 +145,7 @@ class AcceptanceTest {
         //roll 3 diamonds, 2 skulls, 1 monkey, 1 sword, 1 parrot, score (diamonds = 100 + 300 points)   (SC 500)
         Player p1 = new Player("p1");
 
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggCard);
+        p1.roundStarting(riggedhand,riggCard);
 
         p1.promptUI("3");
         p1.doOption(3,new Game.Dice[]{},null, null,null);
@@ -186,8 +161,7 @@ class AcceptanceTest {
         //roll 4 coins, 2 skulls, 2 swords and score (coins: 200 + 400 points) with FC is a diamond (SC 700)
         Player p1 = new Player("p1");
 
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggCard);
+        p1.roundStarting(riggedhand,riggCard);
 
         p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null, null,null);
 
@@ -203,8 +177,7 @@ class AcceptanceTest {
         //roll 3 swords, 4 parrots, 1 skull and score (SC 100+200+100= 400)
         Player p1 = new Player("p1");
 
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggCard);
+        p1.roundStarting(riggedhand,riggCard);
 
         p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null, null,null);
 
@@ -219,8 +192,7 @@ class AcceptanceTest {
         //roll 1 skull, 2 coins/parrots & 3 swords,
         Player p1 = new Player("p1");
 
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggCard);
+        p1.roundStarting(riggedhand,riggCard);
 
         p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("1,2,5,6,7"),null);
 
@@ -238,8 +210,7 @@ class AcceptanceTest {
         //roll 1 skull, 2 coins/parrots & 3 swords,
         Player p1 = new Player("p1");
 
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggCard);
+        p1.roundStarting(riggedhand,riggCard);
 
         p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("1,2,5,6,7"),null);
 
@@ -258,8 +229,7 @@ class AcceptanceTest {
         // roll 1 skull, 2 (monkeys/parrots) 3 swords, reroll 2 monkeys, get 1 skull 1 sword, then reroll parrots get 1 sword 1 monkey (SC 600)
         Player p1 = new Player("p1");
 
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggCard);
+        p1.roundStarting(riggedhand,riggCard);
 
         p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("3,4,5,6,7"),null);
 
@@ -277,8 +247,7 @@ class AcceptanceTest {
 
         Player p1 = new Player("p1");
 
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggCard);
+        p1.roundStarting(riggedhand,riggCard);
 
         p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null,null,null);
         assertEquals(1100,p1.getScore());
@@ -294,8 +263,7 @@ class AcceptanceTest {
 
         Player p1 = new Player("p1");
 
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggCard);
+        p1.roundStarting(riggedhand,riggCard);
 
         p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null,null,null);
         assertEquals(2100,p1.getScore());
@@ -311,8 +279,7 @@ class AcceptanceTest {
 
         Player p1 = new Player("p1");
 
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggCard);
+        p1.roundStarting(riggedhand,riggCard);
 
         p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null,null,null);
         assertEquals(5400,p1.getScore());
@@ -328,8 +295,7 @@ class AcceptanceTest {
 
         Player p1 = new Player("p1");
 
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggCard);
+        p1.roundStarting(riggedhand,riggCard);
 
         p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null,null,null);
         assertEquals(5400,p1.getScore());
@@ -344,8 +310,7 @@ class AcceptanceTest {
 
         Player p1 = new Player("p1");
 
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggCard);
+        p1.roundStarting(riggedhand,riggCard);
 
         p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null,null,null);
         assertEquals(9000,p1.getScore());
@@ -360,8 +325,7 @@ class AcceptanceTest {
 
         Player p1 = new Player("p1");
 
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggCard);
+        p1.roundStarting(riggedhand,riggCard);
 
         p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("0,1,2,3,4,5"),null);
 
@@ -380,8 +344,7 @@ class AcceptanceTest {
 
         Player p1 = new Player("p1");
 
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggCard);
+        p1.roundStarting(riggedhand,riggCard);
 
         p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("0,1,4,5"),null);
 
@@ -401,8 +364,7 @@ class AcceptanceTest {
 
         Player p1 = new Player("p1");
 
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggCard);
+        p1.roundStarting(riggedhand,riggCard);
 
         p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("4,5,6,7"),null);
 
@@ -421,8 +383,7 @@ class AcceptanceTest {
 
         Player p1 = new Player("p1");
 
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggCard);
+        p1.roundStarting(riggedhand,riggCard);
 
         p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("1,2,3,4"),null);
 
@@ -441,8 +402,7 @@ class AcceptanceTest {
 
         Player p1 = new Player("p1");
 
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggCard);
+        p1.roundStarting(riggedhand,riggCard);
 
         p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("1,2,3,4"),null);
 
@@ -460,8 +420,7 @@ class AcceptanceTest {
 
         Player p1 = new Player("p1");
 
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggCard);
+        p1.roundStarting(riggedhand,riggCard);
 
         p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null,null,null);
         assertEquals(600,p1.getScore());
@@ -477,8 +436,7 @@ class AcceptanceTest {
 
         Player p1 = new Player("p1");
 
-        p1.setPlayerRoll(riggedhand);
-        p1.setFc(riggCard);
+        p1.roundStarting(riggedhand,riggCard);
 
         p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("0,1,2,3,4"),null);
 

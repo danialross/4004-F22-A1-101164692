@@ -11,7 +11,7 @@ class PlayerTest {
     @Test
     void lockInPoints() {
         Player p1 = new Player("p1");
-        p1.roundStarting();
+        p1.roundStarting(new Game.Dice[]{},null);
 
         // test rigging hand
         Game.Dice[] hand = {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
@@ -46,7 +46,7 @@ class PlayerTest {
     @Test
     void playerReroll() {
         Player p1 = new Player("p1");
-        p1.roundStarting();
+        p1.roundStarting(new Game.Dice[]{},null);
         p1.setPlayerRoll(new Game.Dice[] {Game.Dice.PARROT, Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT});
 
         Game.Dice[] hand = {Game.Dice.DIAMOND, null,null,null,null,null,null,null,};
@@ -58,7 +58,7 @@ class PlayerTest {
     @Test
     void roundStarting() {
         Player p1 = new Player("p1");
-        p1.roundStarting();
+        p1.roundStarting(new Game.Dice[]{},null);
 
         //initialize player roll
         assertTrue(p1.getPlayerRoll() != null);
@@ -68,6 +68,12 @@ class PlayerTest {
         assertTrue(p1.getPlayers()[0] != null);
         assertTrue(p1.getPlayers()[1] != null);
         assertTrue(p1.getPlayers()[2] != null);
+
+        Game.Dice[] riggedhand = {Game.Dice.DIAMOND, Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT,Game.Dice.PARROT};
+        Game.FortuneCard riggCard = Game.FortuneCard.GOLD;
+        p1.roundStarting(riggedhand,riggCard);
+        assertEquals(riggCard,p1.getFc());
+        assertArrayEquals(riggedhand,p1.getPlayerRoll());
 
 
     }
@@ -143,7 +149,7 @@ class PlayerTest {
     @Test
     void promptUI() {
         Player p1 = new Player("p1");
-        p1.roundStarting();
+        p1.roundStarting(new Game.Dice[]{},null);
 
         p1.setPlayerRoll(new Game.Dice[]{Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SWORD});
         p1.setFc(Game.FortuneCard.GOLD);
@@ -248,7 +254,7 @@ class PlayerTest {
     @Test
     void doOption() {
         Player p1 = new Player("p1");
-        p1.roundStarting();
+        p1.roundStarting(new Game.Dice[]{},null);
         p1.doOption(3,new Game.Dice[] {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND}, Game.FortuneCard.MONKEYBUSINESS,null,null);
         assertEquals(5300,p1.getScore());
 
