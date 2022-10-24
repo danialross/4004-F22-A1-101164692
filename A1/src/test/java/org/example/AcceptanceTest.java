@@ -467,5 +467,25 @@ class AcceptanceTest {
 
         assertEquals(1000,p1.getScore());
     }
-    
+
+    @Test
+    void row79(){
+        //roll 1 skull, 4 parrots, 3 monkeys, reroll 3 monkeys, get 1 skull, 2 parrots, reroll skull, get parrot, score (SC 2000)
+        Game.Dice[] riggedhand = {Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY};
+        Game.Dice[] firstReroll = {Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT};
+        Game.Dice skullReroll = Game.Dice.PARROT;
+        Game.FortuneCard riggCard =  Game.FortuneCard.SORCERESS;
+
+        Player p1 = new Player("p1");
+
+        p1.roundStarting(riggedhand,riggCard);
+
+        p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("1,2,3,4"),null);
+
+        p1.doOption(p1.promptUI("4"),new Game.Dice[]{},null,null,skullReroll);
+
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null, null,null);
+
+        assertEquals(2000,p1.getScore());
+    }
 }
