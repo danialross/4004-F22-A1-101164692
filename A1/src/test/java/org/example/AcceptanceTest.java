@@ -480,11 +480,11 @@ class AcceptanceTest {
         p1.setPlayerRoll(riggedhand);
         p1.setFc(riggCard);
 
-        p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("1,2,3,4"),null);
+        p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("0,1,2,3,4"),null);
 
-        p1.doOption(p1.promptUI("4"),new Game.Dice[]{},null, p1.validateRerollInput("1,2,3,4"),null);
+        p1.doOption(p1.promptUI("4"),new Game.Dice[]{},null,null,skullReroll);
 
-        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null, null,skullReroll);
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null, null,null);
 
         assertEquals(500,p1.getScore());
     }
