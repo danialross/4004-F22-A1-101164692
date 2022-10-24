@@ -582,6 +582,27 @@ class AcceptanceTest {
     }
 
     @Test
+    void row100(){
+        //FC: 2 sword sea battle, first  roll:  4 monkeys, 1 sword, 2 parrots and a coin
+        //     then reroll 2 parrots and get 2nd coin and 2nd sword
+        //     score is: 200 (coins) + 200 (monkeys) + 300 (swords of battle) + 500 (full chest) = 1200
+        Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SWORD, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.GOLD};
+        Game.Dice[] firstReroll = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.GOLD, Game.Dice.GOLD};
+        Game.FortuneCard riggCard =  Game.FortuneCard.SEABATTLEX2SWORDS;
+
+        Player p1 = new Player("p1");
+
+        p1.roundStarting(riggedhand,riggCard);
+
+        p1.doOption(p1.promptUI("1"),firstReroll,null,p1.validateRerollInput("0,1,2,3,4,7"),null);
+
+        p1.doOption(p1.promptUI("3"),firstReroll,null,null,null);
+
+        assertEquals(1200,p1.getScore());
+
+    }
+
+    @Test
     void row103(){
         //FC: monkey business and roll 2 monkeys, 1 parrot, 2 coins, 3 diamonds   SC 1200
         Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.PARROT, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
