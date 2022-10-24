@@ -95,6 +95,13 @@ public class Game {
         }
 
         int numOfDiceWithSet = 0;
+
+
+        if(numOfRepeats[3] == 2 && fc == FortuneCard.SEABATTLEX2SWORDS ){
+            numOfDiceWithSet += numOfRepeats[3];
+        }
+
+
         for(int j = 0; j<numOfRepeats.length; j++){
             if(numOfRepeats[j] >= 8){
                 score += 4000;
