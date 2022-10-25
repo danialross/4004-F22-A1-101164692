@@ -101,8 +101,17 @@ public class Player {
 
 
     public void checkDead(){
+        if(fc == Game.FortuneCard.SEABATTLEX2SWORDS || fc == Game.FortuneCard.SEABATTLEX3SWORDS || fc == Game.FortuneCard.SEABATTLEX4SWORDS){
+            if(game.didWinSeaBattle(playerRoll,fc) == false){
+                int amount = 0;
+                amount = game.reducePlayerScore(game.scoreSeabattle(playerRoll, fc),score);
+                score = amount;
+                System.out.println(status(7) + amount + " points \n");
+            }
+
+
+        }
         if(game.didDie(this.playerRoll,this.fc) == -1 ){
-            this.score = 0;
             System.out.println(status(2));
         }
     }
@@ -443,16 +452,11 @@ public class Player {
         }else if(option == 3){
             if(fc == Game.FortuneCard.SEABATTLEX2SWORDS || fc == Game.FortuneCard.SEABATTLEX3SWORDS || fc == Game.FortuneCard.SEABATTLEX4SWORDS ){
 
-                int amount = 0;
-                amount = game.scoreSeabattle(playerRoll, fc);
-                score += amount;
-
                 if(game.didWinSeaBattle(playerRoll,fc) == true) {
-
+                    int amount = 0;
+                    amount = game.scoreSeabattle(playerRoll, fc);
+                    score += amount;
                     System.out.println(status(7) + amount + " points \n");
-                }else{
-
-                    System.out.println(status(3) + amount + " points \n");
                 }
 
             }else{
