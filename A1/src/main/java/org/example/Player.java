@@ -439,8 +439,81 @@ public class Player {
             fc = rigCard;
         }
 
+        if(option == -2){
+            status(4);
+            while(game.calcNumSkull(playerRoll)>0){
+                playerRoll = handWithoutSkull();
+                String hand = "|----Player Roll:----";
 
-        if(option == 1){
+                for(int i = 0; i<playerRoll.length; i++){
+                    if( i == playerRoll.length-1 ){
+                        hand += "["+playerRoll[i]+"]----|";
+                    }else{
+                        hand += "["+playerRoll[i]+"]----";
+                    }
+
+                }
+                System.out.println(hand);
+                System.out.println("|----Fortune Card:----"+ fc + "----|");
+                System.out.println(status(4));
+                System.out.println("1. Choose dice to roll again");
+                System.out.println("2. Reroll all dice");
+                System.out.println("3. Score with current hand");
+
+                Scanner scanner;
+                if(skullIslandOption != null){
+                    scanner = new Scanner(skullIslandOption);
+                }else{
+                    scanner = new Scanner(System.in);
+                }
+
+                int action;
+                if(scanner.hasNextInt()){
+                    action = scanner.nextInt();
+                }else {
+                    action = -1;
+                }
+
+                while (action < 0 || action > 3 ) {
+
+                    System.out.println("Invalid Option");
+                    System.out.println("Please Select 1, 2 or 3");
+
+                    scanner.next();
+                    if(scanner.hasNextInt()){
+                        action = scanner.nextInt();
+                    }else {
+                        action = -1;
+                    }
+
+                }
+
+                if(action == 1){
+
+                    if(savedIndex != null){
+                        playerReroll(savedIndex,rigHand);
+                    }else{
+                        playerReroll(validateRerollInput(null),new Game.Dice[]{});
+                    }
+
+                }else if(action == 2){
+                    if(rigHand != null) {
+                        playerReroll(new int[]{}, rigHand);
+                    }else{
+                        playerReroll(new int[]{}, new Game.Dice[]{});
+                    }
+
+                }else if (action == 3) {
+
+                    if (rigHand != null) {
+                        skullRollReducer(rigHand);
+                    } else {
+                        skullRollReducer(null);
+                    }
+                }
+            }
+
+        } else if(option == 1){
             if(rigHand.length != 0){
                 playerReroll(savedIndex,rigHand);
             }else{
