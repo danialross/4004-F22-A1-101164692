@@ -381,11 +381,12 @@ public class Player {
 
         String start = " turn started\n";
         String died = " has died\n";
-        String deduct = "'s score has been deducted";
+        String deduct = "'s score has been deducted by ";
         String skull = " has gone to Island Of the Dead\n";
         String end = " turn ended\n";
         String won = " has won!\n";
         String seaBattle = " is in a SeaBattle\n";
+        String increase = " scored ";
 
         if(code == 1){
             condition += start;
@@ -399,6 +400,8 @@ public class Player {
             condition += end;
         }else if(code == 6) {
             condition += won;
+        }else if(code == 7) {
+            condition += increase;
         }else {
             condition += seaBattle;
         }
@@ -429,9 +432,15 @@ public class Player {
         }else if(option == 3){
             if(fc == Game.FortuneCard.SEABATTLEX2SWORDS || fc == Game.FortuneCard.SEABATTLEX3SWORDS || fc == Game.FortuneCard.SEABATTLEX4SWORDS ){
                 if(game.didWinSeaBattle(playerRoll,fc) == true) {
-                    score += game.scoreSeabattle(playerRoll, fc);
+                    int plus = 0;
+                    plus = game.scoreSeabattle(playerRoll, fc);
+                    score += plus;
+                    System.out.println(status(7) + plus + " points \n");
                 }else{
-                    score = game.reducePlayerScore(game.scoreSeabattle(playerRoll,fc),score);
+                    int minus = 0;
+                    minus = game.reducePlayerScore(game.scoreSeabattle(playerRoll,fc),score);
+                    score = minus;
+                    System.out.println(status(3) + minus + " points \n");
                 }
 
             }else{
