@@ -289,4 +289,23 @@ public class PlayerTest {
         assertArrayEquals(new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.GOLD, Game.Dice.PARROT, Game.Dice.DIAMOND, Game.Dice.DIAMOND}, p1.getPlayerRoll());
 
     }
+
+    @Test
+    public void checkWinner() {
+        Player p1 = new Player("p1");
+        p1.setScore(2000);
+        Player p2 = new Player("p2");
+        p2.setScore(6000);
+        Player p3 = new Player("p3");
+        p3.setScore(3000);
+
+        p1.setPlayers(new Player[]{p1,p2,p3});
+        p2.setPlayers(new Player[]{p1,p2,p3});
+        p3.setPlayers(new Player[]{p1,p2,p3});
+
+        assertEquals(p2,p1.checkWinner());
+        assertEquals(p2,p2.checkWinner());
+        assertEquals(p2,p3.checkWinner());
+
+    }
 }

@@ -486,4 +486,9 @@ public class Player {
         }
     }
 
+    public Player checkWinner(){
+
+        return new Player("");
+    }
+
 }
