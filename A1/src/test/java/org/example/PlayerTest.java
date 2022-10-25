@@ -316,4 +316,16 @@ public class PlayerTest {
         assertEquals(null,p3.checkWinner());
 
     }
+
+    @Test
+    public void handWithoutSkull(){
+        Player p1 =  new Player("p1");
+
+        p1.roundStarting(new Game.Dice[] {Game.Dice.SKULL,Game.Dice.SKULL,Game.Dice.SKULL,Game.Dice.SKULL,Game.Dice.SKULL,Game.Dice.SKULL,Game.Dice.SKULL,Game.Dice.SKULL},null);
+        assertEquals(0,p1.handWithoutSkull().length);
+
+        p1.roundStarting(new Game.Dice[] {Game.Dice.SKULL,Game.Dice.SKULL,Game.Dice.SKULL,Game.Dice.SKULL,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND},null);
+        assertEquals(4,p1.handWithoutSkull().length);
+
+    }
 }

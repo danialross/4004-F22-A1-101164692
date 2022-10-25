@@ -495,7 +495,12 @@ public class Player {
         }else{
             return null;
         }
+    }
 
+    //when entering skull island player should not bring previously rolled skulls
+    public Game.Dice[] handWithoutSkull(){
+
+        return new Game.Dice[]{};
     }
 
 }
