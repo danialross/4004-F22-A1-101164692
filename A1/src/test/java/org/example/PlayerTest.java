@@ -269,16 +269,7 @@ public class PlayerTest {
         p1.setPlayerRoll(new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND});
         p1.doOption(4,new Game.Dice[] {},null,null,null);
         assertTrue(p1.getFc() == null);
-
-        p1.setFc(Game.FortuneCard.TREASURECHEST);
-        p1.setPlayerRoll(new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND});
-        p1.doOption(4,new Game.Dice[] {},null,new int[]{4,5},null);
-        assertArrayEquals(new int[]{4,5},p1.getSavedDicePos());
-
-        p1.setFc(Game.FortuneCard.TREASURECHEST);
-        p1.setPlayerRoll(new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND});
-        p1.doOption(4,new Game.Dice[] {},null,new int[]{4,5},null);
-        assertArrayEquals(new int[]{4,5},p1.getSavedDicePos());
+        
 
         p1.setFc(Game.FortuneCard.TREASURECHEST);
         p1.setSavedDicePos(new int[] {4,5});
