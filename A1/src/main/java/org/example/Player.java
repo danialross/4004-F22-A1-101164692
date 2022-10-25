@@ -430,7 +430,7 @@ public class Player {
         return condition;
     }
 
-    public void doOption(int option, Game.Dice[] rigHand, Game.FortuneCard rigCard,int[] savedIndex,Game.Dice rigSorceressDice){
+    public void doOption(int option, Game.Dice[] rigHand, Game.FortuneCard rigCard,int[] savedIndex,Game.Dice rigSorceressDice,String skullIslandOption){
 
         if(rigHand.length != 0){
             playerRoll = rigHand;
@@ -438,6 +438,7 @@ public class Player {
         if(rigCard != null){
             fc = rigCard;
         }
+
 
         if(option == 1){
             if(rigHand.length != 0){

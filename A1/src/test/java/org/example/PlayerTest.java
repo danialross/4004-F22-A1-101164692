@@ -250,32 +250,32 @@ public class PlayerTest {
     public void doOption() {
         Player p1 = new Player("p1");
         p1.roundStarting(new Game.Dice[]{}, null);
-        p1.doOption(3,new Game.Dice[] {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND}, Game.FortuneCard.MONKEYBUSINESS,null,null);
+        p1.doOption(3,new Game.Dice[] {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND}, Game.FortuneCard.MONKEYBUSINESS,null,null,null);
         assertEquals(5300,p1.getScore());
 
         p1.setScore(0);
-        p1.doOption(3,new Game.Dice[] {Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND}, Game.FortuneCard.SEABATTLEX2SWORDS,null,null);
+        p1.doOption(3,new Game.Dice[] {Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND}, Game.FortuneCard.SEABATTLEX2SWORDS,null,null,null);
         System.out.println(p1.getScore());
         assertEquals(2400,p1.getScore());
 
         p1.setPlayerRoll(new Game.Dice[] {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND});
-        p1.doOption(2,new Game.Dice[] {},null,null,null);
+        p1.doOption(2,new Game.Dice[] {},null,null,null,null);
         assertFalse(Arrays.equals(new Game.Dice[] {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND},p1.getPlayerRoll()));
 
         p1.setPlayerRoll(new Game.Dice[] {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND});
-        p1.doOption(1,new Game.Dice[] {},null,new int[]{0,1,2},null);
+        p1.doOption(1,new Game.Dice[] {},null,new int[]{0,1,2},null,null);
         assertFalse(Arrays.equals(new Game.Dice[] {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND},p1.getPlayerRoll()));
 
         p1.setFc(Game.FortuneCard.SORCERESS);
         p1.setPlayerRoll(new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND});
-        p1.doOption(4,new Game.Dice[] {},null,null,null);
+        p1.doOption(4,new Game.Dice[] {},null,null,null,null);
         assertTrue(p1.getFc() == null);
         p1.getPlayers()[0].setScore(400);
         p1.getPlayers()[1].setScore(400);
         p1.getPlayers()[2].setScore(400);
         p1.setFc(Game.FortuneCard.TREASURECHEST);
         p1.setPlayerRoll(new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND});
-        p1.doOption(-2,new Game.Dice[] {},null,null,null);
+        p1.doOption(-2,new Game.Dice[] {},null,null,null,null);
         assertEquals(400,p1.getPlayers()[0].getScore());
         assertEquals(0,p1.getPlayers()[1].getScore());
         assertEquals(0,p1.getPlayers()[2].getScore());
@@ -284,7 +284,7 @@ public class PlayerTest {
         p1.setSavedDicePos(new int[] {4,5});
         p1.setSavedDice(new Game.Dice[]{Game.Dice.GOLD,Game.Dice.PARROT});
         p1.setPlayerRoll(new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, null, null, Game.Dice.DIAMOND, Game.Dice.DIAMOND});
-        p1.doOption(5,new Game.Dice[] {},null,null,null);
+        p1.doOption(5,new Game.Dice[] {},null,null,null,null);
         assertEquals(null,p1.getSavedDicePos());
         assertArrayEquals(new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.GOLD, Game.Dice.PARROT, Game.Dice.DIAMOND, Game.Dice.DIAMOND}, p1.getPlayerRoll());
 
