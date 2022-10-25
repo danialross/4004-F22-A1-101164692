@@ -307,5 +307,13 @@ public class PlayerTest {
         assertEquals(p2,p2.checkWinner());
         assertEquals(p2,p3.checkWinner());
 
+        p1.setScore(2000);
+        p2.setScore(3000);
+        p3.setScore(1000);
+
+        assertEquals(null,p1.checkWinner());
+        assertEquals(null,p2.checkWinner());
+        assertEquals(null,p3.checkWinner());
+
     }
 }
