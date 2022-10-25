@@ -625,6 +625,7 @@ public class AcceptanceTest {
         Game.FortuneCard riggCard =  Game.FortuneCard.SEABATTLEX2SWORDS;
 
         Player p1 = new Player("p1");
+        p1.setScore(1);
 
         p1.roundStarting(riggedhand,riggCard);
 
@@ -641,6 +642,7 @@ public class AcceptanceTest {
         Game.FortuneCard riggCard =  Game.FortuneCard.SEABATTLEX3SWORDS;
 
         Player p1 = new Player("p1");
+        p1.setScore(1);
 
         p1.roundStarting(riggedhand,riggCard);
 
@@ -659,6 +661,7 @@ public class AcceptanceTest {
         Game.FortuneCard riggCard =  Game.FortuneCard.SEABATTLEX4SWORDS;
 
         Player p1 = new Player("p1");
+        p1.setScore(1);
 
         p1.roundStarting(riggedhand,riggCard);
 
@@ -724,6 +727,7 @@ public class AcceptanceTest {
         Game.FortuneCard riggCard =  Game.FortuneCard.SEABATTLEX3SWORDS;
 
         Player p1 = new Player("p1");
+        p1.setScore(1);
 
         p1.roundStarting(riggedhand,riggCard);
 
