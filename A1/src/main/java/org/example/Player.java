@@ -162,9 +162,10 @@ public class Player {
 
     }
 
-    public boolean skullIslandRoll(Game.Dice[] riggedDice){
+    // minus other players score from skull roll result
+    public void skullRollReducer(Game.Dice[] riggedDice){
         //true means had skull else no skull
-        boolean flag = false;
+
         Game.Dice[] hand;
 
         if(riggedDice != null){
@@ -178,10 +179,10 @@ public class Player {
         for(int i = 0; i<players.length;i++){
             if(players[i].name != this.name){
                 players[i].setScore(game.reducePlayerScore(reducer,players[i].score));
-                flag = true;
+
             }
         }
-        return flag;
+
     }
 
     public int promptUI(String rig){
