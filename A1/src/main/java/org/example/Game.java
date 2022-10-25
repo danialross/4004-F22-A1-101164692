@@ -63,6 +63,9 @@ public class Game {
         PARROT,
         MONKEY
     }
+
+    private int winningThreshold = 6000;
+
    public int scorePoints(Dice[] playerHand, FortuneCard fc){
 
         int[] numOfRepeats = {0,0,0,0,0,0}; //{skull,diamond,gold,sword,parrot,monkey}
@@ -327,9 +330,9 @@ public class Game {
 
     }
 
-    public boolean didReachWinThreshold(int winScore, int[] playerScores){
+    public boolean didReachWinThreshold( int[] playerScores){
         for( int i = 0;i<playerScores.length;i++ ){
-            if(playerScores[i]>=winScore){
+            if(playerScores[i]>=winningThreshold){
                 return true;
             }
         }

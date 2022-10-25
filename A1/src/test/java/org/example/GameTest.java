@@ -279,9 +279,9 @@ public class GameTest {
     @Test
     public void didReachWinThreshold() {
         Game game = new Game();
-        assertEquals(true,game.didReachWinThreshold(3000,new int[]{2000, 2300, 3000}));
-        assertEquals(true,game.didReachWinThreshold(3000,new int[]{2000, 2300, 3001}));
-        assertEquals(false,game.didReachWinThreshold(3000,new int[]{2000, 2300, 2999}));
+        assertEquals(false,game.didReachWinThreshold(new int[]{2000, 2300, 3000}));
+        assertEquals(true,game.didReachWinThreshold(new int[]{2000, 2300, 6001}));
+        assertEquals(false,game.didReachWinThreshold(new int[]{2000, 2300, 2999}));
 
 
 
