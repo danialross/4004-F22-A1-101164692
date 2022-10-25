@@ -442,16 +442,17 @@ public class Player {
 
         }else if(option == 3){
             if(fc == Game.FortuneCard.SEABATTLEX2SWORDS || fc == Game.FortuneCard.SEABATTLEX3SWORDS || fc == Game.FortuneCard.SEABATTLEX4SWORDS ){
+
+                int amount = 0;
+                amount = game.scoreSeabattle(playerRoll, fc);
+                score += amount;
+
                 if(game.didWinSeaBattle(playerRoll,fc) == true) {
-                    int plus = 0;
-                    plus = game.scoreSeabattle(playerRoll, fc);
-                    score += plus;
-                    System.out.println(status(7) + plus + " points \n");
+
+                    System.out.println(status(7) + amount + " points \n");
                 }else{
-                    int minus = 0;
-                    minus = game.reducePlayerScore(game.scoreSeabattle(playerRoll,fc),score);
-                    score = minus;
-                    System.out.println(status(3) + minus + " points \n");
+
+                    System.out.println(status(3) + amount + " points \n");
                 }
 
             }else{
