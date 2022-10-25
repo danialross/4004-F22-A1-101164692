@@ -32,13 +32,6 @@ public class PlayerTest {
         p1.lockInPoints(p1.getPlayerRoll(), Game.FortuneCard.TREASURECHEST);
         assertEquals(5300, p1.getScore());
 
-        //test to check if player died
-        p1.setScore(0);
-        p1.setSavedDicePos(null);
-        p1.setSavedDice(new Game.Dice[]{});
-        p1.setPlayerRoll(new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND});
-        p1.lockInPoints(p1.getPlayerRoll(), Game.FortuneCard.TREASURECHEST);
-        assertEquals(0, p1.getScore());
 
 
     }
@@ -259,22 +252,9 @@ public class PlayerTest {
         p1.doOption(3,new Game.Dice[] {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND}, Game.FortuneCard.MONKEYBUSINESS,null,null);
         assertEquals(5300,p1.getScore());
 
-        p1.doOption(3,new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND}, Game.FortuneCard.MONKEYBUSINESS,null,null);
-        assertEquals(0,p1.getScore());
-
         p1.doOption(3,new Game.Dice[] {Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND}, Game.FortuneCard.SEABATTLEX2SWORDS,null,null);
         System.out.println(p1.getScore());
         assertEquals(2400,p1.getScore());
-
-        p1.setScore(400);
-        p1.doOption(3,new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND}, Game.FortuneCard.SEABATTLEX2SWORDS,null,null);
-        System.out.println(p1.getScore());
-        assertEquals(100,p1.getScore());
-
-        p1.setScore(400);
-        p1.doOption(3,new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND}, Game.FortuneCard.SEABATTLEX2SWORDS,null,null);
-        System.out.println(p1.getScore());
-        assertEquals(100,p1.getScore());
 
         p1.setPlayerRoll(new Game.Dice[] {Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND});
         p1.doOption(2,new Game.Dice[] {},null,null,null);

@@ -698,4 +698,19 @@ public class AcceptanceTest {
         assertEquals(500,p1.getScore());
 
     }
+
+    @Test
+    public void row120(){
+        //FC 3 swords, roll 3 monkeys 4 swords 1 skull SC = 100 + 200 + 500 = 800
+        Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SKULL};
+        Game.FortuneCard riggCard =  Game.FortuneCard.SEABATTLEX3SWORDS;
+
+        Player p1 = new Player("p1");
+
+        p1.roundStarting(riggedhand,riggCard);
+
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null,null,null);
+        assertEquals(800,p1.getScore());
+
+    }
 }
