@@ -270,7 +270,15 @@ public class PlayerTest {
         p1.setPlayerRoll(new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND});
         p1.doOption(4,new Game.Dice[] {},null,null,null);
         assertTrue(p1.getFc() == null);
-        
+        p1.getPlayers()[0].setScore(400);
+        p1.getPlayers()[1].setScore(400);
+        p1.getPlayers()[2].setScore(400);
+        p1.setFc(Game.FortuneCard.TREASURECHEST);
+        p1.setPlayerRoll(new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND});
+        p1.doOption(-2,new Game.Dice[] {},null,null,null);
+        assertEquals(400,p1.getPlayers()[0].getScore());
+        assertEquals(0,p1.getPlayers()[1].getScore());
+        assertEquals(0,p1.getPlayers()[2].getScore());
 
         p1.setFc(Game.FortuneCard.TREASURECHEST);
         p1.setSavedDicePos(new int[] {4,5});
