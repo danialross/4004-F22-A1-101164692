@@ -240,14 +240,14 @@ public class PlayerTest {
     @Test
     public void status() {
         Player p1 = new Player("p1");
-        assertEquals("Player turn started\n",p1.status(1));
-        assertEquals("Player has died\n",p1.status(2));
+        assertEquals("Player turn started",p1.status(1));
+        assertEquals("Player has died",p1.status(2));
         assertEquals("Player's score has been deducted by ",p1.status(3));
-        assertEquals("Player has gone to Island Of the Dead\n",p1.status(4));
-        assertEquals("Player turn ended\n",p1.status(5));
-        assertEquals("Player has won!\n",p1.status(6));
+        assertEquals("Player has gone to Island Of the Dead",p1.status(4));
+        assertEquals("Player turn ended",p1.status(5));
+        assertEquals("Player has won!",p1.status(6));
         assertEquals("Player scored ",p1.status(7));
-        assertEquals("Player is in a SeaBattle\n",p1.status(8));
+        assertEquals("Player is in a SeaBattle",p1.status(8));
 
 
     }

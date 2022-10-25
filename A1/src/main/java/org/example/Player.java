@@ -179,8 +179,19 @@ public class Player {
 
         System.out.println("|----Player Roll:----["+playerRoll[0]+"]----["+playerRoll[1]+"]----["+playerRoll[2]+"]----["+playerRoll[3]+"]----["+playerRoll[4]+"]----["+playerRoll[5]+"]----["+playerRoll[6]+"]----["+playerRoll[7]+"]----|");
         System.out.println("|----Fortune Card:----"+ fc + "----|");
+        if(fc == Game.FortuneCard.SEABATTLEX2SWORDS || fc == Game.FortuneCard.SEABATTLEX3SWORDS || fc == Game.FortuneCard.SEABATTLEX4SWORDS){
+            System.out.println(status(8));
+        }
+
         if(game.didDie(playerRoll,fc) == -1){
             checkDead();
+            if(fc == Game.FortuneCard.SEABATTLEX2SWORDS){
+                System.out.println(status(3) + "300 points");
+            }else if(fc == Game.FortuneCard.SEABATTLEX3SWORDS){
+                System.out.println(status(3) + "500 points");
+            }else if(fc == Game.FortuneCard.SEABATTLEX4SWORDS){
+                System.out.println(status(3) + "1000 points");
+            }
             return -1;
         }else if (game.didDie(playerRoll,fc) == 0){
             return -2;
@@ -379,13 +390,13 @@ public class Player {
 
         String condition = "Player";
 
-        String start = " turn started\n";
-        String died = " has died\n";
+        String start = " turn started";
+        String died = " has died";
         String deduct = "'s score has been deducted by ";
-        String skull = " has gone to Island Of the Dead\n";
-        String end = " turn ended\n";
-        String won = " has won!\n";
-        String seaBattle = " is in a SeaBattle\n";
+        String skull = " has gone to Island Of the Dead";
+        String end = " turn ended";
+        String won = " has won!";
+        String seaBattle = " is in a SeaBattle";
         String increase = " scored ";
 
         if(code == 1){
