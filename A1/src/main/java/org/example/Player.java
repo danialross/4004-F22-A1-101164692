@@ -500,7 +500,14 @@ public class Player {
     //when entering skull island player should not bring previously rolled skulls
     public Game.Dice[] handWithoutSkull(){
 
-        return new Game.Dice[]{};
+        int numSkull = game.calcNumSkull(playerRoll);
+        Game.Dice[] newHand = new Game.Dice[8-numSkull];
+
+        for( int i = 0; i< newHand.length; i++){
+            newHand[i] = Game.Dice.DIAMOND;
+        }
+
+        return newHand;
     }
 
 }
