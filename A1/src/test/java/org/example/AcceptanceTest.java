@@ -753,4 +753,27 @@ public class AcceptanceTest {
 
     }
 
+    @Test
+    public void row124(){
+        //FC 4 swords, roll 3 monkeys, 1 sword, 1 skull, 1 diamond, 2 parrots
+        //  then reroll 2 parrots and get 2 swords thus you have 3 monkeys, 3 swords, 1 diamond, 1 skull
+        // then reroll 3 monkeys and get  1 sword and 2 parrots  SC = 200 + 100 + 1000 = 1300
+        Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SWORD, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.PARROT, Game.Dice.PARROT};
+        Game.Dice[] firstReroll = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SWORD, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.SWORD, Game.Dice.SWORD};
+        Game.Dice[] secondReroll = {Game.Dice.SWORD, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SWORD, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.PARROT, Game.Dice.PARROT};
+        Game.FortuneCard riggCard =  Game.FortuneCard.SEABATTLEX4SWORDS;
+        Player p1 = new Player("p1");
+
+        p1.roundStarting(riggedhand,riggCard);
+
+        p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("0,1,2,3,5"),null);
+
+        p1.doOption(p1.promptUI("1"),secondReroll,null, p1.validateRerollInput("3,5,6,7"),null);
+
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null, null,null);
+
+        assertEquals(1300,p1.getScore());
+
+    }
+
 }
