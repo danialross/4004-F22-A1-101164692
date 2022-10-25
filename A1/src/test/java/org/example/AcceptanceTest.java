@@ -617,4 +617,20 @@ public class AcceptanceTest {
         p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null,null,null);
         assertEquals(1200,p1.getScore());
     }
+
+    @Test
+    public void row114(){
+        //FC 2 swords, roll 4 monkeys, 3 skulls & 1 sword and die   => die and lose 300 points
+        Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD};
+        Game.FortuneCard riggCard =  Game.FortuneCard.SEABATTLEX2SWORDS;
+
+        Player p1 = new Player("p1");
+
+        p1.roundStarting(riggedhand,riggCard);
+
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null,null,null);
+        assertEquals(0,p1.getScore());
+
+
+    }
 }
