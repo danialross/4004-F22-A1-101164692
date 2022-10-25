@@ -490,9 +490,11 @@ public class Player {
 
         int[] playerScore = new int[] {players[0].score,players[1].score,players[2].score};
 
-        return players[game.getWinnerIndex(playerScore)];
-
-
+        if(game.didReachWinThreshold(playerScore) == true){
+            return players[game.getWinnerIndex(playerScore)];
+        }else{
+            return null;
+        }
 
     }
 
