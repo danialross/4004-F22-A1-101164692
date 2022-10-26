@@ -647,6 +647,27 @@ public class AcceptanceTest {
         assertEquals(0,p1.getScore());
 
     }
+    @Test
+    public void row108(){
+        //roll 2 skulls  3(parrots/monkeys) with FC with two skulls: reroll 3 parrots get 2 skulls, 1 sword
+        //  reroll sword and 3 monkeys, get 3 skulls and 1 sword, stop => -900 for other players (no negative score) & you score 0
+        Game.Dice[] riggedhand = {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY};
+        Game.Dice[] firstReroll = {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY};
+        Game.Dice[] secondReroll = {Game.Dice.SWORD, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL};
+        Game.FortuneCard riggCard =  Game.FortuneCard.SKULLX2;
+
+        Player p1 = new Player("p1");
+        p1.roundStarting(riggedhand,riggCard);
+        p1.getPlayers()[1].setScore(900);
+        p1.getPlayers()[2].setScore(900);
+
+        p1.doOption(p1.promptUI(""),riggedhand,null,null,null,"2",new Game.Dice[][]{firstReroll,secondReroll});
+        assertEquals(0,p1.getScore());
+        assertEquals(0,p1.getPlayers()[1].getScore());
+        assertEquals(0,p1.getPlayers()[2].getScore());
+
+
+    }
 
     @Test
     public void row110(){
@@ -662,7 +683,7 @@ public class AcceptanceTest {
         p1.getPlayers()[1].setScore(1400);
         p1.getPlayers()[2].setScore(1400);
 
-        p1.doOption(p1.promptUI(""),riggedhand,null,null,null,"3",riggedReroll);
+        p1.doOption(p1.promptUI(""),riggedhand,null,null,null,"3",new Game.Dice[][]{riggedReroll});
         assertEquals(0,p1.getScore());
         assertEquals(0,p1.getPlayers()[1].getScore());
         assertEquals(0,p1.getPlayers()[2].getScore());
@@ -681,7 +702,7 @@ public class AcceptanceTest {
         p1.getPlayers()[1].setScore(500);
         p1.getPlayers()[2].setScore(500);
 
-        p1.doOption(p1.promptUI(""),riggedhand,null,null,null,"3",riggedReroll);
+        p1.doOption(p1.promptUI(""),riggedhand,null,null,null,"3",new Game.Dice[][]{riggedReroll});
         assertEquals(0,p1.getScore());
         assertEquals(0,p1.getPlayers()[1].getScore());
         assertEquals(0,p1.getPlayers()[2].getScore());
