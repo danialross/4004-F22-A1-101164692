@@ -487,6 +487,10 @@ public class Player {
                     System.out.println("|----Fortune Card:----"+ fc + "----|");
                 }
 
+                if(playerRoll.length<2){
+                    return;
+                }
+
                 System.out.println("1. Choose dice to roll again");
                 System.out.println("2. Reroll all dice");
                 if( firstLoop ) {
