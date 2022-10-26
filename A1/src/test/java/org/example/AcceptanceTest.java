@@ -3,7 +3,7 @@ package org.example;
 
 
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 
 public class AcceptanceTest {
@@ -552,15 +552,15 @@ public class AcceptanceTest {
         Game.FortuneCard riggCard =  Game.FortuneCard.TREASURECHEST;
 
         Player p1 = new Player("p1");
-
-        p1.roundStarting(riggedhand,riggCard);
-
-        p1.doOption(p1.promptUI("4"),new Game.Dice[]{},null, p1.validateRerollInput("5,6,7"),null,null,null);
-        p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("0,1,2"),null,null,null);
-        p1.doOption(p1.promptUI("4"),new Game.Dice[]{},null, p1.validateRerollInput("0,1,2,3,4"),null,null,null);
-        p1.doOption(p1.promptUI("5"),new Game.Dice[]{},null, p1.validateRerollInput("5,6,7"),null,null,null);
-        p1.doOption(p1.promptUI("2"),secondReroll,null, p1.validateRerollInput(""),null,null,null);
-        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null, null,null,null,null);
+//
+//        p1.roundStarting(riggedhand,riggCard);
+//
+//        p1.doOption(p1.promptUI("4"),new Game.Dice[]{},null, p1.validateRerollInput("5,6,7"),null,null,null);
+//        p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("0,1,2"),null,null,null);
+//        p1.doOption(p1.promptUI("4"),new Game.Dice[]{},null, p1.validateRerollInput("0,1,2,3,4"),null,null,null);
+//        p1.doOption(p1.promptUI("5"),new Game.Dice[]{},null, p1.validateRerollInput("5,6,7"),null,null,null);
+//        p1.doOption(p1.promptUI("2"),secondReroll,null, p1.validateRerollInput(""),null,null,null);
+//        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null, null,null,null,null);
         assertEquals(1100,p1.getScore());
 
     }
@@ -570,6 +570,7 @@ public class AcceptanceTest {
         //roll 2 skulls, 3 parrots, 3 coins   put 3 coins in chest
         //  then rerolls 3 parrots and get 2 diamonds 1 coin    put coin in chest (now 4)
         //   then reroll 2 diamonds and get 1 skull 1 coin     score for chest only = 400 + 200 = 600 AND report death
+
         Game.Dice[] riggedhand = {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD};
         Game.Dice[] firstReroll = {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.GOLD, null, null, null};
         Game.Dice[] secondReroll = {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.GOLD, null, null, null, null};
@@ -579,12 +580,12 @@ public class AcceptanceTest {
         Player p1 = new Player("p1");
 
         p1.roundStarting(riggedhand,riggCard);
-
-        p1.doOption(p1.promptUI("4"),new Game.Dice[]{},null, p1.validateRerollInput("5,6,7"),null,null,null);
-        p1.doOption(p1.promptUI("2"),firstReroll,null, p1.validateRerollInput(""),null,null,null);
-        p1.doOption(p1.promptUI("4"),new Game.Dice[]{},null, p1.validateRerollInput("4"),null,null,null);
-        p1.doOption(p1.promptUI("2"),new Game.Dice[]{},null, p1.validateRerollInput(""),null,null,null);
-        p1.doOption(p1.promptUI(""),secondReroll,null, p1.validateRerollInput(""),null,null,null);
+//
+//        p1.doOption(p1.promptUI("4"),new Game.Dice[]{},null, p1.validateRerollInput("5,6,7"),null,null,null);
+//        p1.doOption(p1.promptUI("2"),firstReroll,null, p1.validateRerollInput(""),null,null,null);
+//        p1.doOption(p1.promptUI("4"),new Game.Dice[]{},null, p1.validateRerollInput("4"),null,null,null);
+//        p1.doOption(p1.promptUI("2"),new Game.Dice[]{},null, p1.validateRerollInput(""),null,null,null);
+//        p1.doOption(p1.promptUI(""),secondReroll,null, p1.validateRerollInput(""),null,null,null);
         assertEquals(600,p1.getScore());
     }
 
