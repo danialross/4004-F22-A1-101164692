@@ -444,6 +444,13 @@ public class Player {
             boolean firstLoop = true;
             int maxOption;
             int totalSkullRolled = 0;
+
+            if(fc == Game.FortuneCard.SKULLX1){
+                totalSkullRolled++;
+            }else if (fc == Game.FortuneCard.SKULLX2){
+                totalSkullRolled+=2;
+            }
+
             skullRollReducer(null);
             while(game.calcNumSkull(playerRoll)>0){
                 totalSkullRolled += game.calcNumSkull(playerRoll);
