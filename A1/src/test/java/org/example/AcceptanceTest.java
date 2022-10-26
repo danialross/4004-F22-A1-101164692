@@ -547,7 +547,7 @@ public class AcceptanceTest {
 
         Game.Dice[] riggedhand = {Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.GOLD};
         Game.Dice[] firstReroll = {Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, null, null, null};
-        Game.Dice[] secondReroll = {null,null,null,null, Game.Dice.SKULL, Game.Dice.GOLD, Game.Dice.PARROT};
+        Game.Dice[] secondReroll = {null,null,null,null,null, Game.Dice.SKULL, Game.Dice.GOLD, Game.Dice.PARROT};
 
         Game.FortuneCard riggCard =  Game.FortuneCard.TREASURECHEST;
 
@@ -558,8 +558,8 @@ public class AcceptanceTest {
         p1.doOption(p1.promptUI("4"),new Game.Dice[]{},null, p1.validateRerollInput("5,6,7"),null,null,null);
         p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("0,1,2"),null,null,null);
         p1.doOption(p1.promptUI("4"),new Game.Dice[]{},null, p1.validateRerollInput("0,1,2,3,4"),null,null,null);
-        p1.doOption(p1.promptUI("5"),new Game.Dice[]{},null, p1.validateRerollInput("0,1,2"),null,null,null);
-        p1.doOption(p1.promptUI("2"),secondReroll,null, p1.validateRerollInput("0,1,2"),null,null,null);
+        p1.doOption(p1.promptUI("5"),new Game.Dice[]{},null, p1.validateRerollInput("5,6,7"),null,null,null);
+        p1.doOption(p1.promptUI("2"),secondReroll,null, p1.validateRerollInput(""),null,null,null);
         p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null, null,null,null,null);
         assertEquals(1100,p1.getScore());
 
