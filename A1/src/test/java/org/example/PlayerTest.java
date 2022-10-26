@@ -285,6 +285,21 @@ public class PlayerTest {
         assertEquals(300,p1.getPlayers()[1].getScore());
         assertEquals(300,p1.getPlayers()[2].getScore());
 
+        p2 = new Player("p2");
+        p3 = new Player("p3");
+        p1.setScore(400);
+        p2.setScore(400);
+        p3.setScore(400);
+        p1.setPlayers(new Player[]{p1,p2,p3});
+        rigHand = new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
+        p1.setPlayerRoll(rigHand);
+        skullRig = new Game.Dice[] {Game.Dice.SKULL,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND};
+        p1.setFc(Game.FortuneCard.TREASURECHEST);
+        p1.doOption(-2,rigHand,null,null,null,"1",skullRig);
+        assertEquals(400,p1.getPlayers()[0].getScore());
+        assertEquals(300,p1.getPlayers()[1].getScore());
+        assertEquals(300,p1.getPlayers()[2].getScore());
+
         p1.setFc(Game.FortuneCard.TREASURECHEST);
         p1.setSavedDicePos(new int[] {4,5});
         p1.setSavedDice(new Game.Dice[]{Game.Dice.GOLD,Game.Dice.PARROT});
