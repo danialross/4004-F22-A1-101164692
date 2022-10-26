@@ -295,7 +295,7 @@ public class PlayerTest {
         p1.setPlayerRoll(rigHand);
         skullRig = new Game.Dice[] {Game.Dice.SKULL,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND};
         p1.setFc(Game.FortuneCard.TREASURECHEST);
-        p1.doOption(-2,rigHand,null,null,null,"1",skullRig);
+        p1.doOption(-2,rigHand,null, new int[]{2,3}, null,"1",skullRig);
         assertEquals(400,p1.getPlayers()[0].getScore());
         assertEquals(300,p1.getPlayers()[1].getScore());
         assertEquals(300,p1.getPlayers()[2].getScore());
