@@ -461,9 +461,22 @@ public class Player {
                 System.out.println(hand);
                 System.out.println("|----Fortune Card:----"+ fc + "----|");
 
+
                 if(firstLoop){
                     System.out.println(status(4));
+                    hand = "|----Player Roll:----";
+                    for(int i = 0; i<playerRoll.length; i++){
+                        if( i == playerRoll.length-1 ){
+                            hand += "["+playerRoll[i]+"]----|";
+                        }else{
+                            hand += "["+playerRoll[i]+"]----";
+                        }
+
+                    }
+                    System.out.println(hand);
+                    System.out.println("|----Fortune Card:----"+ fc + "----|");
                 }
+
 
                 System.out.println("1. Choose dice to roll again");
                 System.out.println("2. Reroll all dice");
