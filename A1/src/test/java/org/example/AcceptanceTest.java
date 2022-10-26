@@ -878,7 +878,7 @@ public class AcceptanceTest {
         // then reroll 3 monkeys and get  1 sword and 2 parrots  SC = 200 + 100 + 1000 = 1300
         Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SWORD, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.PARROT, Game.Dice.PARROT};
         Game.Dice[] firstReroll = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SWORD, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.SWORD, Game.Dice.SWORD};
-        Game.Dice[] secondReroll = {Game.Dice.SWORD, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SWORD, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.PARROT, Game.Dice.PARROT};
+        Game.Dice[] secondReroll = {Game.Dice.SWORD, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SWORD, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.SWORD, Game.Dice.SWORD};
         Game.FortuneCard riggCard =  Game.FortuneCard.SEABATTLEX4SWORDS;
         Player p1 = new Player("p1");
 
