@@ -444,7 +444,6 @@ public class Player {
             boolean firstLoop = true;
             int maxOption;
             int totalSkullRolled = 0;
-            int beforeSIRollSize = game.calcNumSkull(playerRoll);
             skullRollReducer(null);
             while(game.calcNumSkull(playerRoll)>0){
                 totalSkullRolled += game.calcNumSkull(playerRoll);
@@ -551,7 +550,9 @@ public class Player {
                 }else if (action == 3) {
 
                     if (siRigHand != null) {
+
                         skullRollReducer(siRigHand);
+                        totalSkullRolled += game.calcNumSkull(siRigHand);
                     } else {
                         skullRollReducer(null);
                     }
@@ -567,8 +568,12 @@ public class Player {
                 }
 
             }
+            int multiplier = 100;
+            if(fc == Game.FortuneCard.CAPTAIN){
+                multiplier = 200;
+            }
             System.out.println(hand);
-            System.out.println("Other players score reduced by " + (totalSkullRolled+beforeSIRollSize) + "00 points");
+            System.out.println("Other players score reduced by " + (totalSkullRolled)*multiplier + " points");
             System.out.println("Player has left the Island Of the Dead");
 
         } else if(option == 1){
