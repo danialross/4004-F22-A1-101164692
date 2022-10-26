@@ -344,6 +344,10 @@ public class Game {
 
         if(fc == FortuneCard.CAPTAIN){
             return -(numSkull*100)*2;
+        }else if(fc == FortuneCard.SKULLX1){
+            return -((numSkull*100)+100);
+        }else if(fc == FortuneCard.SKULLX2){
+            return -((numSkull*100)+200);
         }else{
             return -(numSkull*100);
         }
