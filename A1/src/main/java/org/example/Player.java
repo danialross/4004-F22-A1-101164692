@@ -501,8 +501,12 @@ public class Player {
                 if(action == 1){
 
                     if(savedIndex != null){
-                        playerReroll(savedIndex,siRigHand);
-                        skullRollReducer(siRigHand);
+                        if(firstLoop){
+                            firstLoop = false;
+                            playerReroll(savedIndex,siRigHand);
+                            skullRollReducer(siRigHand);
+                        }
+
                     }else{
                         playerReroll(validateRerollInput(null),new Game.Dice[]{});
                         skullRollReducer(null);
