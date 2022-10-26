@@ -430,7 +430,7 @@ public class Player {
         return condition;
     }
 
-    public void doOption(int option, Game.Dice[] rigHand, Game.FortuneCard rigCard,int[] savedIndex,Game.Dice rigSorceressDice,String skullIslandOption){
+    public void doOption(int option, Game.Dice[] rigHand, Game.FortuneCard rigCard,int[] savedIndex,Game.Dice rigSorceressDice,String skullIslandOption, Game.Dice[] siRigHand){
 
         if(rigHand.length != 0){
             playerRoll = rigHand;
@@ -441,8 +441,12 @@ public class Player {
 
         if(option == -2){
             status(4);
+            boolean firstLoop = true;
+            int maxOption;
+            int totalSkullRolled = 0;
+            int beforeSIRollSize = game.calcNumSkull(playerRoll);
             while(game.calcNumSkull(playerRoll)>0){
-                playerRoll = handWithoutSkull();
+                totalSkullRolled += game.calcNumSkull(playerRoll);
                 String hand = "|----Player Roll:----";
 
                 for(int i = 0; i<playerRoll.length; i++){
@@ -453,12 +457,18 @@ public class Player {
                     }
 
                 }
+                playerRoll = handWithoutSkull();
                 System.out.println(hand);
                 System.out.println("|----Fortune Card:----"+ fc + "----|");
                 System.out.println(status(4));
                 System.out.println("1. Choose dice to roll again");
                 System.out.println("2. Reroll all dice");
-                System.out.println("3. Score with current hand");
+                if( firstLoop ) {
+                    maxOption = 2;
+                }else{
+                    System.out.println("3. Score with current hand");
+                    maxOption = 3;
+                }
 
                 Scanner scanner;
                 if(skullIslandOption != null){
@@ -474,7 +484,7 @@ public class Player {
                     action = -1;
                 }
 
-                while (action < 0 || action > 3 ) {
+                while (action < 0 || action > maxOption ) {
 
                     System.out.println("Invalid Option");
                     System.out.println("Please Select 1, 2 or 3");
@@ -491,27 +501,47 @@ public class Player {
                 if(action == 1){
 
                     if(savedIndex != null){
-                        playerReroll(savedIndex,rigHand);
+                        playerReroll(savedIndex,siRigHand);
+                        skullRollReducer(siRigHand);
                     }else{
                         playerReroll(validateRerollInput(null),new Game.Dice[]{});
+                        skullRollReducer(null);
                     }
 
                 }else if(action == 2){
-                    if(rigHand != null) {
-                        playerReroll(new int[]{}, rigHand);
+                    if(siRigHand != null) {
+                        if(firstLoop){
+                            firstLoop = false;
+                            playerReroll(new int[]{}, siRigHand);
+                            skullRollReducer(siRigHand);
+                        }
+
                     }else{
                         playerReroll(new int[]{}, new Game.Dice[]{});
+                        skullRollReducer(null);
                     }
 
                 }else if (action == 3) {
 
-                    if (rigHand != null) {
-                        skullRollReducer(rigHand);
+                    if (siRigHand != null) {
+                        skullRollReducer(siRigHand);
                     } else {
                         skullRollReducer(null);
                     }
                 }
             }
+            String hand = "|----Player Roll:----";
+
+            for(int i = 0; i<playerRoll.length; i++){
+                if( i == playerRoll.length-1 ){
+                    hand += "["+playerRoll[i]+"]----|";
+                }else{
+                    hand += "["+playerRoll[i]+"]----";
+                }
+
+            }
+            System.out.println(hand);
+            System.out.println("Other players score reduced by " + (totalSkullRolled-beforeSIRollSize) + "00 points");
 
         } else if(option == 1){
             if(rigHand.length != 0){
@@ -576,7 +606,8 @@ public class Player {
     public Game.Dice[] handWithoutSkull(){
 
         int numSkull = game.calcNumSkull(playerRoll);
-        Game.Dice[] newHand = new Game.Dice[8-numSkull];
+
+        Game.Dice[] newHand = new Game.Dice[8-(8-playerRoll.length+numSkull)];
 
         for( int i = 0; i< newHand.length; i++){
             newHand[i] = Game.Dice.DIAMOND;
