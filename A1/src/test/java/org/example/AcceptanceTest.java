@@ -565,6 +565,29 @@ public class AcceptanceTest {
 
     }
 
+    @Test
+    public void row93(){
+        //roll 2 skulls, 3 parrots, 3 coins   put 3 coins in chest
+        //  then rerolls 3 parrots and get 2 diamonds 1 coin    put coin in chest (now 4)
+        //   then reroll 2 diamonds and get 1 skull 1 coin     score for chest only = 400 + 200 = 600 AND report death
+        Game.Dice[] riggedhand = {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD};
+        Game.Dice[] firstReroll = {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.GOLD, null, null, null};
+        Game.Dice[] secondReroll = {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.GOLD, null, null, null, null};
+
+        Game.FortuneCard riggCard =  Game.FortuneCard.TREASURECHEST;
+
+        Player p1 = new Player("p1");
+
+        p1.roundStarting(riggedhand,riggCard);
+
+        p1.doOption(p1.promptUI("4"),new Game.Dice[]{},null, p1.validateRerollInput("5,6,7"),null,null,null);
+        p1.doOption(p1.promptUI("2"),firstReroll,null, p1.validateRerollInput(""),null,null,null);
+        p1.doOption(p1.promptUI("4"),new Game.Dice[]{},null, p1.validateRerollInput("4"),null,null,null);
+        p1.doOption(p1.promptUI("2"),new Game.Dice[]{},null, p1.validateRerollInput(""),null,null,null);
+        p1.doOption(p1.promptUI(""),secondReroll,null, p1.validateRerollInput(""),null,null,null);
+        assertEquals(600,p1.getScore());
+    }
+
 
     @Test
     public void row97(){
