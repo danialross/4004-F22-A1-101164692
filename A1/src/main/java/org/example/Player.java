@@ -445,6 +445,7 @@ public class Player {
             int maxOption;
             int totalSkullRolled = 0;
             int beforeSIRollSize = game.calcNumSkull(playerRoll);
+            skullRollReducer(null);
             while(game.calcNumSkull(playerRoll)>0){
                 totalSkullRolled += game.calcNumSkull(playerRoll);
                 String hand = "|----Player Roll:----";
@@ -567,7 +568,7 @@ public class Player {
 
             }
             System.out.println(hand);
-            System.out.println("Other players score reduced by " + (totalSkullRolled-beforeSIRollSize) + "00 points");
+            System.out.println("Other players score reduced by " + (totalSkullRolled+beforeSIRollSize) + "00 points");
             System.out.println("Player has left the Island Of the Dead");
 
         } else if(option == 1){

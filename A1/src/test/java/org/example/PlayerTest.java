@@ -272,33 +272,33 @@ public class PlayerTest {
 
         Player p2 = new Player("p2");
         Player p3 = new Player("p3");
-        p1.setScore(400);
-        p2.setScore(400);
-        p3.setScore(400);
+        p1.setScore(500);
+        p2.setScore(500);
+        p3.setScore(500);
         p1.setPlayers(new Player[]{p1,p2,p3});
         Game.Dice[] rigHand = {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
         p1.setPlayerRoll(rigHand);
         Game.Dice[] skullRig = new Game.Dice[] {Game.Dice.SKULL,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND};
         p1.setFc(Game.FortuneCard.TREASURECHEST);
         p1.doOption(-2,rigHand,null,null,null,"2",skullRig);
-        assertEquals(400,p1.getPlayers()[0].getScore());
-        assertEquals(300,p1.getPlayers()[1].getScore());
-        assertEquals(300,p1.getPlayers()[2].getScore());
+        assertEquals(500,p1.getPlayers()[0].getScore());
+        assertEquals(0,p1.getPlayers()[1].getScore());
+        assertEquals(0,p1.getPlayers()[2].getScore());
 
         p2 = new Player("p2");
         p3 = new Player("p3");
-        p1.setScore(400);
-        p2.setScore(400);
-        p3.setScore(400);
+        p1.setScore(500);
+        p2.setScore(500);
+        p3.setScore(500);
         p1.setPlayers(new Player[]{p1,p2,p3});
         rigHand = new Game.Dice[] {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.DIAMOND};
         p1.setPlayerRoll(rigHand);
         skullRig = new Game.Dice[] {Game.Dice.SKULL,Game.Dice.DIAMOND,Game.Dice.DIAMOND,Game.Dice.DIAMOND};
         p1.setFc(Game.FortuneCard.TREASURECHEST);
         p1.doOption(-2,rigHand,null, new int[]{2,3}, null,"1",skullRig);
-        assertEquals(400,p1.getPlayers()[0].getScore());
-        assertEquals(300,p1.getPlayers()[1].getScore());
-        assertEquals(300,p1.getPlayers()[2].getScore());
+        assertEquals(500,p1.getPlayers()[0].getScore());
+        assertEquals(0,p1.getPlayers()[1].getScore());
+        assertEquals(0,p1.getPlayers()[2].getScore());
 
         p2 = new Player("p2");
         p3 = new Player("p3");
@@ -312,8 +312,8 @@ public class PlayerTest {
         p1.setFc(Game.FortuneCard.TREASURECHEST);
         p1.doOption(-2,rigHand,null, new int[]{2,3}, null,"3",skullRig);
         assertEquals(400,p1.getPlayers()[0].getScore());
-        assertEquals(400,p1.getPlayers()[1].getScore());
-        assertEquals(400,p1.getPlayers()[2].getScore());
+        assertEquals(0,p1.getPlayers()[1].getScore());
+        assertEquals(0,p1.getPlayers()[2].getScore());
 
 
         p1.setFc(Game.FortuneCard.TREASURECHEST);
