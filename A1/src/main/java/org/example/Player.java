@@ -460,7 +460,11 @@ public class Player {
                 playerRoll = handWithoutSkull();
                 System.out.println(hand);
                 System.out.println("|----Fortune Card:----"+ fc + "----|");
-                System.out.println(status(4));
+
+                if(firstLoop){
+                    System.out.println(status(4));
+                }
+
                 System.out.println("1. Choose dice to roll again");
                 System.out.println("2. Reroll all dice");
                 if( firstLoop ) {
@@ -546,6 +550,7 @@ public class Player {
             }
             System.out.println(hand);
             System.out.println("Other players score reduced by " + (totalSkullRolled-beforeSIRollSize) + "00 points");
+            System.out.println("Player has left the Island Of the Dead");
 
         } else if(option == 1){
             if(rigHand.length != 0){
