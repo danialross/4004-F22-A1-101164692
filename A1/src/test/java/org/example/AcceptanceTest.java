@@ -539,6 +539,34 @@ public class AcceptanceTest {
     }
 
     @Test
+    public void row87(){
+        //roll 3 parrots, 2 swords, 2 diamonds, 1 coin     put 2 diamonds and 1 coin in chest
+        //  then reroll 2 swords and get 2 parrots put 5 parrots in chest and take out 2 diamonds & coin
+        //  then reroll the 3 dice and get 1 skull, 1 coin and a parrot
+        //   score 6 parrots + 1 coin for 1100 points
+
+        Game.Dice[] riggedhand = {Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.DIAMOND, Game.Dice.DIAMOND, Game.Dice.GOLD};
+        Game.Dice[] firstReroll = {Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, Game.Dice.PARROT, null, null, null};
+        Game.Dice[] secondReroll = {null,null,null,null, Game.Dice.SKULL, Game.Dice.GOLD, Game.Dice.PARROT};
+
+        Game.FortuneCard riggCard =  Game.FortuneCard.TREASURECHEST;
+
+        Player p1 = new Player("p1");
+
+        p1.roundStarting(riggedhand,riggCard);
+
+        p1.doOption(p1.promptUI("4"),new Game.Dice[]{},null, p1.validateRerollInput("5,6,7"),null,null,null);
+        p1.doOption(p1.promptUI("1"),firstReroll,null, p1.validateRerollInput("0,1,2"),null,null,null);
+        p1.doOption(p1.promptUI("4"),new Game.Dice[]{},null, p1.validateRerollInput("0,1,2,3,4"),null,null,null);
+        p1.doOption(p1.promptUI("5"),new Game.Dice[]{},null, p1.validateRerollInput("0,1,2"),null,null,null);
+        p1.doOption(p1.promptUI("2"),secondReroll,null, p1.validateRerollInput("0,1,2"),null,null,null);
+        p1.doOption(p1.promptUI("3"),new Game.Dice[]{},null, null,null,null,null);
+        assertEquals(1100,p1.getScore());
+
+    }
+
+
+    @Test
     public void row97(){
         //3 monkeys, 3 swords, 1 diamond, 1 parrot FC: coin   => SC 400  (ie no bonus)
         Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.DIAMOND, Game.Dice.PARROT};
