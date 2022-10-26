@@ -634,6 +634,21 @@ public class AcceptanceTest {
     }
 
     @Test
+    public void row107(){
+        //roll 2 skulls and 6 swords with FC with 1 skull  => die
+        Game.Dice[] riggedhand = {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD};
+        Game.FortuneCard riggCard =  Game.FortuneCard.SKULLX1;
+
+        Player p1 = new Player("p1");
+
+        p1.roundStarting(riggedhand,riggCard);
+
+        p1.doOption(p1.promptUI(""),new Game.Dice[]{},null,null,null,null,null);
+        assertEquals(0,p1.getScore());
+
+    }
+
+    @Test
     public void row114(){
         //FC 2 swords, roll 4 monkeys, 3 skulls & 1 sword and die   => die and lose 300 points
         Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD};
