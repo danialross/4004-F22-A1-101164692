@@ -503,6 +503,11 @@ public class Player {
 
                 while (action < 0 || action > maxOption ) {
 
+                    // loop hole to test rigging
+                    if(action == 3 && siRigHand != null){
+                        break;
+                    }
+
                     System.out.println("Invalid Option");
                     System.out.println("Please Select 1, 2 or 3");
 
