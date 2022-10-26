@@ -430,7 +430,7 @@ public class Player {
         return condition;
     }
 
-    public void doOption(int option, Game.Dice[] rigHand, Game.FortuneCard rigCard,int[] savedIndex,Game.Dice rigSorceressDice,String skullIslandOption, Game.Dice[] siRigHand){
+    public void doOption(int option, Game.Dice[] rigHand, Game.FortuneCard rigCard,int[] savedIndex,Game.Dice rigSorceressDice,String skullIslandOption, Game.Dice[][] siRigHand){
 
         if(rigHand.length != 0){
             playerRoll = rigHand;
@@ -444,6 +444,7 @@ public class Player {
             boolean firstLoop = true;
             int maxOption;
             int totalSkullRolled = 0;
+            int currentRiggedRollIndex = -1;
 
             if(fc == Game.FortuneCard.SKULLX1){
                 totalSkullRolled++;
@@ -453,6 +454,7 @@ public class Player {
 
             skullRollReducer(null);
             while(game.calcNumSkull(playerRoll)>0){
+
                 totalSkullRolled += game.calcNumSkull(playerRoll);
                 String hand = "|----Player Roll:----";
 
@@ -465,6 +467,7 @@ public class Player {
 
                 }
                 playerRoll = handWithoutSkull();
+
                 System.out.println(hand);
                 System.out.println("|----Fortune Card:----"+ fc + "----|");
 
@@ -483,7 +486,6 @@ public class Player {
                     System.out.println(hand);
                     System.out.println("|----Fortune Card:----"+ fc + "----|");
                 }
-
 
                 System.out.println("1. Choose dice to roll again");
                 System.out.println("2. Reroll all dice");
@@ -526,15 +528,18 @@ public class Player {
                     }
 
                 }
-
+                currentRiggedRollIndex++;
+                if(siRigHand != null && currentRiggedRollIndex < siRigHand.length){
+                    playerRoll = siRigHand[currentRiggedRollIndex];
+                }
                 if(action == 1){
 
                     if(savedIndex != null){
-                        if(firstLoop){
-                            firstLoop = false;
-                            playerReroll(savedIndex,siRigHand);
-                            skullRollReducer(siRigHand);
-                        }
+
+                        firstLoop = false;
+                        playerReroll(savedIndex,playerRoll);
+                        skullRollReducer(playerRoll);
+
 
                     }else{
                         playerReroll(validateRerollInput(null),new Game.Dice[]{});
@@ -543,11 +548,11 @@ public class Player {
 
                 }else if(action == 2){
                     if(siRigHand != null) {
-                        if(firstLoop){
-                            firstLoop = false;
-                            playerReroll(new int[]{}, siRigHand);
-                            skullRollReducer(siRigHand);
-                        }
+
+                        firstLoop = false;
+                        playerReroll(new int[]{}, playerRoll);
+                        skullRollReducer(playerRoll);
+
 
                     }else{
                         playerReroll(new int[]{}, new Game.Dice[]{});
@@ -558,8 +563,8 @@ public class Player {
 
                     if (siRigHand != null) {
 
-                        skullRollReducer(siRigHand);
-                        totalSkullRolled += game.calcNumSkull(siRigHand);
+                        skullRollReducer(playerRoll);
+                        totalSkullRolled += game.calcNumSkull(playerRoll);
                     } else {
                         skullRollReducer(null);
                     }
