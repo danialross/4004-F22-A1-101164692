@@ -1,6 +1,6 @@
 package org.example;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
@@ -70,7 +70,6 @@ public class PlayerTest {
 
 
     }
-
     @Test
     public void rerollSkull() {
         Player p1 = new Player("p1");

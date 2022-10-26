@@ -2,8 +2,11 @@ package org.example;
 
 
 import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-@RunWith(Suite.class)
-@Suite.SuiteClasses({ GameTest.class, PlayerTest.class, AcceptanceTest.class})
+
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.platform.suite.api.SelectPackages;
+
+@RunWith(JUnitPlatform.class)
+@SelectPackages(value = {"org.example"})
 public class TestSuite {
 }
