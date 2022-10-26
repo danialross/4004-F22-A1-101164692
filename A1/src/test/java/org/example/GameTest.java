@@ -297,6 +297,11 @@ public class GameTest {
         // normal range
         assertEquals(-500,game.getScoreDeduction(5, Game.FortuneCard.DIAMOND));
         assertEquals(-1000,game.getScoreDeduction(5, Game.FortuneCard.CAPTAIN));
+
+        assertEquals(-700,game.getScoreDeduction(5, Game.FortuneCard.SKULLX2));
+        assertEquals(-600,game.getScoreDeduction(5, Game.FortuneCard.SKULLX1));
+
+
     }
 
     @Test
