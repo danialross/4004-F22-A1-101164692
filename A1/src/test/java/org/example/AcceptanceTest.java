@@ -669,6 +669,25 @@ public class AcceptanceTest {
     }
 
     @Test
+    public void row111(){
+        //roll 3 skulls and 5 swords with FC with two skulls: reroll 5 swords, get 5 coins, must stop  => -500 for other players
+        Game.Dice[] riggedhand = {Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD, Game.Dice.SWORD};
+        Game.Dice[] riggedReroll= {Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD, Game.Dice.GOLD};
+        Game.FortuneCard riggCard =  Game.FortuneCard.SKULLX2;
+
+        Player p1 = new Player("p1");
+
+        p1.roundStarting(riggedhand,riggCard);
+        p1.getPlayers()[1].setScore(500);
+        p1.getPlayers()[2].setScore(500);
+
+        p1.doOption(p1.promptUI(""),riggedhand,null,null,null,"3",riggedReroll);
+        assertEquals(0,p1.getScore());
+        assertEquals(0,p1.getPlayers()[1].getScore());
+        assertEquals(0,p1.getPlayers()[2].getScore());
+    }
+
+    @Test
     public void row114(){
         //FC 2 swords, roll 4 monkeys, 3 skulls & 1 sword and die   => die and lose 300 points
         Game.Dice[] riggedhand = {Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.MONKEY, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SKULL, Game.Dice.SWORD};
