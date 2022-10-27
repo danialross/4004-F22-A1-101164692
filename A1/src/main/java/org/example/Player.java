@@ -5,8 +5,14 @@ import java.util.Scanner;
 public class Player {
 
     public Game game = new Game();
+
+
+
     private String name;
     private Game.Dice[] playerRoll;
+    public String getName() {
+        return name;
+    }
     private Game.FortuneCard fc;
     private int score;
 
@@ -642,10 +648,8 @@ public class Player {
 
     public Player checkWinner(){
 
-        int[] playerScore = new int[] {players[0].score,players[1].score,players[2].score};
-
-        if(game.didReachWinThreshold(playerScore) == true){
-            return players[game.getWinnerIndex(playerScore)];
+        if(game.didReachWinThreshold(players) == true){
+            return game.getWinner(players);
         }else{
             return null;
         }

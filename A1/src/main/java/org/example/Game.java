@@ -317,22 +317,22 @@ public class Game {
         return numSkull;
     }
 
-    public int getWinnerIndex(int[] playerScores){
+    public Player getWinner(Player[] players){
 
-        int currHighestIndex = 0;
-        for(int i = 1; i< playerScores.length; i++){
-            if(playerScores[i]>= playerScores[currHighestIndex]){
-                currHighestIndex = i;
+        Player winner = players[0];
+        for(int i = 1; i< players.length; i++){
+            if(players[i].getScore() >= winner.getScore()){
+                winner = players[i];
             }
         }
 
-        return currHighestIndex;
+        return winner;
 
     }
 
-    public boolean didReachWinThreshold( int[] playerScores){
-        for( int i = 0;i<playerScores.length;i++ ){
-            if(playerScores[i]>=winningThreshold){
+    public boolean didReachWinThreshold( Player[] players){
+        for( int i = 0;i<players.length;i++ ){
+            if(players[i].getScore()>=winningThreshold){
                 return true;
             }
         }

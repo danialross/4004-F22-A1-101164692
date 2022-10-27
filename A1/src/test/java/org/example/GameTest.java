@@ -265,23 +265,49 @@ public class GameTest {
     }
 
     @Test
-    public void getWinnerTest() {
+    public void getWinner() {
         Game game = new Game();
-        assertEquals(2,game.getWinnerIndex(new int[]{2000, 2300, 3200}));
-        assertEquals(0,game.getWinnerIndex(new int[]{4000, 2300, 3200}));
-        assertEquals(1,game.getWinnerIndex(new int[]{2000, 4300, 3200}));
+        Player p1 = new Player("p1");
+        Player p2 = new Player("p2");
+        Player p3 = new Player("p3");
+        p1.setScore(7000);
+        p2.setScore(3000);
+        p3.setScore(4000);
 
-        assertEquals(2,game.getWinnerIndex(new int[]{2000, 3000, 3000}));
-        assertEquals(1,game.getWinnerIndex(new int[]{3000, 3000, 2000}));
-        assertEquals(2,game.getWinnerIndex(new int[]{3000, 2000, 3000}));
+        assertEquals(p1,game.getWinner(new Player[]{p1, p2, p3}));
+        assertEquals(p1,game.getWinner(new Player[]{p2, p1, p3}));
+        assertEquals(p1,game.getWinner(new Player[]{p3, p2, p1}));
+
+        p1.setScore(7000);
+        p2.setScore(7000);
+        p3.setScore(4000);
+        assertEquals(p2,game.getWinner(new Player[]{p3, p1, p2}));
+        assertEquals(p2,game.getWinner(new Player[]{p1, p2, p3}));
+        assertEquals(p2,game.getWinner(new Player[]{p1, p3, p2}));
     }
 
     @Test
     public void didReachWinThreshold() {
         Game game = new Game();
-        assertEquals(false,game.didReachWinThreshold(new int[]{2000, 2300, 3000}));
-        assertEquals(true,game.didReachWinThreshold(new int[]{2000, 2300, 6001}));
-        assertEquals(false,game.didReachWinThreshold(new int[]{2000, 2300, 2999}));
+
+        Player p1 = new Player("p1");
+        Player p2 = new Player("p2");
+        Player p3 = new Player("p3");
+        p1.setScore(2000);
+        p2.setScore(3000);
+        p3.setScore(4000);
+        assertEquals(false,game.didReachWinThreshold(new Player[]{p3, p1, p2}));
+
+        p1.setScore(6000);
+        p2.setScore(3000);
+        p3.setScore(4000);
+        assertEquals(true,game.didReachWinThreshold(new Player[]{p3, p1, p2}));
+
+
+        p1.setScore(6001);
+        p2.setScore(3000);
+        p3.setScore(4000);
+        assertEquals(true,game.didReachWinThreshold(new Player[]{p3, p1, p2}));
 
 
 
