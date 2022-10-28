@@ -293,18 +293,12 @@ public class GameTest {
         Player p1 = new Player("p1");
         Player p2 = new Player("p2");
         Player p3 = new Player("p3");
-        p1.setScore(2000);
-        p2.setScore(3000);
-        p3.setScore(4000);
+        p1.setScore(2999);
+        p2.setScore(1000);
+        p3.setScore(1500);
         assertEquals(false,game.didReachWinThreshold(new Player[]{p3, p1, p2}));
 
         p1.setScore(6000);
-        p2.setScore(3000);
-        p3.setScore(4000);
-        assertEquals(true,game.didReachWinThreshold(new Player[]{p3, p1, p2}));
-
-
-        p1.setScore(6001);
         p2.setScore(3000);
         p3.setScore(4000);
         assertEquals(true,game.didReachWinThreshold(new Player[]{p3, p1, p2}));
