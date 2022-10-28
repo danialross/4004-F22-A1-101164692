@@ -479,6 +479,11 @@ public class Player implements Serializable {
                 }
                 playerRoll = handWithoutSkull();
 
+                System.out.println("|------------------------------------------------|");
+                System.out.println(hand);
+                System.out.println("|----Fortune Card:----"+ fc + "----|");
+
+
                 if(firstLoop){
                     System.out.println(status(4));
                     hand = "|----Player Roll:----";
@@ -547,6 +552,7 @@ public class Player implements Serializable {
 
                     if(savedIndex != null){
 
+                        firstLoop = false;
                         playerReroll(savedIndex,playerRoll);
                         skullRollReducer(playerRoll);
 
@@ -559,7 +565,7 @@ public class Player implements Serializable {
                 }else if(action == 2){
                     if(siRigHand != null) {
 
-
+                        firstLoop = false;
                         playerReroll(new int[]{}, playerRoll);
                         skullRollReducer(playerRoll);
 
@@ -579,7 +585,6 @@ public class Player implements Serializable {
                         skullRollReducer(null);
                     }
                 }
-                firstLoop = false;
             }
             String hand = "|----Player Roll:----";
 
@@ -614,7 +619,7 @@ public class Player implements Serializable {
             if(fc == Game.FortuneCard.SEABATTLEX2SWORDS || fc == Game.FortuneCard.SEABATTLEX3SWORDS || fc == Game.FortuneCard.SEABATTLEX4SWORDS ){
                 int amount = 0;
                 amount = game.scoreSeabattle(playerRoll, fc);
-                score = game.reducePlayerScore(amount,score);
+                score += amount;
 
                 if(game.didWinSeaBattle(playerRoll,fc) == true) {
 
