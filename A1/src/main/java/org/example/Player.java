@@ -619,14 +619,14 @@ public class Player implements Serializable {
             if(fc == Game.FortuneCard.SEABATTLEX2SWORDS || fc == Game.FortuneCard.SEABATTLEX3SWORDS || fc == Game.FortuneCard.SEABATTLEX4SWORDS ){
                 int amount = 0;
                 amount = game.scoreSeabattle(playerRoll, fc);
-                score += amount;
+
 
                 if(game.didWinSeaBattle(playerRoll,fc) == true) {
-
+                    score += amount;
                     System.out.println(status(7) + amount + " points \n");
                 }
                 else{
-                    
+                    score = game.reducePlayerScore(amount,score);
                     System.out.println(status(3) + amount + " points \n");
                 }
 
