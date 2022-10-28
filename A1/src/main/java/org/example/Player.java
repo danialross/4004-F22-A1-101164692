@@ -107,7 +107,7 @@ public class Player implements Serializable {
 
         for( int i = 0; i<players.length; i++){
 
-            players[i] = new Player(" ");
+            players[i] = new Player("Player " + (i+1));
 
         }
     }
@@ -199,7 +199,7 @@ public class Player implements Serializable {
     }
 
     public int promptUI(String rig){
-
+        System.out.println("|-----------------------------------------------------------|");
         System.out.println("|----Player Roll:----["+playerRoll[0]+"]----["+playerRoll[1]+"]----["+playerRoll[2]+"]----["+playerRoll[3]+"]----["+playerRoll[4]+"]----["+playerRoll[5]+"]----["+playerRoll[6]+"]----["+playerRoll[7]+"]----|");
         System.out.println("|----Fortune Card:----"+ fc + "----|");
         if(fc == Game.FortuneCard.SEABATTLEX2SWORDS || fc == Game.FortuneCard.SEABATTLEX3SWORDS || fc == Game.FortuneCard.SEABATTLEX4SWORDS){
@@ -318,8 +318,6 @@ public class Player implements Serializable {
                 action = -555;
                 System.out.println("Invalid Option");
             }
-
-            System.out.println("userInput: " + action);
 
             if( action == 1 || action == 2 || action == 3 || (fc == Game.FortuneCard.SORCERESS && game.isContainSkull(playerRoll)) && action == 4) {
                 return action;
@@ -619,12 +617,17 @@ public class Player implements Serializable {
 
         }else if(option == 3){
             if(fc == Game.FortuneCard.SEABATTLEX2SWORDS || fc == Game.FortuneCard.SEABATTLEX3SWORDS || fc == Game.FortuneCard.SEABATTLEX4SWORDS ){
+                int amount = 0;
+                amount = game.scoreSeabattle(playerRoll, fc);
+                score += amount;
 
                 if(game.didWinSeaBattle(playerRoll,fc) == true) {
-                    int amount = 0;
-                    amount = game.scoreSeabattle(playerRoll, fc);
-                    score += amount;
+
                     System.out.println(status(7) + amount + " points \n");
+                }
+                else{
+                    
+                    System.out.println(status(3) + amount + " points \n");
                 }
 
             }else{
@@ -718,14 +721,27 @@ public class Player implements Serializable {
         players = clientConnection.receivePlayer();
         while (true) {
 
-
             int[] pl = clientConnection.receiveScores();
+            System.out.println(status(1));
             for (int i = 0; i < 3; i++) {
                 players[i].setScore(pl[i]);
             }
             printPlayerScores(players);
             roundStarting(new Game.Dice[]{},null);
-            doOption(promptUI(null), new Game.Dice[]{},null,validateRerollInput(null),null,null,null);
+
+            int option = promptUI(null);
+            int[] validatedInput = null;
+
+            if(option == 1){
+                validatedInput = validateRerollInput(null);
+            }
+
+            if(option == 4){
+                doOption(option, new Game.Dice[]{},null,null,null,null,null);
+            }
+
+            doOption(option, new Game.Dice[]{},null,validatedInput,null,null,null);
+            System.out.println(status(5));
             clientConnection.sendScores(score);
         }
 
@@ -777,25 +793,7 @@ public class Player implements Serializable {
             }
         }
 
-        public Client(int portId) {
-            try {
-                socket = new Socket("localhost", portId);
-                dOut = new ObjectOutputStream(socket.getOutputStream());
-                dIn = new ObjectInputStream(socket.getInputStream());
 
-                playerId = dIn.readInt();
-
-                System.out.println("Connected as " + playerId);
-                sendPlayer();
-
-            } catch (IOException ex) {
-                System.out.println("Client failed to open");
-            }
-        }
-
-        /*
-         * function to send the score sheet to the server
-         */
         public void sendPlayer() {
             try {
                 dOut.writeObject(getPlayer());
@@ -806,18 +804,6 @@ public class Player implements Serializable {
             }
         }
 
-        /*
-         * function to send strings
-         */
-        public void sendString(String str) {
-            try {
-                dOut.writeUTF(str);
-                dOut.flush();
-            } catch (IOException ex) {
-                System.out.println("Player not sent");
-                ex.printStackTrace();
-            }
-        }
 
         /*
          * receive scoresheet
@@ -879,21 +865,6 @@ public class Player implements Serializable {
             }
             return null;
         }
-
-        /*
-         * receive scores of other players
-         */
-        public int receiveRoundNo() {
-            try {
-                return dIn.readInt();
-
-            } catch (IOException e) {
-                System.out.println("Score sheet not received");
-                e.printStackTrace();
-            }
-            return 0;
-        }
-
     }
 
     /*

@@ -68,7 +68,7 @@ public class Game implements Serializable {
         MONKEY
     }
 
-    private int winningThreshold = 6000;
+    private int winningThreshold = 3000;
 
    public int scorePoints(Dice[] playerHand, FortuneCard fc){
 
@@ -419,8 +419,8 @@ public class Game implements Serializable {
     }
 
     public void printScore(Player p){
-        System.out.println("|------------------------------------------------|");
-        System.out.println("|----"+p.getName()+" Score: " + p.getScore() + "---------------------------------|");
+        System.out.println("|-----------------------------------------------------------|");
+        System.out.printf("|----%s Score: %5d ---------------------------------|\n",p.getName(),p.getScore());
     }
     
 }
