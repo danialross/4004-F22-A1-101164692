@@ -1,22 +1,33 @@
 package org.example;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.net.Socket;
 import java.util.Scanner;
 
-public class Player {
+public class Player implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     public Game game = new Game();
 
-
+    static Client clientConnection;
+    int playerId = 0;
 
     private String name;
     private Game.Dice[] playerRoll;
-    public String getName() {
-        return name;
-    }
     private Game.FortuneCard fc;
     private int score;
 
     private Player[] players = new Player[3];
+
+    private Game.Dice[] savedDice;
+    private int[] savedDicePos;
+
+    public String getName() {
+        return name;
+    }
 
     public Player[] getPlayers() {
         return players;
@@ -25,10 +36,6 @@ public class Player {
     public void setPlayers(Player[] players) {
         this.players = players;
     }
-
-    //if Treasure Chest is fc
-    private Game.Dice[] savedDice;
-    private int[] savedDicePos;
 
     public int getScore() {
         return score;
@@ -100,7 +107,7 @@ public class Player {
 
         for( int i = 0; i<players.length; i++){
 
-            players[i] = new Player(String.valueOf(i));
+            players[i] = new Player(" ");
 
         }
     }
@@ -474,6 +481,7 @@ public class Player {
                 }
                 playerRoll = handWithoutSkull();
 
+                System.out.println("|------------------------------------------------|");
                 System.out.println(hand);
                 System.out.println("|----Fortune Card:----"+ fc + "----|");
 
@@ -668,5 +676,242 @@ public class Player {
 
         return newHand;
     }
+    public Player getPlayer() {
+        return this;
+    }
 
+    /*
+     * ----------Network Stuff------------
+     */
+
+    /*
+     * send the to do to test server
+     */
+
+    public void connectToClient() {
+        clientConnection = new Client();
+    }
+
+    /*
+     * update turns
+     */
+    public void printPlayerScores(Player[] pl) {
+        // print the score sheets
+
+        if (playerId == 1) {
+            game.printScore(pl[0]);
+            game.printScore(pl[1]);
+            game.printScore(pl[2]);
+        } else if (playerId == 2) {
+            game.printScore(pl[1]);
+            game.printScore(pl[0]);
+            game.printScore(pl[2]);
+        } else {
+            game.printScore(pl[2]);
+            game.printScore(pl[0]);
+            game.printScore(pl[1]);
+        }
+    }
+
+    public void startGame() {
+        // receive players once for names
+        players = clientConnection.receivePlayer();
+        while (true) {
+
+
+            int[] pl = clientConnection.receiveScores();
+            for (int i = 0; i < 3; i++) {
+                players[i].setScore(pl[i]);
+            }
+            printPlayerScores(players);
+            roundStarting(new Game.Dice[]{},null);
+            doOption(promptUI(null), new Game.Dice[]{},null,validateRerollInput(null),null,null,null);
+            clientConnection.sendScores(score);
+        }
+
+    }
+
+    public Player returnWinner() {
+        try {
+            int[] pl = clientConnection.receiveScores();
+            for (int i = 0; i < 3; i++) {
+                players[i].setScore(pl[i]);
+            }
+            printPlayerScores(players);
+            Player win = (Player) clientConnection.dIn.readObject();
+            if (playerId == win.playerId) {
+                System.out.println("You win!");
+            } else {
+                System.out.println("The winner is " + win.name);
+            }
+
+            System.out.println("Game over!");
+            return win;
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private class Client {
+        Socket socket;
+        private ObjectInputStream dIn;
+        private ObjectOutputStream dOut;
+
+        public Client() {
+            try {
+                socket = new Socket("localhost", 3000);
+                dOut = new ObjectOutputStream(socket.getOutputStream());
+                dIn = new ObjectInputStream(socket.getInputStream());
+
+                playerId = dIn.readInt();
+
+                System.out.println("Connected as " + playerId);
+                sendPlayer();
+
+            } catch (IOException ex) {
+                System.out.println("Client failed to open");
+            }
+        }
+
+        public Client(int portId) {
+            try {
+                socket = new Socket("localhost", portId);
+                dOut = new ObjectOutputStream(socket.getOutputStream());
+                dIn = new ObjectInputStream(socket.getInputStream());
+
+                playerId = dIn.readInt();
+
+                System.out.println("Connected as " + playerId);
+                sendPlayer();
+
+            } catch (IOException ex) {
+                System.out.println("Client failed to open");
+            }
+        }
+
+        /*
+         * function to send the score sheet to the server
+         */
+        public void sendPlayer() {
+            try {
+                dOut.writeObject(getPlayer());
+                dOut.flush();
+            } catch (IOException ex) {
+                System.out.println("Player not sent");
+                ex.printStackTrace();
+            }
+        }
+
+        /*
+         * function to send strings
+         */
+        public void sendString(String str) {
+            try {
+                dOut.writeUTF(str);
+                dOut.flush();
+            } catch (IOException ex) {
+                System.out.println("Player not sent");
+                ex.printStackTrace();
+            }
+        }
+
+        /*
+         * receive scoresheet
+         */
+        public void sendScores(int scores) {
+            try {
+
+                dOut.writeInt(scores);
+
+                dOut.flush();
+
+            } catch (IOException e) {
+                System.out.println("Score not received");
+                e.printStackTrace();
+            }
+        }
+
+        /*
+         * receive scores of other players
+         */
+        public Player[] receivePlayer() {
+            Player[] pl = new Player[3];
+            try {
+                Player p = (Player) dIn.readObject();
+                pl[0] = p;
+                p = (Player) dIn.readObject();
+                pl[1] = p;
+                p = (Player) dIn.readObject();
+                pl[2] = p;
+                return pl;
+
+            } catch (IOException e) {
+                System.out.println("Score sheet not received");
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                System.out.println("class not found");
+                e.printStackTrace();
+            }
+            return pl;
+        }
+
+        /*
+         * receive scores of other players
+         */
+        public int[] receiveScores() {
+            try {
+                int[] sc = new int[3];
+                for (int j = 0; j < 3; j++) {
+
+                    sc[j] = dIn.readInt();
+
+                    System.out.println();
+                }
+
+                return sc;
+            } catch (Exception e) {
+                System.out.println("Score not received");
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        /*
+         * receive scores of other players
+         */
+        public int receiveRoundNo() {
+            try {
+                return dIn.readInt();
+
+            } catch (IOException e) {
+                System.out.println("Score sheet not received");
+                e.printStackTrace();
+            }
+            return 0;
+        }
+
+    }
+
+    /*
+     * ---------Constructor and Main class-----------
+     */
+
+    /*
+     * constructor takes the name of the player and sets the score to 0
+     */
+
+    public static void main(String args[]) {
+        Scanner myObj = new Scanner(System.in);
+        System.out.print("What is your name ? ");
+        String name = myObj.next();
+        Player p = new Player(name);
+        p.connectToClient();
+        p.startGame();
+        p.returnWinner();
+        myObj.close();
+    }
 }

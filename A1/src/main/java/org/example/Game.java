@@ -1,8 +1,12 @@
 package org.example;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Game {
+
+public class Game implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     static FortuneCard[] fortuneDeck = {
             FortuneCard.TREASURECHEST,
@@ -412,6 +416,11 @@ public class Game {
                 return -1000;
             }
         }
+    }
+
+    public void printScore(Player p){
+        System.out.println("|------------------------------------------------|");
+        System.out.println("|----"+p.getName()+" Score: " + p.getScore() + "---------------------------------|");
     }
     
 }
