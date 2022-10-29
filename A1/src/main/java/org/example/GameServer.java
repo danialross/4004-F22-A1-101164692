@@ -35,7 +35,7 @@ public class GameServer implements Serializable {
         }
 
         try {
-            ss = new ServerSocket(3000);
+            ss = new ServerSocket(3400);
         } catch (IOException ex) {
             System.out.println("Server Failed to open");
         }

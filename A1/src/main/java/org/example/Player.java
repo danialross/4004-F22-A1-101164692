@@ -779,7 +779,7 @@ public class Player implements Serializable {
 
         public Client() {
             try {
-                socket = new Socket("localhost", 3000);
+                socket = new Socket("localhost", 3400);
                 dOut = new ObjectOutputStream(socket.getOutputStream());
                 dIn = new ObjectInputStream(socket.getInputStream());
 
