@@ -1,6 +1,5 @@
 package org.example;
 
-
 import org.junit.runner.RunWith;
 
 import org.junit.platform.runner.JUnitPlatform;

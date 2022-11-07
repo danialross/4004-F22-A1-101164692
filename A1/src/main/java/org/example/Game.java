@@ -45,7 +45,7 @@ public class Game implements Serializable {
             FortuneCard.SEABATTLEX4SWORDS,
             FortuneCard.SEABATTLEX4SWORDS};
 
-    enum FortuneCard {
+    public enum FortuneCard {
         TREASURECHEST,
         CAPTAIN,
         SORCERESS,
@@ -59,7 +59,7 @@ public class Game implements Serializable {
         SEABATTLEX4SWORDS
     }
 
-    enum Dice {
+    public enum Dice {
         SKULL,
         DIAMOND,
         GOLD,
