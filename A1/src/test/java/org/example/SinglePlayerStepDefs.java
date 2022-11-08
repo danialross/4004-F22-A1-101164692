@@ -80,6 +80,40 @@ public class SinglePlayerStepDefs {
         p.doOption(p.promptUI("1"), p.getPlayerRoll(), null, p.validateRerollInput("1,2,3,4"), null, null, null);
 
     }
+
+    @And("re-roll swords to and get {string}, {string}")
+    public void reRollSwordsToAndGet(String d1, String d2) {
+        String[] replaceSwordWith = {d1, d2};
+
+        int counter = 0;
+
+        for (int i = 0; i < p.getPlayerRoll().length; i++) {
+            if (p.getPlayerRoll()[i] == Game.Dice.SWORD) {
+                if (replaceSwordWith[counter].equals("Sword")) {
+                    p.getPlayerRoll()[i] = Game.Dice.SWORD;
+
+                } else if (replaceSwordWith[counter].equals("Skull")) {
+                    p.getPlayerRoll()[i] = Game.Dice.SKULL;
+
+                } else if (replaceSwordWith[counter].equals("Gold")) {
+                    p.getPlayerRoll()[i] = Game.Dice.GOLD;
+
+                } else if (replaceSwordWith[counter].equals("Diamond")) {
+                    p.getPlayerRoll()[i] = Game.Dice.DIAMOND;
+
+                } else if (replaceSwordWith[counter].equals("Parrot")) {
+                    p.getPlayerRoll()[i] = Game.Dice.PARROT;
+
+                } else {
+                    p.getPlayerRoll()[i] = Game.Dice.MONKEY;
+                }
+                counter++;
+            }
+        }
+
+        p.doOption(p.promptUI("1"), p.getPlayerRoll(), null, p.validateRerollInput("1,2,3,4"), null, null, null);
+
+    }
 }
 
 
