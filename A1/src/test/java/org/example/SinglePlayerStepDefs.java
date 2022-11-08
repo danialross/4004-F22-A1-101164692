@@ -92,7 +92,7 @@ public class SinglePlayerStepDefs {
             }
         }
 
-        p.doOption(p.promptUI("1"), p.getPlayerRoll(), null, p.validateRerollInput("1,2,3,4"), null, null, null);
+        p.doOption(p.promptUI("1"), p.getPlayerRoll(), null, p.validateRerollInput("7"), null, null, null);
 
     }
 
@@ -144,7 +144,7 @@ public class SinglePlayerStepDefs {
             }
         }
 
-        p.doOption(p.promptUI("1"),p.getPlayerRoll(),null, p.validateRerollInput("4"),null,null,null);
+        p.doOption(p.promptUI("1"),p.getPlayerRoll(),null, p.validateRerollInput("7"),null,null,null);
 
     }
 

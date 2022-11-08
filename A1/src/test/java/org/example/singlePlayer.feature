@@ -7,19 +7,19 @@ Feature: Single Player Scoring
 
   Scenario: row 46
     Given player was initialized
-    When first roll is "Skull", "Parrot", "Parrot", "Parrot", "Parrot", "Sword", "Sword", "Sword"
+    When first roll is "Skull", "Sword", "Sword", "Sword", "Parrot", "Parrot", "Parrot", "Parrot"
     And re-roll "Swords" and get "Skull", "Skull", "Sword"
     Then Die
 
   Scenario: row 47
     Given player was initialized
-    When first roll is "Skull", "Skull", "Parrot", "Parrot", "Parrot", "Parrot", "Sword", "Sword"
+    When first roll is "Skull", "Skull", "Sword", "Sword", "Parrot", "Parrot", "Parrot", "Parrot"
     And re-roll "Swords" and get "Skull", "Sword"
     Then Die
 
   Scenario: row 48
     Given player was initialized
-    When first roll is "Skull", "Parrot", "Parrot", "Parrot", "Parrot", "Sword", "Sword", "Sword"
+    When first roll is "Skull", "Sword", "Sword", "Sword", "Parrot", "Parrot", "Parrot", "Parrot"
     And re-roll "Swords" and get "Skull", "Monkey", "Monkey"
     And re-roll "Monkey" and get "Skull", "Monkey"
     Then Die
@@ -39,6 +39,11 @@ Feature: Single Player Scoring
 
   Scenario: row 53
     Given player was initialized
-    When first roll is "Monkey", "Monkey", "Skull", "Skull", "Sword", "Sword", "Parrot", "Parrot"
+    When first roll is "Skull", "Skull", "Monkey", "Monkey", "Sword", "Sword", "Parrot", "Parrot"
     And re-roll "Parrots" and get "Sword", "Monkey"
+    Then Score 300
+
+  Scenario: row 54
+    Given player was initialized
+    When first roll is "Skull", "Skull", "Monkey", "Monkey", "Monkey", "Sword", "Sword", "Sword"
     Then Score 300
