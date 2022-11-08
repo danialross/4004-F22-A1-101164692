@@ -4,8 +4,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.example.Game;
-import org.example.Player;
 import org.junit.jupiter.api.Assertions;
 
 public class SinglePlayerStepDefs {
@@ -146,7 +144,7 @@ public class SinglePlayerStepDefs {
             }
         }
 
-        p.doOption(p.promptUI("1"),p.getPlayerRoll(),null, p.validateRerollInput("2,3,4,5"),null,null,null);
+        p.doOption(p.promptUI("1"),p.getPlayerRoll(),null, p.validateRerollInput("4"),null,null,null);
 
     }
 
