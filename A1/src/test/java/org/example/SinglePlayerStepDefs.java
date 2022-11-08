@@ -155,6 +155,35 @@ public class SinglePlayerStepDefs {
         p.doOption(p.promptUI("3"),p.getPlayerRoll(),null,null,null,null,null);
         Assertions.assertEquals(score,p.getScore());
     }
+
+    @And("fortune card is {string}")
+    public void fortuneCardIs(String card) {
+        Game.FortuneCard currentCard;
+
+        if(card.equals("Treasure Chest")) {
+            currentCard = Game.FortuneCard.TREASURECHEST;
+        }else if(card.equals("Captain")) {
+            currentCard = Game.FortuneCard.CAPTAIN;
+        }else if(card.equals("Monkey Business")) {
+            currentCard = Game.FortuneCard.MONKEYBUSINESS;
+        }else if(card.equals("Diamond")) {
+            currentCard = Game.FortuneCard.DIAMOND;
+        }else if(card.equals("Gold")) {
+            currentCard = Game.FortuneCard.GOLD;
+        }else if(card.equals("1 Skull")) {
+            currentCard = Game.FortuneCard.SKULLX1;
+        }else if(card.equals("2 Skull")) {
+            currentCard = Game.FortuneCard.SKULLX2;
+        }else if(card.equals("SeaBattle with 4 swords")) {
+            currentCard = Game.FortuneCard.SEABATTLEX4SWORDS;
+        }else if(card.equals("SeaBattle with 3 swords")) {
+            currentCard = Game.FortuneCard.SEABATTLEX3SWORDS;
+        }else {
+            currentCard = Game.FortuneCard.SEABATTLEX2SWORDS;
+        }
+
+        p.roundStarting(p.getPlayerRoll(),currentCard);
+    }
 }
 
 
