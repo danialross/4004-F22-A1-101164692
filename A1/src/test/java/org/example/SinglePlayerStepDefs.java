@@ -47,7 +47,7 @@ public class SinglePlayerStepDefs {
 
     }
 
-    @And("re-roll {string} to and get {string}, {string}, {string}")
+    @And("re-roll {string} and get {string}, {string}, {string}")
     public void reRollSwordsToAndGet(String d1, String d2, String d3,String d4) {
         String[] replaceSwordWith = {d2, d3, d4};
         int counter = 0;
@@ -98,7 +98,7 @@ public class SinglePlayerStepDefs {
 
     }
 
-    @And("re-roll {string} to and get {string}, {string}")
+    @And("re-roll {string} and get {string}, {string}")
     public void reRollSwordsToAndGet(String d1, String d2, String d3) {
         String[] replaceSwordWith = {d2, d3};
         int counter = 0;
@@ -148,6 +148,12 @@ public class SinglePlayerStepDefs {
 
         p.doOption(p.promptUI("1"),p.getPlayerRoll(),null, p.validateRerollInput("2,3,4,5"),null,null,null);
 
+    }
+
+    @Then("Score {int}")
+    public void score(int score) {
+        p.doOption(p.promptUI("3"),p.getPlayerRoll(),null,null,null,null,null);
+        Assertions.assertEquals(score,p.getScore());
     }
 }
 
