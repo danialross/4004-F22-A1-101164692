@@ -182,6 +182,29 @@ public class SinglePlayerStepDefs {
 
         p.roundStarting(p.getPlayerRoll(),currentCard);
     }
+
+    @And("use sorceress to reroll and get {string}")
+    public void reRollSkullWithSorceressAndGet(String wantedString) {
+
+        Game.Dice wantedDice;
+
+        if(wantedString.equals("Sword")){
+            wantedDice = Game.Dice.SWORD;
+        }else if(wantedString.equals("Gold")){
+            wantedDice = Game.Dice.GOLD;
+        }else if(wantedString.equals("Diamond")){
+            wantedDice = Game.Dice.DIAMOND;
+        }else if(wantedString.equals("Parrot")){
+            wantedDice = Game.Dice.PARROT;
+        }else if(wantedString.equals("Monkey")){
+            wantedDice = Game.Dice.MONKEY;
+        }else{
+            wantedDice = Game.Dice.SKULL;
+        }
+
+
+        p.rerollSkull(wantedDice);
+    }
 }
 
 
