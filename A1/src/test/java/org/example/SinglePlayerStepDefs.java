@@ -47,14 +47,31 @@ public class SinglePlayerStepDefs {
 
     }
 
-    @And("re-roll swords to and get {string}, {string}, {string}")
-    public void reRollSwordsToAndGet(String d1, String d2, String d3) {
-        String[] replaceSwordWith = {d1, d2, d3};
-
+    @And("re-roll {string} to and get {string}, {string}, {string}")
+    public void reRollSwordsToAndGet(String d1, String d2, String d3,String d4) {
+        String[] replaceSwordWith = {d2, d3, d4};
         int counter = 0;
+        Game.Dice replacingDice;
 
-        for (int i = 0; i < p.getPlayerRoll().length; i++) {
-            if (p.getPlayerRoll()[i] == Game.Dice.SWORD) {
+        if(d1.equals("Swords")){
+            replacingDice = Game.Dice.SWORD;
+
+        }else if(d1.equals("Golds")){
+            replacingDice = Game.Dice.GOLD;
+
+        }else if(d1.equals("Diamonds")){
+            replacingDice = Game.Dice.DIAMOND;
+
+        }else if(d1.equals("Parrots")){
+            replacingDice = Game.Dice.PARROT;
+
+        }else{
+            replacingDice = Game.Dice.MONKEY;
+
+        }
+
+            for (int i = 0; i < p.getPlayerRoll().length; i++) {
+            if (p.getPlayerRoll()[i] == replacingDice) {
                 if (replaceSwordWith[counter].equals("Sword")) {
                     p.getPlayerRoll()[i] = Game.Dice.SWORD;
 
@@ -81,14 +98,32 @@ public class SinglePlayerStepDefs {
 
     }
 
-    @And("re-roll swords to and get {string}, {string}")
-    public void reRollSwordsToAndGet(String d1, String d2) {
-        String[] replaceSwordWith = {d1, d2};
-
+    @And("re-roll {string} to and get {string}, {string}")
+    public void reRollSwordsToAndGet(String d1, String d2, String d3) {
+        String[] replaceSwordWith = {d2, d3};
         int counter = 0;
 
+        Game.Dice replacingDice;
+
+        if(d1.equals("Swords")){
+            replacingDice = Game.Dice.SWORD;
+
+        }else if(d1.equals("Golds")){
+            replacingDice = Game.Dice.GOLD;
+
+        }else if(d1.equals("Diamonds")){
+            replacingDice = Game.Dice.DIAMOND;
+
+        }else if(d1.equals("Parrots")){
+            replacingDice = Game.Dice.PARROT;
+
+        }else{
+            replacingDice = Game.Dice.MONKEY;
+
+        }
+
         for (int i = 0; i < p.getPlayerRoll().length; i++) {
-            if (p.getPlayerRoll()[i] == Game.Dice.SWORD) {
+            if (p.getPlayerRoll()[i] == replacingDice) {
                 if (replaceSwordWith[counter].equals("Sword")) {
                     p.getPlayerRoll()[i] = Game.Dice.SWORD;
 
@@ -111,7 +146,7 @@ public class SinglePlayerStepDefs {
             }
         }
 
-        p.doOption(p.promptUI("1"), p.getPlayerRoll(), null, p.validateRerollInput("1,2,3,4"), null, null, null);
+        p.doOption(p.promptUI("1"),p.getPlayerRoll(),null, p.validateRerollInput("2,3,4,5"),null,null,null);
 
     }
 }
