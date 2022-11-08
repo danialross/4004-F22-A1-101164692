@@ -110,4 +110,39 @@ Feature: Single Player Scoring
     And fortune card is "Captain"
     Then Score 9000
 
-  
+  Scenario: row 67
+    Given player was initialized
+    When first roll is "Monkey", "Monkey", "Monkey", "Monkey", "Monkey", "Monkey", "Sword", "Sword"
+    And re-roll "Swords" and get "Monkey", "Monkey"
+    Then Score 4600
+
+  Scenario: row 68
+    Given player was initialized
+    When first roll is "Skull", "Skull", "Monkey", "Monkey", "Sword", "Sword", "Parrot", "Parrot"
+    And fortune card is "Diamond"
+    And re-roll "Parrots" and get "Diamond", "Diamond"
+    Then Score 400
+
+  Scenario: row 69
+    Given player was initialized
+    When first roll is "Skull", "Skull", "Monkey", "Monkey", "Sword", "Sword", "Diamond", "Parrot"
+    And re-roll "Monkeys" and get "Diamond", "Diamond"
+    Then Score 500
+
+  Scenario: row 70
+    Given player was initialized
+    When first roll is "Skull", "Gold", "Gold", "Monkey", "Parrot", "Sword", "Sword", "Sword"
+    And re-roll "Swords" and get "Gold", "Monkey", "Parrot"
+    Then Score 600
+
+  Scenario: row 71
+    Given player was initialized
+    When first roll is "Skull", "Gold", "Gold", "Monkey", "Parrot", "Sword", "Sword", "Sword"
+    And fortune card is "Diamond"
+    And re-roll "Swords" and get "Gold", "Monkey", "Parrot"
+    Then Score 500
+
+  Scenario: row 71
+    Given player was initialized
+    When first roll is "Skull", "Skull", "Monkey", "Monkey", "Monkey", "Monkey", "Gold", "Gold"
+    Then Score 600
