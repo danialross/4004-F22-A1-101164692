@@ -225,15 +225,53 @@ Feature: Single Player Scoring
     And fortune card is "Monkey Business"
     Then Score 1200
 
-#
-#Skulls Island and Skull Fortune Cards (10 marks)
-#roll one skull and 7 swords with FC with two skulls => die
-#roll 2 skulls and 6 swords with FC with 1 skull  => die
-#roll 2 skulls  3(parrots/monkeys) with FC with two skulls: reroll 3 parrots get 2 skulls, 1 sword
-#  reroll sword and 3 monkeys, get 3 skulls and 1 sword, stop => -900 for other players (no negative score) & you score 0
-#roll 5 skulls, 3 monkeys with FC Captain, reroll 3 monkeys, get 2 skulls, 1 coin, stop => -1400 for other players
-#roll 3 skulls and 5 swords with FC with two skulls: reroll 5 swords, get 5 coins, must stop  => -500 for other players
-#
+
+#Skulls Island and Skull Fortune Cards
+ #roll one skull and 7 swords with FC with two skulls => die
+  Scenario: row 106
+    Given player was initialized
+    When first roll is "Skull", "Sword", "Sword", "Sword", "Sword", "Sword", "Sword", "Sword"
+    And fortune card is "2 Skulls"
+    Then Die
+
+# roll 2 skulls and 6 swords with FC with 1 skull  => die
+  Scenario: row 107
+    Given player was initialized
+    When first roll is "Skull", "Skull", "Sword", "Sword", "Sword", "Sword", "Sword", "Sword"
+    And fortune card is "1 Skull"
+    Then Die
+
+# set other players score to 900 to show score dropped from 800 to 0 ( no negative numbers )
+  Scenario: row 108
+    Given player was initialized
+    When first roll is "Skull", "Skull", "Parrot", "Parrot", "Parrot", "Monkey", "Monkey", "Monkey"
+    And other players score was 900
+    And fortune card is "2 Skulls"
+    And re-roll in skull island "Parrots" to get "Skull", "Skull", "Sword" then re-roll "Monkeys" and "Swords" and get "Skull", "Skull", "Skull", "Sword"
+    Then player score is 0
+    And other players score is 0
+
+# other player score is 1400 and later reduced to 0 to show deduction
+  Scenario: row 110
+    Given player was initialized
+    When first roll is "Skull", "Skull", "Skull", "Skull", "Skull", "Monkey", "Monkey", "Monkey"
+    And other players score was 1400
+    And fortune card is "Captain"
+    And re-roll in skull island "Monkeys" to get "Skull", "Skull", "Gold"
+    Then player score is 0
+    And other players score is 0
+
+  Scenario: row 111
+    Given player was initialized
+    When first roll is "Skull", "Skull", "Skull", "Sword", "Sword", "Sword", "Sword", "Sword"
+    And other players score was 500
+    And fortune card is "2 Skulls"
+    And re-roll in skull island "Swords" to get "Gold", "Gold", "Gold", "Gold", "Gold"
+    Then player score is 0
+    And other players score is 0
+
+
+
 #Sea Battles (12 marks): your UI must report how much is the deduction if any. No negative scores are allowed.
 #FC 2 swords, roll 4 monkeys, 3 skulls & 1 sword and die   => die and lose 300 points
 #FC 3 swords, have 2 swords, 2 skulls and 4 parrots, reroll 4 parrots, get 4 skulls=> die and lose 500 points
