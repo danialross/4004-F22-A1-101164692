@@ -173,29 +173,58 @@ Feature: Single Player Scoring
     And use sorceress to reroll and get "Parrot"
     Then Score 2000
 
-#Monkey Business  (5 points)
-#roll 3 monkeys 3 parrots  1 skull 1 coin  SC = 1100  (i.e., sequence of of 6 + coin)
-#roll 2 (monkeys/swords/parrots/coins), reroll 2 swords, get 1 monkey, 1 parrot, score 1700
-#roll 3 skulls, 3 monkeys, 2 parrots => die scoring 0
-#
-#Treasure Chest (8 marks)
-#roll 3 parrots, 2 swords, 2 diamonds, 1 coin     put 2 diamonds and 1 coin in chest
-#  then reroll 2 swords and get 2 parrots put 5 parrots in chest and take out 2 diamonds & coin
-#  then reroll the 3 dice and get 1 skull, 1 coin and a parrot
-#   score 6 parrots + 1 coin for 1100 points
-#
-#roll 2 skulls, 3 parrots, 3 coins   put 3 coins in chest
-#  then rerolls 3 parrots and get 2 diamonds 1 coin    put coin in chest (now 4)
-#   then reroll 2 diamonds and get 1 skull 1 coin     score for chest only = 400 + 200 = 600 AND report death
-#
-#Full Chest (10 marks)
-#3 monkeys, 3 swords, 1 diamond, 1 parrot FC: coin   => SC 400  (ie no bonus)
-#3 monkeys, 3 swords, 2 coins FC: captain   => SC (100+100+200+500)*2 =  1800
-#3 monkeys, 4 swords, 1 diamond, FC: coin   => SC 1000  (ie 100++200+100+100+bonus)
-#FC: 2 sword sea battle, first  roll:  4 monkeys, 1 sword, 2 parrots and a coin
-#     then reroll 2 parrots and get 2nd coin and 2nd sword
-#     score is: 200 (coins) + 200 (monkeys) + 300 (swords of battle) + 500 (full chest) = 1200
-#FC: monkey business and roll 2 monkeys, 1 parrot, 2 coins, 3 diamonds   SC 1200
+# Monkey Business
+  Scenario: row 82
+    Given player was initialized
+    When first roll is "Skull", "Monkey", "Monkey", "Monkey", "Parrot", "Parrot", "Parrot", "Gold"
+    And fortune card is "Monkey Business"
+    Then Score 1100
+
+  Scenario: row 83
+    Given player was initialized
+    When first roll is "Monkey", "Monkey", "Sword", "Sword", "Parrot", "Parrot", "Gold", "Gold"
+    And fortune card is "Monkey Business"
+    And re-roll "Swords" and get "Monkey", "Parrot"
+    Then Score 1700
+
+  Scenario: row 84
+    Given player was initialized
+    When first roll is "Skull", "Skull", "Skull", "Monkey", "Monkey", "Monkey", "Parrot", "Parrot"
+    And fortune card is "Monkey Business"
+    Then Die
+
+#Treasure Chest (failed/missing)
+
+#Full Chest
+  Scenario: row 97
+    Given player was initialized
+    When first roll is "Monkey", "Monkey", "Monkey", "Sword", "Sword", "Sword", "Diamond", "Parrot"
+    Then Score 400
+
+  Scenario: row 98
+    Given player was initialized
+    When first roll is "Monkey", "Monkey", "Monkey", "Sword", "Sword", "Sword", "Gold", "Gold"
+    And fortune card is "Captain"
+    Then Score 1800
+
+  Scenario: row 99
+    Given player was initialized
+    When first roll is "Monkey", "Monkey", "Monkey", "Sword", "Sword", "Sword", "Sword", "Gold"
+    Then Score 1000
+
+  Scenario: row 100
+    Given player was initialized
+    When first roll is "Monkey", "Monkey", "Monkey", "Monkey", "Sword", "Parrot", "Parrot", "Gold"
+    And fortune card is "SeaBattle with 2 swords"
+    And re-roll "Parrots" and get "Gold", "Sword"
+    Then Score 1200
+
+  Scenario: row 103
+    Given player was initialized
+    When first roll is "Monkey", "Monkey", "Parrot", "Gold", "Gold", "Diamond", "Diamond", "Diamond"
+    And fortune card is "Monkey Business"
+    Then Score 1200
+
 #
 #Skulls Island and Skull Fortune Cards (10 marks)
 #roll one skull and 7 swords with FC with two skulls => die
