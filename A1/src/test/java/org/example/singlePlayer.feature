@@ -270,19 +270,66 @@ Feature: Single Player Scoring
     Then player score is 0
     And other players score is 0
 
+#Sea Battles
+  Scenario: row 114
+    Given player was initialized
+    When first roll is "Skull", "Skull", "Skull", "Monkey", "Monkey", "Monkey", "Monkey", "Sword"
+    And fortune card is "SeaBattle with 2 swords"
+    Then Die
+    And player score is 0
 
+  Scenario: row 115
+    Given player was initialized
+    When first roll is "Skull", "Skull", "Sword", "Sword", "Parrot", "Parrot", "Parrot", "Parrot"
+    And fortune card is "SeaBattle with 3 swords"
+    And re-roll "Parrots" and get "Skull", "Skull", "Skull", "Skull"
+    Then Die
+    And player score is 0
 
-#Sea Battles (12 marks): your UI must report how much is the deduction if any. No negative scores are allowed.
-#FC 2 swords, roll 4 monkeys, 3 skulls & 1 sword and die   => die and lose 300 points
-#FC 3 swords, have 2 swords, 2 skulls and 4 parrots, reroll 4 parrots, get 4 skulls=> die and lose 500 points
-#FC 4 swords, die on first roll with 2 monkeys, 3 (skulls/swords)  => die and lose 1000 points
-#FC 2 swords, roll 3 monkeys 2 swords, 1 coin, 2 parrots  SC = 100 + 100 + 300 = 500
-#FC 2 swords, roll 4 monkeys 1 sword, 1 skull & 2 parrots
-#  then reroll 2 parrots and get 1 sword and 1 skull   SC = 200 +  300 = 500
-#FC 3 swords, roll 3 monkeys 4 swords 1 skull SC = 100 + 200 + 500 = 800
-#FC 3 swords, roll 4 monkeys 2 swords 2 skulls
-#         then reroll 4 monkeys and get  2 skulls and 2 swords   => die and lose 500 points
-#FC 4 swords, roll 3 monkeys 4 swords 1 skull  SC = 100 +200 + 1000 = 1300
-#FC 4 swords, roll 3 monkeys, 1 sword, 1 skull, 1 diamond, 2 parrots
-#  then reroll 2 parrots and get 2 swords thus you have 3 monkeys, 3 swords, 1 diamond, 1 skull
-#  then reroll 3 monkeys and get  1 sword and 2 parrots  SC = 200 + 100 + 1000 = 1300
+  Scenario: row 116
+    Given player was initialized
+    When first roll is "Skull", "Skull", "Skull", "Sword", "Sword", "Monkey", "Monkey", "Monkey"
+    And fortune card is "SeaBattle with 4 swords"
+    Then Die
+    And player score is 0
+
+  Scenario: row 117
+    Given player was initialized
+    When first roll is "Gold", "Parrot", "Parrot", "Sword", "Sword", "Monkey", "Monkey", "Monkey"
+    And fortune card is "SeaBattle with 2 swords"
+    Then Score 500
+
+  Scenario: row 118
+    Given player was initialized
+    When first roll is "Parrot", "Parrot", "Skull", "Sword", "Monkey", "Monkey", "Monkey", "Monkey"
+    And fortune card is "SeaBattle with 2 swords"
+    And re-roll "Parrots" and get "Skull", "Sword"
+    Then Score 500
+
+  Scenario: row 120
+    Given player was initialized
+    When first roll is "Monkey", "Monkey", "Monkey", "Sword", "Sword", "Sword", "Sword", "Skull"
+    And fortune card is "SeaBattle with 3 swords"
+    Then Score 800
+
+  Scenario: row 121
+    Given player was initialized
+    When first roll is "Skull", "Skull", "Monkey", "Monkey", "Monkey", "Monkey", "Sword", "Sword"
+    And fortune card is "SeaBattle with 3 swords"
+    And re-roll "Monkeys" and get "Skull", "Skull", "Sword", "Sword"
+    Then Die
+    And player score is 0
+
+  Scenario: row 123
+    Given player was initialized
+    When first roll is "Skull", "Monkey", "Monkey", "Monkey", "Sword", "Sword", "Sword", "Sword"
+    And fortune card is "SeaBattle with 4 swords"
+    Then Score 1300
+    
+  Scenario: row 121
+    Given player was initialized
+    When first roll is "Skull", "Monkey", "Monkey", "Monkey", "Sword", "Diamond", "Parrot", "Parrot"
+    And fortune card is "SeaBattle with 4 swords"
+    And re-roll "Parrots" and get "Sword", "Sword"
+    And re-roll "Monkeys" and get "Sword", "Parrot", "Parrot"
+    Then Score 1300

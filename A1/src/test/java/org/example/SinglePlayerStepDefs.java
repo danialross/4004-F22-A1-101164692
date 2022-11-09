@@ -44,75 +44,24 @@ public class SinglePlayerStepDefs {
         p.roundStarting(firstRoll, Game.FortuneCard.GOLD);
 
     }
-
-    @And("re-roll {string} and get {string}, {string}, {string}")
-    public void reRollDiceAndGet(String d1, String d2, String d3,String d4) {
-        String[] replaceDiceWith = {d2, d3, d4};
-        int counter = 0;
-        Game.Dice replacingDice;
-
-        if(d1.equals("Swords")){
-            replacingDice = Game.Dice.SWORD;
-
-        }else if(d1.equals("Golds")){
-            replacingDice = Game.Dice.GOLD;
-
-        }else if(d1.equals("Diamonds")){
-            replacingDice = Game.Dice.DIAMOND;
-
-        }else if(d1.equals("Parrots")){
-            replacingDice = Game.Dice.PARROT;
-
-        }else{
-            replacingDice = Game.Dice.MONKEY;
-
-        }
-
-            for (int i = 0; i < p.getPlayerRoll().length; i++) {
-            if (p.getPlayerRoll()[i] == replacingDice) {
-                if (replaceDiceWith[counter].equals("Sword")) {
-                    p.getPlayerRoll()[i] = Game.Dice.SWORD;
-
-                } else if (replaceDiceWith[counter].equals("Skull")) {
-                    p.getPlayerRoll()[i] = Game.Dice.SKULL;
-
-                } else if (replaceDiceWith[counter].equals("Gold")) {
-                    p.getPlayerRoll()[i] = Game.Dice.GOLD;
-
-                } else if (replaceDiceWith[counter].equals("Diamond")) {
-                    p.getPlayerRoll()[i] = Game.Dice.DIAMOND;
-
-                } else if (replaceDiceWith[counter].equals("Parrot")) {
-                    p.getPlayerRoll()[i] = Game.Dice.PARROT;
-
-                } else {
-                    p.getPlayerRoll()[i] = Game.Dice.MONKEY;
-                }
-                counter++;
-            }
-        }
-
-        p.doOption(p.promptUI("1"), p.getPlayerRoll(), null, p.validateRerollInput("7"), null, null, null);
-
-    }
-
+    //    reroll 2 dice
     @And("re-roll {string} and get {string}, {string}")
-    public void reRollDiceAndGet(String d1, String d2, String d3) {
+    public void reRollDiceAndGet(String replaceString, String d2, String d3) {
         String[] replaceDiceWith = {d2, d3};
         int counter = 0;
 
         Game.Dice replacingDice;
 
-        if(d1.equals("Swords")){
+        if(replaceString.equals("Swords")){
             replacingDice = Game.Dice.SWORD;
 
-        }else if(d1.equals("Golds")){
+        }else if(replaceString.equals("Golds")){
             replacingDice = Game.Dice.GOLD;
 
-        }else if(d1.equals("Diamonds")){
+        }else if(replaceString.equals("Diamonds")){
             replacingDice = Game.Dice.DIAMOND;
 
-        }else if(d1.equals("Parrots")){
+        }else if(replaceString.equals("Parrots")){
             replacingDice = Game.Dice.PARROT;
 
         }else{
@@ -137,6 +86,91 @@ public class SinglePlayerStepDefs {
                 } else if (replaceDiceWith[counter].equals("Parrot")) {
                     p.getPlayerRoll()[i] = Game.Dice.PARROT;
 
+                } else {
+                    p.getPlayerRoll()[i] = Game.Dice.MONKEY;
+                }
+                counter++;
+            }
+        }
+
+        p.doOption(p.promptUI("1"),p.getPlayerRoll(),null, p.validateRerollInput("7"),null,null,null);
+
+    }
+    //    reroll 3 dice
+    @And("re-roll {string} and get {string}, {string}, {string}")
+    public void reRollDiceAndGet(String replaceString, String d2, String d3,String d4) {
+        String[] replaceDiceWith = {d2, d3, d4};
+        int counter = 0;
+
+        Game.Dice replacingDice;
+        if(replaceString.equals("Swords")){
+            replacingDice = Game.Dice.SWORD;
+        }else if(replaceString.equals("Golds")){
+            replacingDice = Game.Dice.GOLD;
+        }else if(replaceString.equals("Diamonds")){
+            replacingDice = Game.Dice.DIAMOND;
+        }else if(replaceString.equals("Parrots")){
+            replacingDice = Game.Dice.PARROT;
+        }else{
+            replacingDice = Game.Dice.MONKEY;
+
+        }
+
+        for (int i = 0; i < p.getPlayerRoll().length; i++) {
+            if (p.getPlayerRoll()[i] == replacingDice) {
+                if (replaceDiceWith[counter].equals("Sword")) {
+                    p.getPlayerRoll()[i] = Game.Dice.SWORD;
+                } else if (replaceDiceWith[counter].equals("Skull")) {
+                    p.getPlayerRoll()[i] = Game.Dice.SKULL;
+                } else if (replaceDiceWith[counter].equals("Gold")) {
+                    p.getPlayerRoll()[i] = Game.Dice.GOLD;
+                } else if (replaceDiceWith[counter].equals("Diamond")) {
+                    p.getPlayerRoll()[i] = Game.Dice.DIAMOND;
+                } else if (replaceDiceWith[counter].equals("Parrot")) {
+                    p.getPlayerRoll()[i] = Game.Dice.PARROT;
+                } else {
+                    p.getPlayerRoll()[i] = Game.Dice.MONKEY;
+                }
+                counter++;
+            }
+        }
+
+        p.doOption(p.promptUI("1"), p.getPlayerRoll(), null, p.validateRerollInput("7"), null, null, null);
+
+    }
+    //    reroll 4 dice
+    @And("re-roll {string} and get {string}, {string}, {string}, {string}")
+    public void reRollAndGet(String replaceString, String d1, String d2, String d3, String d4) {
+        String[] replaceDiceWith = {d1, d2, d3, d4};
+        Game.Dice replacingDice;
+
+
+        if(replaceString.equals("Swords")){
+            replacingDice = Game.Dice.SWORD;
+        }else if(replaceString.equals("Golds")){
+            replacingDice = Game.Dice.GOLD;
+        }else if(replaceString.equals("Diamonds")){
+            replacingDice = Game.Dice.DIAMOND;
+        }else if(replaceString.equals("Parrots")){
+            replacingDice = Game.Dice.PARROT;
+        }else{
+            replacingDice = Game.Dice.MONKEY;
+
+        }
+
+        int counter = 0;
+        for (int i = 0; i < p.getPlayerRoll().length; i++) {
+            if (p.getPlayerRoll()[i] == replacingDice) {
+                if (replaceDiceWith[counter].equals("Sword")) {
+                    p.getPlayerRoll()[i] = Game.Dice.SWORD;
+                } else if (replaceDiceWith[counter].equals("Skull")) {
+                    p.getPlayerRoll()[i] = Game.Dice.SKULL;
+                } else if (replaceDiceWith[counter].equals("Gold")) {
+                    p.getPlayerRoll()[i] = Game.Dice.GOLD;
+                } else if (replaceDiceWith[counter].equals("Diamond")) {
+                    p.getPlayerRoll()[i] = Game.Dice.DIAMOND;
+                } else if (replaceDiceWith[counter].equals("Parrot")) {
+                    p.getPlayerRoll()[i] = Game.Dice.PARROT;
                 } else {
                     p.getPlayerRoll()[i] = Game.Dice.MONKEY;
                 }
