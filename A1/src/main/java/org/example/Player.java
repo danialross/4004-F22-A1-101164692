@@ -5,6 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Player implements Serializable {
@@ -392,7 +393,14 @@ public class Player implements Serializable {
                         askAgain = true;
                     }
                 } else {
-                    if (input.length > 6) {
+                    int totalValidDice = 0;
+
+                    for(int i = 0; i< playerRoll.length; i++){
+                        if(playerRoll[i] != Game.Dice.SKULL){
+                            totalValidDice++;
+                        }
+                    }
+                    if(totalValidDice-input.length <2 ){
                         System.out.println("A minimum of 2 dice must be available to roll");
                         askAgain = true;
                     }

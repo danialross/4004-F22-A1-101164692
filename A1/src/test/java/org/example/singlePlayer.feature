@@ -227,14 +227,12 @@ Feature: Single Player Scoring
 
 
 #Skulls Island and Skull Fortune Cards
- #roll one skull and 7 swords with FC with two skulls => die
   Scenario: row 106
     Given player was initialized
     When first roll is "Skull", "Sword", "Sword", "Sword", "Sword", "Sword", "Sword", "Sword"
     And fortune card is "2 Skulls"
     Then Die
 
-# roll 2 skulls and 6 swords with FC with 1 skull  => die
   Scenario: row 107
     Given player was initialized
     When first roll is "Skull", "Skull", "Sword", "Sword", "Sword", "Sword", "Sword", "Sword"
@@ -325,7 +323,7 @@ Feature: Single Player Scoring
     When first roll is "Skull", "Monkey", "Monkey", "Monkey", "Sword", "Sword", "Sword", "Sword"
     And fortune card is "SeaBattle with 4 swords"
     Then Score 1300
-    
+
   Scenario: row 121
     Given player was initialized
     When first roll is "Skull", "Monkey", "Monkey", "Monkey", "Sword", "Diamond", "Parrot", "Parrot"
