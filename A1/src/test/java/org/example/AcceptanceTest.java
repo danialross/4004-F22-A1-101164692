@@ -873,7 +873,7 @@ public class AcceptanceTest {
 
         p1.roundStarting(riggedhand,riggCard);
 
-        p1.doOption(p1.promptUI("1"),firstReroll,null,p1.validateRerollInput("0,1,2,3,4"),null,null,null);
+        p1.doOption(p1.promptUI("1"),firstReroll,null,p1.validateRerollInput("0,1"),null,null,null);
 
         p1.doOption(p1.promptUI("3"),firstReroll,null,null,null,null,null);
 
