@@ -1,4 +1,4 @@
-Feature: Player 1 Multi Player
+Feature: Multi Player
 #    multi-player test
 
   Scenario: row 130
@@ -26,3 +26,4 @@ Feature: Player 1 Multi Player
     And "Player 3" had roll of "Skull","Sword","Sword","Sword","Sword","Sword","Sword","Sword" and "2 Skulls" fortune card and score 0
     And "Player 1" had roll of "Sword","Sword","Sword","Sword","Sword","Sword","Sword","Sword" and "Captain" fortune card and score 9000
     And "Player 1" is the winner
+    

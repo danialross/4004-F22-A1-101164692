@@ -47,6 +47,8 @@ public class MultiplayerStepdefs {
             playerCard = Game.FortuneCard.TREASURECHEST;
         }else if(card.equals("Captain")) {
             playerCard = Game.FortuneCard.CAPTAIN;
+        }else if(card.equals("Sorceress")) {
+            playerCard = Game.FortuneCard.SORCERESS;
         }else if(card.equals("Monkey Business")) {
             playerCard = Game.FortuneCard.MONKEYBUSINESS;
         }else if(card.equals("Diamond")) {
@@ -107,6 +109,8 @@ public class MultiplayerStepdefs {
             playerCard = Game.FortuneCard.TREASURECHEST;
         }else if(card.equals("Captain")) {
             playerCard = Game.FortuneCard.CAPTAIN;
+        }else if(card.equals("Sorceress")) {
+            playerCard = Game.FortuneCard.SORCERESS;
         }else if(card.equals("Monkey Business")) {
             playerCard = Game.FortuneCard.MONKEYBUSINESS;
         }else if(card.equals("Diamond")) {
