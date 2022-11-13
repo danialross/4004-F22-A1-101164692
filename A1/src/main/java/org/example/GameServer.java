@@ -110,16 +110,12 @@ public class GameServer implements Serializable {
 
             if(p == players[1]){
 
-                playerServer[2].sendScores(players);
-                players[2].setScore(playerServer[2].receiveScores());
-                System.out.println("Player 3 completed turn and their score is " + players[2].getScore());
-
                 playerServer[0].sendScores(players);
                 players[0].setScore(playerServer[0].receiveScores());
                 System.out.println("Player 1 completed turn and their score is " + players[0].getScore());
 
-            }else if(p != players[2]){
-                
+            }else if(p == players[2]){
+
                 playerServer[0].sendScores(players);
                 players[0].setScore(playerServer[0].receiveScores());
                 System.out.println("Player 1 completed turn and their score is " + players[0].getScore());
