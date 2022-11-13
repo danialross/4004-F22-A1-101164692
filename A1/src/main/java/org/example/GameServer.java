@@ -91,7 +91,6 @@ public class GameServer implements Serializable {
                 // send the round number
                 System.out.println("*****************************************");
 
-
                 playerServer[0].sendScores(players);
                 players[0].setScore(playerServer[0].receiveScores());
                 System.out.println("Player 1 completed turn and their score is " + players[0].getScore());
@@ -107,9 +106,30 @@ public class GameServer implements Serializable {
                 System.out.println("Player 3 completed turn and their score is " + players[2].getScore());
 
             }
-
-
             Player p = game.getWinner(players);
+
+            if(p == players[1]){
+
+                playerServer[2].sendScores(players);
+                players[2].setScore(playerServer[2].receiveScores());
+                System.out.println("Player 3 completed turn and their score is " + players[2].getScore());
+
+                playerServer[0].sendScores(players);
+                players[0].setScore(playerServer[0].receiveScores());
+                System.out.println("Player 1 completed turn and their score is " + players[0].getScore());
+
+            }else if(p != players[2]){
+                
+                playerServer[0].sendScores(players);
+                players[0].setScore(playerServer[0].receiveScores());
+                System.out.println("Player 1 completed turn and their score is " + players[0].getScore());
+
+
+                playerServer[1].sendScores(players);
+                players[1].setScore(playerServer[1].receiveScores());
+                System.out.println("Player 2 completed turn and their score is " + players[1].getScore());
+
+            }
             System.out.println("The winner is " + p.getName());
             for (int i = 0; i < playerServer.length; i++) {
                 playerServer[i].dOut.writeObject(p);
