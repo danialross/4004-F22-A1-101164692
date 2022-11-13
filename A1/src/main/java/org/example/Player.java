@@ -727,7 +727,7 @@ public class Player implements Serializable {
     public void startGame() {
         // receive players once for names
         players = clientConnection.receivePlayer();
-        while (true) {
+        while (!game.didReachWinThreshold(players)) {
 
             int[] pl = clientConnection.receiveScores();
             System.out.println(status(1));

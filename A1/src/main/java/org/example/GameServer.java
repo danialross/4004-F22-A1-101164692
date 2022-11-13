@@ -108,23 +108,6 @@ public class GameServer implements Serializable {
 
             }
 
-            System.out.println("*****************************************");
-
-            playerServer[0].sendScores(players);
-            players[0].setScore(playerServer[0].receiveScores());
-            System.out.println("Player 1 completed turn and their score is " + players[0].getScore());
-
-            playerServer[1].sendScores(players);
-            players[1].setScore(playerServer[1].receiveScores());
-            System.out.println("Player 2 completed turn and their score is " + players[1].getScore());
-
-            playerServer[2].sendScores(players);
-            players[2].setScore(playerServer[2].receiveScores());
-            System.out.println("Player 3 completed turn and their score is " + players[2].getScore());
-
-            playerServer[0].sendScores(players);
-            playerServer[1].sendScores(players);
-            playerServer[2].sendScores(players);
 
             Player p = game.getWinner(players);
             System.out.println("The winner is " + p.getName());
