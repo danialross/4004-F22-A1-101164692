@@ -513,12 +513,9 @@ public class Player implements Serializable {
 
                 System.out.println("1. Choose dice to roll again");
                 System.out.println("2. Reroll all dice");
-                if( firstLoop ) {
-                    maxOption = 2;
-                }else{
-                    System.out.println("3. Score with current hand");
-                    maxOption = 3;
-                }
+                System.out.println("3. Score with current hand");
+                maxOption = 3;
+
 
                 Scanner scanner;
                 if(skullIslandOption != null){

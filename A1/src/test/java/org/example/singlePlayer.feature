@@ -324,7 +324,7 @@ Feature: Single Player Scoring
     And fortune card is "SeaBattle with 4 swords"
     Then Score 1300
 
-  Scenario: row 121
+  Scenario: row 124
     Given player was initialized
     When first roll is "Skull", "Monkey", "Monkey", "Monkey", "Sword", "Diamond", "Parrot", "Parrot"
     And fortune card is "SeaBattle with 4 swords"
