@@ -218,8 +218,6 @@ public class MultiplayerStepdefs {
             player = p3;
         }
 
-        Game.Dice[] riggedSI = new Game.Dice[]{Game.Dice.GOLD, Game.Dice.PARROT};
-
         player.roundStarting(playerRoll,playerCard);
         player.doOption(player.promptUI(""),new Game.Dice[]{},null, null,null,"3",null);
 

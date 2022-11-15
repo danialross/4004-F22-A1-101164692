@@ -17,7 +17,7 @@ Feature: Multi Player
     When "Player 1" first roll is "Skull","Sword","Sword","Sword","Sword","Sword","Sword","Sword" with "Captain" fortune card
     And "Player 2" first roll is "Skull","Skull","Skull","Monkey","Monkey","Monkey","Monkey","Monkey" with "Gold" fortune card
     Then "Player 1" had roll of "Skull","Sword","Sword","Sword","Sword","Sword","Sword","Sword" and "Captain" fortune card and score 4000
-    And "Player 3" skull island roll is "Skull","Skull","Skull","Skull","Skull","Skull","Monkey","Monkey" with "Captain" fortune card
+    And "Player 3" skull island roll is "Skull","Skull","Skull","Skull","Skull","Skull","Parrot","Parrot" with "Captain" fortune card
     And "Player 3" reduced "Player 1" score with skull island roll with 6 skulls
     And Players score are updated
     Then "Player 1" had roll of "Skull","Sword","Sword","Sword","Sword","Sword","Sword","Sword" and "Captain" fortune card and score 2800
