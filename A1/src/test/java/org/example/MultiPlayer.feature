@@ -18,7 +18,7 @@ Feature: Multi Player
     And "Player 2" first roll is "Skull","Skull","Skull","Monkey","Monkey","Monkey","Monkey","Monkey" with "Gold" fortune card
     Then "Player 1" had roll of "Skull","Sword","Sword","Sword","Sword","Sword","Sword","Sword" and "Captain" fortune card and score 4000
     And "Player 3" skull island roll is "Skull","Skull","Skull","Skull","Skull","Skull","Monkey","Monkey" with "Captain" fortune card
-    And "Player 3" reduced "Player 1" score with skull island roll
+    And "Player 3" reduced "Player 1" score with skull island roll with 6 skulls
     And Players score are updated
     Then "Player 1" had roll of "Skull","Sword","Sword","Sword","Sword","Sword","Sword","Sword" and "Captain" fortune card and score 2800
     And "Player 2" had roll of "Skull","Skull","Skull","Monkey","Monkey","Monkey","Monkey","Monkey" and "Gold" fortune card and score 0
@@ -46,3 +46,14 @@ Feature: Multi Player
     And "Player 3" had roll of "Skull","Sword","Sword","Sword","Sword","Sword","Sword","Sword" and "2 Skulls" fortune card and score 0
     And "Player 1" had roll of "Sword","Sword","Sword","Sword","Sword","Sword","Sword","Sword" and "Captain" fortune card and score 9000
     And "Player 1" is the winner
+
+    Scenario: row 147
+      Given players initialized
+      When "Player 1" first roll is "Skull","Skull","Sword","Sword","Sword","Sword","Sword","Sword" with "Gold" fortune card
+      Then "Player 1" had roll of "Skull","Skull","Sword","Sword","Sword","Sword","Sword","Sword" and "Gold" fortune card and score 1100
+      And "Player 2" skull island roll is "Skull","Skull","Skull","Skull","Skull","Skull","Skull","Gold" with "Sorceress" fortune card and do a sorceress reroll to get a "Parrot" and roll remaining dice to get "Skull", "Skull"
+      And "Player 2" reduced "Player 1" score with skull island roll with 8 skulls
+      Then "Player 1" had roll of "Skull","Skull","Sword","Sword","Sword","Sword","Sword","Sword" and "Gold" fortune card and score 300
+      And "Player 2" score is 0
+      And "Player 3" score is 0
+

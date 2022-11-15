@@ -225,8 +225,8 @@ public class MultiplayerStepdefs {
 
     }
 
-    @And("{string} reduced {string} score with skull island roll")
-    public void reducedScoreWithSkullIslandRoll(String input1, String input2) {
+    @And("{string} reduced {string} score with skull island roll with {int} skulls")
+    public void reducedScoreWithSkullIslandRoll(String input1, String input2, int numSkull) {
         Player reducer;
         Player reducee;
         if (input1.equals("Player 1")){
@@ -245,7 +245,7 @@ public class MultiplayerStepdefs {
             reducee = p3;
         }
 
-        int reduceBy = reducee.game.getScoreDeduction(6,reducer.getFc());
+        int reduceBy = reducee.game.getScoreDeduction(numSkull,reducer.getFc());
 
         reducee.game.reducePlayerScore(reduceBy,reducee.getScore());
         reducee.setScore(reducee.game.reducePlayerScore(reduceBy,reducee.getScore()));
@@ -311,6 +311,113 @@ public class MultiplayerStepdefs {
 
         Assertions.assertArrayEquals(playerRoll,player.getPlayerRoll());
         Assertions.assertEquals(playerCard,player.getFc());
+        Assertions.assertEquals(score,player.getScore());
+    }
+
+    @And("{string} skull island roll is {string},{string},{string},{string},{string},{string},{string},{string} with {string} fortune card and do a sorceress reroll to get a {string} and roll remaining dice to get {string}, {string}")
+    public void skullIslandRollIsWithFortuneCardAndDoAReroll(String input, String d1, String d2, String d3, String d4, String d5, String d6, String d7, String d8, String card, String reroll,String si1,String si2) {
+
+        String[] diceAsString = {d1, d2, d3, d4, d5, d6, d7, d8};
+        String[] SkullRerollAsString = {si1,si2};
+        Game.Dice[] playerRoll = new Game.Dice[]{null, null, null, null, null, null, null, null};
+        Game.Dice[] siReroll = new Game.Dice[]{null, null};
+        Game.Dice skullReroll;
+        Game.FortuneCard playerCard;
+        Player player;
+
+        for (int i = 0; i < diceAsString.length; i++) {
+            if (diceAsString[i].equals("Sword")) {
+                playerRoll[i] = Game.Dice.SWORD;
+            } else if (diceAsString[i].equals("Skull")) {
+                playerRoll[i] = Game.Dice.SKULL;
+            } else if (diceAsString[i].equals("Gold")) {
+                playerRoll[i] = Game.Dice.GOLD;
+            } else if (diceAsString[i].equals("Diamond")) {
+                playerRoll[i] = Game.Dice.DIAMOND;
+            } else if (diceAsString[i].equals("Parrot")) {
+                playerRoll[i] = Game.Dice.PARROT;
+            } else {
+                playerRoll[i] = Game.Dice.MONKEY;
+            }
+        }
+
+        for (int i = 0; i < SkullRerollAsString.length; i++) {
+            if (SkullRerollAsString[i].equals("Sword")) {
+                siReroll[i] = Game.Dice.SWORD;
+            } else if (SkullRerollAsString[i].equals("Skull")) {
+                siReroll[i] = Game.Dice.SKULL;
+            } else if (SkullRerollAsString[i].equals("Gold")) {
+                siReroll[i] = Game.Dice.GOLD;
+            } else if (SkullRerollAsString[i].equals("Diamond")) {
+                siReroll[i] = Game.Dice.DIAMOND;
+            } else if (SkullRerollAsString[i].equals("Parrot")) {
+                siReroll[i] = Game.Dice.PARROT;
+            } else {
+                siReroll[i] = Game.Dice.MONKEY;
+            }
+        }
+
+        if (reroll.equals("Sword")) {
+            skullReroll = Game.Dice.SWORD;
+        } else if (reroll.equals("Skull")) {
+            skullReroll = Game.Dice.SKULL;
+        } else if (reroll.equals("Gold")) {
+            skullReroll = Game.Dice.GOLD;
+        } else if (reroll.equals("Diamond")) {
+            skullReroll = Game.Dice.DIAMOND;
+        } else if (reroll.equals("Parrot")) {
+            skullReroll = Game.Dice.PARROT;
+        } else {
+            skullReroll = Game.Dice.MONKEY;
+        }
+
+        if (card.equals("Treasure Chest")) {
+            playerCard = Game.FortuneCard.TREASURECHEST;
+        } else if (card.equals("Captain")) {
+            playerCard = Game.FortuneCard.CAPTAIN;
+        } else if (card.equals("Sorceress")) {
+            playerCard = Game.FortuneCard.SORCERESS;
+        } else if (card.equals("Monkey Business")) {
+            playerCard = Game.FortuneCard.MONKEYBUSINESS;
+        } else if (card.equals("Diamond")) {
+            playerCard = Game.FortuneCard.DIAMOND;
+        } else if (card.equals("Gold")) {
+            playerCard = Game.FortuneCard.GOLD;
+        } else if (card.equals("1 Skull")) {
+            playerCard = Game.FortuneCard.SKULLX1;
+        } else if (card.equals("2 Skulls")) {
+            playerCard = Game.FortuneCard.SKULLX2;
+        } else if (card.equals("SeaBattle with 4 swords")) {
+            playerCard = Game.FortuneCard.SEABATTLEX4SWORDS;
+        } else if (card.equals("SeaBattle with 3 swords")) {
+            playerCard = Game.FortuneCard.SEABATTLEX3SWORDS;
+        } else {
+            playerCard = Game.FortuneCard.SEABATTLEX2SWORDS;
+        }
+
+        if (input.equals("Player 1")) {
+            player = p1;
+        } else if (input.equals("Player 2")) {
+            player = p2;
+        } else {
+            player = p3;
+        }
+
+        player.roundStarting(playerRoll, playerCard);
+        player.doOption(player.promptUI(""), new Game.Dice[]{}, null, null, skullReroll, "4", new Game.Dice[][]{siReroll});
+    }
+
+    @And("{string} score is {int}")
+    public void scoreIs(String input, int score) {
+        Player player;
+        if (input.equals("Player 1")) {
+            player = p1;
+        } else if (input.equals("Player 2")) {
+            player = p2;
+        } else {
+            player = p3;
+        }
+
         Assertions.assertEquals(score,player.getScore());
     }
 }

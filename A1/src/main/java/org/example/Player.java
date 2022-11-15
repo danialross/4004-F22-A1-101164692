@@ -472,7 +472,8 @@ public class Player implements Serializable {
             }
 
             skullRollReducer(null);
-            while(game.calcNumSkull(playerRoll)>0){
+            int action = -1;
+            while(game.calcNumSkull(playerRoll)>0 || action == 4){
 
                 totalSkullRolled += game.calcNumSkull(playerRoll);
                 String hand = "|----Player Roll:----";
@@ -507,7 +508,7 @@ public class Player implements Serializable {
                     System.out.println("|----Fortune Card:----"+ fc + "----|");
                 }
 
-                if(playerRoll.length<2){
+                if(playerRoll.length<2 && (fc != Game.FortuneCard.SORCERESS)) {
                     return;
                 }
 
@@ -515,6 +516,11 @@ public class Player implements Serializable {
                 System.out.println("2. Reroll all dice");
                 System.out.println("3. Score with current hand");
                 maxOption = 3;
+
+                if(fc == Game.FortuneCard.SORCERESS && firstLoop == true){
+                    System.out.println("4. Use Your Sorceress Card");
+                    maxOption = 4;
+                }
 
 
                 Scanner scanner;
@@ -524,11 +530,9 @@ public class Player implements Serializable {
                     scanner = new Scanner(System.in);
                 }
 
-                int action;
+
                 if(scanner.hasNextInt()){
                     action = scanner.nextInt();
-                }else {
-                    action = -1;
                 }
 
                 while (action < 0 || action > maxOption ) {
@@ -544,8 +548,6 @@ public class Player implements Serializable {
                     scanner.next();
                     if(scanner.hasNextInt()){
                         action = scanner.nextInt();
-                    }else {
-                        action = -1;
                     }
 
                 }
@@ -583,12 +585,38 @@ public class Player implements Serializable {
                 }else if (action == 3) {
 
                     if (siRigHand != null) {
-
                         skullRollReducer(playerRoll);
-                        totalSkullRolled += game.calcNumSkull(playerRoll);
                     } else {
                         skullRollReducer(null);
                     }
+                    totalSkullRolled += game.calcNumSkull(playerRoll);
+
+                }else if (action == 4 ){
+
+                    Game.Dice[] newPlayerRoll = new Game.Dice[playerRoll.length + 1];
+
+                    for (int i = 0; i < playerRoll.length; i++) {
+                        newPlayerRoll[i] = playerRoll[i];
+                    }
+
+                    firstLoop = false;
+                    if (siRigHand != null) {
+
+                        // for testing purpose ( minus score and exit ) loop hole
+                        newPlayerRoll[playerRoll.length] = Game.Dice.SKULL;
+                        playerRoll = game.sorceressReroll(playerRoll,Game.Dice.SKULL);
+
+                        playerReroll(new int[]{}, playerRoll);
+                        skullRollReducer(playerRoll);
+
+                    } else {
+
+                        newPlayerRoll[playerRoll.length] = game.getRandomDie();
+                        playerRoll = game.sorceressReroll(newPlayerRoll,null);
+
+                    }
+                    fc = null;
+                    totalSkullRolled--;
                 }
             }
             String hand = "|----Player Roll:----";
