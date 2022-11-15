@@ -666,6 +666,7 @@ public class Player implements Serializable {
             }else{
                 lockInPoints(playerRoll,fc);
                 checkDead();
+                System.out.println(status(7) + game.scorePoints(playerRoll,fc) + " points \n");
             }
         }else if(option == 4){
             if(fc == Game.FortuneCard.SORCERESS && game.isContainSkull(playerRoll)){
