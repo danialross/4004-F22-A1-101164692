@@ -414,7 +414,7 @@ public class SinglePlayerStepDefs {
 
     @Then("player score is {int}")
     public void playerScoreIs(int score) {
-        Assertions.assertEquals(0,p.getScore());
+        Assertions.assertEquals(score,p.getScore());
     }
 
     @And("re-roll in skull island {string} to get {string}, {string}, {string}")
